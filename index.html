@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steffen Koller - Program Owner & Solution Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navbar-height: 42px; /* Default, JS will update */
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--navbar-height);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light mode default body background */
+            color: #374151; /* Light mode default text color */
+            line-height: 1.7;
+            padding-top: var(--navbar-height);
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .web-resume-container {
+            max-width: 1024px;
+            margin: 1.5rem auto;
+            background-color: #ffffff; /* Light mode container background */
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-padding {
+            padding: 2rem;
+        }
+
+        h2.section-main-title {
+            color: #001639; /* Light mode section title */
+            font-weight: 600;
+            border-bottom: 2px solid #0070D2; /* Light mode border */
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+
+        h3.subsection-title {
+            color: #001639; /* Light mode subsection title */
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        h4.education-item-title {
+            color: #001639; /* Light mode education title */
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            transition: color 0.3s ease;
+        }
+
+        h4.profile-block-title, .profile-block-title-variant-a {
+            color: #001639; /* Light mode profile block title */
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.35rem;
+            transition: color 0.3s ease;
+        }
+
+        /* --- Styles for New Hero Section --- */
+        .hero-section-common {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .hero-c-v2-var2 { /* This section is already dark-ish, so minimal changes for dark mode */
+            background: linear-gradient(155deg, #000b1a 0%, #00224d 100%);
+            color: #ced4da;
+        }
+        .hero-c-v2-var2 .image-pane {
+            padding: 2rem 1rem;
+            display: flex; justify-content: center; align-items: center;
+            background-color: transparent;
+        }
+        .hero-c-v2-var2 .profile-image-common {
+            width: 11rem; height: 11rem;
+            border: 3px solid #228be6;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .hero-c-v2-var2 .text-pane {
+            padding: 2rem 1.5rem;
+            background-color: transparent;
+            flex-grow: 1;
+        }
+        .hero-c-v2-var2 .hero-name {
+            font-size: 2.125rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .hero-c-v2-var2 .hero-title { font-size: 1.1rem; color: #adb5bd; margin-top: 0.25rem; }
+        .hero-c-v2-var2 .hero-subtitle { font-size: 0.9rem; color: #868e96; margin-top: 0.25rem; margin-bottom: 0.75rem; }
+        .hero-c-v2-var2 .hero-statement-common {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #ced4da;
+            margin-top: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero-c-v2-var2 .hero-statement-common strong { color: #ffffff; font-weight: 700; }
+
+        .contact-details-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        .contact-details-grid > * { flex-shrink: 0; }
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+        .hero-c-v2-var2 .contact-item { color: #adb5bd; }
+        .hero-c-v2-var2 .contact-item svg:not(.language-icon-svg) {
+            color: #4dabf7;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.4rem;
+        }
+        .hero-c-v2-var2 .language-trigger { color: #adb5bd; }
+        .hero-c-v2-var2 .language-trigger:hover { color: #ffffff; background-color: rgba(34,139,230,0.2); }
+        .language-icon-svg {
+            margin-right: 0.4rem;
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: middle;
+        }
+        .hero-c-v2-var2 .language-icon-svg { fill: #4dabf7; }
+        .hero-c-v2-var2 .language-icon-svg text { fill: #000b1a; transition: fill 0.3s ease; } /* Light mode text in SVG */
+
+        .language-items-wrapper { display: flex; align-items: center; gap: 0.35rem; }
+        .language-trigger {
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.25rem 0.35rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .language-item .language-tooltip {
+            opacity: 0; visibility: hidden; position: absolute; bottom: 100%; left: 50%;
+            transform: translateX(-50%) translateY(-0.25rem); margin-bottom: 0.25rem; padding: 0.5rem;
+            background-color: #1e293b; /* Tooltip background */
+            color: white; font-size: 0.75rem; border-radius: 0.375rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 50; white-space: nowrap;
+            transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.3s ease; pointer-events: none;
+        }
+        .language-item.relative:hover .language-tooltip { opacity: 1; visibility: visible; pointer-events: auto; }
+
+        @media (min-width: 768px) {
+            .hero-section-common {
+                flex-direction: row;
+            }
+            .hero-c-v2-var2 .image-pane { width: 30%; padding: 3rem 1.5rem;}
+            .hero-c-v2-var2 .text-pane  { width: 70%; padding: 3rem 2.5rem;}
+            .hero-c-v2-var2 .profile-image-common { width: 13rem; height: 13rem;}
+            .hero-c-v2-var2 .image-pane {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0.75rem;
+            }
+            .hero-c-v2-var2 .text-pane {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 0.75rem;
+                border-bottom-right-radius: 0.75rem;
+            }
+        }
+         @media (max-width: 767px) {
+            .hero-c-v2-var2 .image-pane {
+                 border-bottom-left-radius: 0;
+            }
+             .hero-c-v2-var2 .text-pane {
+                border-bottom-left-radius: 0.75rem;
+                border-bottom-right-radius: 0.75rem;
+                border-top-right-radius: 0;
+            }
+         }
+        /* --- End of Styles for New Hero Section --- */
+
+        /* Styles for Expertise Section */
+        .expertise-meta-card {
+            background-color: #e0f2fe; border: 1px solid #bae6fd; /* Light mode */
+            border-radius: 0.75rem;
+            padding: 1.25rem; box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
+            margin-bottom: 2rem; display: flex; flex-direction: column;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s, box-shadow 0.2s;
+        }
+        .expertise-meta-card:hover {
+            transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0, 112, 210, 0.2);
+        }
+        .expertise-meta-card-title {
+            font-size: 1.15rem; font-weight: 600; color: #001639; /* Light mode */
+            margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; /* Light mode */
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        .expertise-meta-card ul.item-grid {
+            list-style: none; padding-left: 0; margin-top: 0.5rem; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem; flex-grow: 1;
+        }
+        .expertise-meta-card li.item-style-k {
+            background-color: #f0f8ff; color: #1e3a8a; /* Light mode */
+            border-radius: 0.5rem;
+            border: 1px solid #d1e0ff; /* Light mode */
+            box-shadow: 0px 2px 4px rgba(0, 86, 179, 0.08), inset 1px 1px 1px rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            min-height: 140px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0.8rem; overflow-wrap: break-word; word-wrap: break-word;
+            overflow: visible;
+            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        .expertise-meta-card li.item-style-k:hover {
+            background-color: #ffffff; border-color: #c0d4f0; /* Light mode hover */
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0px 4px 8px rgba(0, 86, 179, 0.12), inset 1px 1px 2px rgba(255,255,255,0.6);
+        }
+        .expertise-meta-card li.item-style-k strong {
+            font-weight: 600; color: #002240; display: block; /* Light mode */
+            margin-bottom: 0.25rem; font-size: 0.88rem;
+            transition: color 0.3s ease;
+        }
+        @media (max-width: 480px) {
+            .expertise-meta-card ul.item-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem;
+            }
+            .expertise-meta-card li.item-style-k {
+                min-height: 75px; justify-content: flex-start;
+                padding: 0.8rem; font-size: 0.8rem;
+            }
+             .expertise-meta-card li.item-style-k strong { font-size: 0.82rem; }
+        }
+         @media (max-width: 360px) {
+             .expertise-meta-card ul.item-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem;
+            }
+            .expertise-meta-card li.item-style-k {
+                min-height: 65px; font-size: 0.78rem; padding: 0.75rem;
+            }
+            .expertise-meta-card li.item-style-k strong { font-size: 0.8rem; }
+         }
+        /* End of Styles for Expertise Section */
+
+        ul.custom-bullets > li {
+            padding-left: 1.75em; position: relative; margin-bottom: 0.5rem;
+        }
+        ul.custom-bullets > li::before {
+            content: "•"; color: #0070D2; /* Light mode bullet color */
+            font-weight: bold;
+            position: absolute; left: 0.5em; top: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        /* Styles for Core Competencies Cards */
+        .competency-item-base {
+            border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1.25rem; /* Light mode */
+            transition: all 0.3s ease-in-out; background-color: #f9fafb; /* Light mode */
+            display: flex; align-items: flex-start;
+        }
+        .competency-item-base:hover {
+            transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,112,210,0.15); /* Light mode hover */
+        }
+        .competency-icon {
+            font-size: 1.75rem; margin-right: 0.75rem; color: #0070D2; /* Light mode */
+            flex-shrink: 0; margin-top: 0.125rem;
+            transition: color 0.3s ease;
+        }
+        .competency-title-text {
+            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.35rem; /* Light mode */
+            transition: color 0.3s ease;
+        }
+        .competency-description-text {
+            font-size: 0.875rem; color: #4b5563; line-height: 1.6; /* Light mode */
+            transition: color 0.3s ease;
+        }
+        .card-grid-competencies {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        /* End of Styles for Core Competencies Cards */
+
+        /* Styles for Qualification Section */
+        .qualification-card-base {
+            background-color: #ffffff; padding: 1.5rem; border-radius: 0.5rem; /* Light mode */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease;
+        }
+        .qualification-card-base:hover {
+            transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .qualification-grid {
+            display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .qualification-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .qualification-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .education-institution {
+            font-size: 0.875rem; color: #6b7280; margin-top: 0.1rem; margin-bottom: 0.5rem; /* Light mode */
+            transition: color 0.3s ease;
+        }
+        .education-details p, .education-details {
+            color: #374151; font-size: 0.875rem; line-height: 1.6; /* Light mode */
+            transition: color 0.3s ease;
+        }
+        .education-highlight { font-weight: 600; color: #0070D2; transition: color 0.3s ease;} /* Light mode */
+        ul.custom-bullets-qual > li {
+            padding-left: 1.75em; position: relative; margin-bottom: 0.5rem;
+            font-size: 0.875rem; color: #374151; /* Light mode */
+            transition: color 0.3s ease;
+        }
+        ul.custom-bullets-qual > li::before {
+            content: "✓"; color: #0070D2; font-weight: bold; /* Light mode */
+            position: absolute; left: 0.5em; top: 0.1em;
+            transition: color 0.3s ease;
+        }
+        /* End of Styles for Qualification Section */
+
+        /* Styles for Flip Cards (Insights Section) */
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background-color: transparent; width: 100%; aspect-ratio: 1 / 1;
+            perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d;
+            border-radius: 0.75rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .flip-card:hover .flip-card-inner {
+             transform: scale(1.02) rotateY(var(--tw-rotate-y, 0deg));
+        }
+        .flip-card.is-flipped .flip-card-inner {
+            transform: scale(1.02) rotateY(180deg);
+        }
+         .flip-card.is-flipped:hover .flip-card-inner {
+            transform: scale(1.05) rotateY(180deg);
+        }
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 0.75rem; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; padding: 1.25rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .flip-card-front { background-color: #f8f9fa; color: #333; } /* Light mode */
+        .flip-card-front img {
+            max-width: 75%; max-height: 75%; object-fit: contain;
+        }
+        .flip-card-back {
+            background-color: #0070D2; color: white; transform: rotateY(180deg); /* Light mode */
+        }
+        .flip-card-back h4 {
+            font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; /* Light mode (already white) */
+        }
+        .flip-card-back p { font-size: 0.9rem; }
+        /* End of Flip Card Styles */
+
+        /* Experience Carousel Styles - Key Results Style A applied */
+        .experience-carousel-container { position: relative; }
+        .experience-carousel-track-container { overflow: hidden; width: 100%; }
+        .experience-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .job-experience-card {
+            flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
+            background-color: #f9fafb; border-radius: 0.75rem; /* Light mode */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem;
+            position: relative; padding-left: 2.5rem; padding-right: 2.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .key-results-style-a {
+            border: 1px solid #93c5fd; background-color: #eff6ff; /* Light mode */
+            padding: 0.75rem; border-radius: 0.375rem; margin-top: 1rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .key-results-style-a .key-results-label { color: #1d4ed8; font-weight: 600; transition: color 0.3s ease;} /* Light mode */
+        .key-results-style-a .key-results-text-content {
+             font-size: 0.875rem; color: #374151; /* Light mode */
+             transition: color 0.3s ease;
+        }
+        .carousel-button-combined {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background-color: rgba(0, 112, 210, 0.6); color: white; /* Light mode */
+            border: none; width: 1.8rem; height: 1.8rem;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            opacity: 0.2; display: flex; align-items: center; justify-content: center;
+            transition: background-color 0.2s ease, opacity 0.3s ease, color 0.3s ease;
+        }
+        .experience-carousel-track-container:hover ~ .carousel-button-combined,
+        .experience-carousel-container:hover .carousel-button-combined { opacity: 1; }
+        .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } /* Light mode hover */
+        .carousel-button-combined.prev { left: 0.5rem; }
+        .carousel-button-combined.next { right: 0.5rem; }
+        .carousel-button-combined svg { width: 0.9rem; height: 0.9rem; }
+        .carousel-dots-combined {
+            text-align: center; padding-bottom: 1rem; padding-top: 0.5rem;
+        }
+        .carousel-dot-combined {
+            display: inline-block; width: 0.65rem; height: 0.65rem;
+            margin: 0 0.35rem; background-color: #cbd5e1; /* Light mode */
+            border-radius: 50%; cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .carousel-dot-combined.active-dot { background-color: #0070D2; transform: scale(1.2); } /* Light mode active */
+        .carousel-dot-combined:hover { background-color: #94a3b8; } /* Light mode hover */
+        /* End of Experience Carousel Styles */
+
+        .web-footer {
+            text-align: center; padding: 2rem 1rem; font-size: 0.875rem;
+            color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 3rem; /* Light mode */
+            transition: color 0.3s ease, border-top-color 0.3s ease;
+        }
+
+        /* Fixed top navigation bar - Pixel Optimizations */
+        .fixed-top-navigation-bar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: #f0f9ff; /* Light mode */
+            padding: 0 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            z-index: 1000; display: flex; align-items: center;
+            height: var(--navbar-height); box-sizing: border-box;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fixed-top-navigation-bar .quick-links-nav {
+            display: flex; flex-grow: 1; flex-shrink: 1; min-width: 0;
+            overflow-x: auto; overflow-y: hidden; white-space: nowrap;
+            gap: 0.05rem 0.2rem;
+            align-items: center;
+            -ms-overflow-style: none; scrollbar-width: none;
+            padding: 0.1rem 0;
+            padding-right: 10px;
+        }
+        .fixed-top-navigation-bar .quick-links-nav::-webkit-scrollbar { display: none; }
+        .fixed-top-navigation-bar .quick-links-nav a {
+            color: #005FB8; text-decoration: none; /* Light mode */
+            font-size: 0.65rem;
+            padding: 0.1rem 0.22rem;
+            border-radius: 0.2rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .fixed-top-navigation-bar .quick-links-nav a:hover {
+            background-color: #0070D2; color: white; /* Light mode hover */
+        }
+        .nav-actions-wrapper {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+        }
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background-color: #cbd5e1; /* Light mode */
+            margin: 0 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .action-button { /* For lang and dark mode */
+            background-color: transparent;
+            color: #005FB8; /* Light mode */
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.25rem;
+            height: 1.8rem;
+            width: 1.8rem;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+        .action-button:hover {
+            background-color: #0070D2; /* Light mode hover */
+            color: white; /* Light mode hover */
+        }
+        .action-button svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        #langButtonText { font-size: 0.6rem; }
+
+        @media (min-width: 768px) {
+            .fixed-top-navigation-bar { padding: 0 1rem; }
+            .quick-links-nav { gap: 0.2rem 0.6rem; overflow-x: visible; flex-wrap: wrap; padding-right: 0; }
+            .quick-links-nav a { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+            .nav-actions-wrapper { margin-left: 1rem; }
+            .nav-divider { margin: 0 0.75rem; }
+            .action-button { font-size: 0.7rem; height: 2rem; width: 2rem; }
+            #langButtonText { font-size: 0.7rem; }
+        }
+
+
+        /* -------------------- DARK MODE STYLES -------------------- */
+        body.dark-mode {
+            background-color: #111827; /* Dark: very dark blue-gray */
+            color: #d1d5db; /* Dark: light gray text */
+        }
+        body.dark-mode .web-resume-container {
+            background-color: #1f2937; /* Dark: dark blue-gray, slightly lighter than body */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        body.dark-mode h2.section-main-title {
+            color: #93c5fd; /* Dark: light blue */
+            border-bottom-color: #3b82f6; /* Dark: brighter blue border */
+        }
+        body.dark-mode h3.subsection-title,
+        body.dark-mode h4.education-item-title,
+        body.dark-mode h4.profile-block-title,
+        body.dark-mode .profile-block-title-variant-a {
+            color: #e0e7ff; /* Dark: very light blue/lavender for titles */
+        }
+        
+        /* Dark Hero Section - already dark, ensure text contrast if needed */
+        body.dark-mode .hero-c-v2-var2 .language-icon-svg text {
+            fill: #e0f2fe; /* Dark: very light blue for SVG text */
+        }
+        body.dark-mode .language-item .language-tooltip {
+            background-color: #374151; /* Dark: darker tooltip */
+            color: #e5e7eb;
+        }
+
+        /* Dark Expertise Section */
+        body.dark-mode .expertise-meta-card {
+            background-color: #1e3a8a; /* Dark: darker blue */
+            border-color: #2563eb; /* Dark: brighter blue border */
+            box-shadow: 0 4px 10px rgba(0, 50, 150, 0.25);
+        }
+        body.dark-mode .expertise-meta-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 50, 150, 0.3);
+        }
+        body.dark-mode .expertise-meta-card-title {
+            color: #93c5fd; /* Dark: light blue */
+            border-bottom-color: #60a5fa; /* Dark: lighter blue */
+        }
+        body.dark-mode .expertise-meta-card li.item-style-k {
+            background-color: #2c3e75; /* Dark: slightly lighter dark blue */
+            color: #bfdbfe; /* Dark: very light blue text */
+            border-color: #3b82f6; /* Dark: medium blue border */
+            box-shadow: 0px 2px 4px rgba(0, 40, 120, 0.15), inset 1px 1px 1px rgba(255,255,255,0.1);
+        }
+        body.dark-mode .expertise-meta-card li.item-style-k:hover {
+            background-color: #374a88; /* Dark: hover darker blue */
+            border-color: #60a5fa; /* Dark: hover lighter blue */
+            box-shadow: 0px 4px 8px rgba(0, 40, 120, 0.2), inset 1px 1px 2px rgba(255,255,255,0.15);
+        }
+        body.dark-mode .expertise-meta-card li.item-style-k strong {
+            color: #e0f2fe; /* Dark: very light blue/white text */
+        }
+
+        /* Dark Custom Bullets */
+        body.dark-mode ul.custom-bullets > li::before {
+            color: #60a5fa; /* Dark: lighter blue bullet */
+        }
+        body.dark-mode ul.custom-bullets-qual > li::before {
+            color: #60a5fa; /* Dark: lighter blue checkmark */
+        }
+
+        /* Dark Core Competencies Cards */
+        body.dark-mode .competency-item-base {
+            background-color: #2d3748; /* Dark: dark slate gray */
+            border-color: #374151; /* Dark: darker gray border */
+            color: #a0aec0; /* Dark: light gray text */
+        }
+        body.dark-mode .competency-item-base:hover {
+            box-shadow: 0 4px 12px rgba(59,130,246,0.2); /* Dark: blueish shadow */
+        }
+        body.dark-mode .competency-icon {
+            color: #60a5fa; /* Dark: lighter blue icon */
+        }
+        body.dark-mode .competency-title-text {
+            color: #e0e7ff; /* Dark: very light blue/lavender */
+        }
+        body.dark-mode .competency-description-text {
+            color: #9ca3af; /* Dark: medium-light gray */
+        }
+        
+        /* Dark Short Profile Section */
+        body.dark-mode .bg-slate-50 { /* Tailwind class override */
+            background-color: #334155; /* Corresponds to dark:bg-slate-700 */
+        }
+        body.dark-mode .text-slate-700 { /* Tailwind class override */
+             color: #cbd5e1; /* Corresponds to dark:text-slate-300 */
+        }
+        body.dark-mode .text-blue-600 { /* Tailwind class override for icon*/
+            color: #93c5fd; /* Corresponds to dark:text-blue-400 */
+        }
+
+
+        /* Dark Qualification Section */
+        body.dark-mode .qualification-card-base {
+            background-color: #2d3748; /* Dark: dark slate gray */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        body.dark-mode .qualification-card-base:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .education-institution {
+            color: #a0aec0; /* Dark: light gray */
+        }
+        body.dark-mode .education-details p, body.dark-mode .education-details {
+            color: #d1d5db; /* Dark: light gray */
+        }
+        body.dark-mode .education-highlight {
+            color: #93c5fd; /* Dark: light blue */
+        }
+        body.dark-mode ul.custom-bullets-qual > li {
+            color: #d1d5db; /* Dark: light gray */
+        }
+
+
+        /* Dark Flip Cards */
+        body.dark-mode .flip-card-front {
+            background-color: #374151; /* Dark: darker gray */
+            color: #e5e7eb; /* Dark: off-white text */
+        }
+        body.dark-mode .flip-card-back {
+            background-color: #2563eb; /* Dark: brighter blue */
+            color: white;
+        }
+        body.dark-mode .flip-card-back h4 {
+            color: white;
+        }
+
+
+        /* Dark Experience Carousel */
+        body.dark-mode .job-experience-card {
+            background-color: #2d3748; /* Dark: dark slate gray */
+            color: #d1d5db; /* Dark: default text in card */
+        }
+        body.dark-mode .job-experience-card .text-slate-500 { /* Tailwind override */
+            color: #94a3b8; /* dark:text-slate-400 */
+        }
+        body.dark-mode .job-experience-card .text-slate-700 { /* Tailwind override */
+            color: #cbd5e1; /* dark:text-slate-300 */
+        }
+
+        body.dark-mode .key-results-style-a {
+            background-color: #1e3a8a; /* Dark: dark blue */
+            border-color: #3b82f6; /* Dark: medium blue border */
+        }
+        body.dark-mode .key-results-style-a .key-results-label {
+            color: #93c5fd; /* Dark: light blue */
+        }
+        body.dark-mode .key-results-style-a .key-results-text-content {
+            color: #d1d5db; /* Dark: light gray */
+        }
+        body.dark-mode .carousel-button-combined {
+            background-color: rgba(59, 130, 246, 0.7); /* Dark: brighter blue, slightly more opaque */
+            color: #e0f2fe;
+        }
+        body.dark-mode .carousel-button-combined:hover {
+            background-color: #3b82f6; /* Dark: brighter blue solid */
+        }
+        body.dark-mode .carousel-dot-combined {
+            background-color: #4a5568; /* Dark: medium gray */
+        }
+        body.dark-mode .carousel-dot-combined.active-dot {
+            background-color: #60a5fa; /* Dark: lighter blue */
+        }
+        body.dark-mode .carousel-dot-combined:hover {
+            background-color: #718096; /* Dark: lighter gray hover */
+        }
+
+        /* Dark Footer */
+        body.dark-mode .web-footer {
+            color: #a0aec0; /* Dark: light gray */
+            border-top-color: #374151; /* Dark: darker gray border */
+        }
+
+        /* Dark Fixed Navigation Bar */
+        body.dark-mode .fixed-top-navigation-bar {
+            background-color: #1a2b46; /* Dark: very dark desaturated blue */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+        }
+        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a {
+            color: #93c5fd; /* Dark: light blue links */
+        }
+        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a:hover {
+            background-color: #2563eb; /* Dark: brighter blue hover */
+            color: #e0f2fe; /* Dark: very light blue text on hover */
+        }
+        body.dark-mode .nav-divider {
+            background-color: #4a5568; /* Dark: medium gray divider */
+        }
+        body.dark-mode .action-button {
+            color: #93c5fd; /* Dark: light blue action buttons */
+        }
+        body.dark-mode .action-button:hover {
+            background-color: #2563eb; /* Dark: brighter blue hover */
+            color: #e0f2fe; /* Dark: very light blue text on hover */
+        }
+
+    </style>
+</head>
+<body class="bg-slate-100"> <!-- Default light mode class -->
+
+    <div class="fixed-top-navigation-bar">
+        <nav class="quick-links-nav" aria-label="Schnellnavigation">
+            <a href="#page-header">
+                <span class="lang-element" lang="de">Profil</span>
+                <span class="lang-element" lang="en" style="display:none;">Profile</span>
+            </a>
+            <a href="#core-competencies-section">
+                <span class="lang-element" lang="de">Kompetenzen</span>
+                <span class="lang-element" lang="en" style="display:none;">Skills</span>
+            </a>
+            <a href="#professional-experience-section">
+                <span class="lang-element" lang="de">Erfahrung</span>
+                <span class="lang-element" lang="en" style="display:none;">Experience</span>
+            </a>
+            <a href="#expertise-section">
+                <span class="lang-element" lang="de">Expertise</span>
+                <span class="lang-element" lang="en" style="display:none;">Expertise</span>
+            </a>
+            <a href="#qualification-section">
+                <span class="lang-element" lang="de">Qualifizierung</span>
+                <span class="lang-element" lang="en" style="display:none;">Qualification</span>
+            </a>
+             <a href="#insights-section">
+                <span class="lang-element" lang="de">Insights</span>
+                <span class="lang-element" lang="en" style="display:none;">Insights</span>
+            </a>
+        </nav>
+        <div class="nav-divider"></div>
+        <div class="nav-actions-wrapper">
+            <button id="toggleLangButton" class="action-button lang-toggle" aria-label="Sprache wechseln">
+                <span id="langButtonText">EN</span>
+            </button>
+            <button id="darkModeToggleButton" class="action-button dark-mode-toggle" aria-label="Dark Mode umschalten">
+                <!-- Moon Icon (default for light mode) -->
+                <svg id="darkModeIconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+                <!-- Sun Icon (for dark mode, initially hidden) -->
+                <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" style="display:none;">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 001.414 1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="web-resume-container">
+        <section id="page-header" class="hero-section-common hero-c-v2-var2">
+            <div class="image-pane">
+                 <img src="https://placehold.co/220x220/4DABF7/FFFFFF?text=SK&font=inter" alt="Steffen Koller" onerror="this.onerror=null; this.src='https://placehold.co/220x220/E2E8F0/475569?text=Bild+fehlt';" class="profile-image-common">
+            </div>
+            <div class="text-pane">
+                <h1 class="hero-name mb-1">
+                    <span class="lang-element" lang="de">Steffen Koller</span>
+                    <span class="lang-element" lang="en" style="display:none;">Steffen Koller</span>
+                </h1>
+                <p class="hero-title mt-0 mb-1">
+                    <span class="lang-element" lang="de">Program Owner & Solution Manager</span>
+                    <span class="lang-element" lang="en" style="display:none;">Program Owner & Solution Manager</span>
+                </p>
+                <p class="hero-subtitle mb-3">
+                     <span class="lang-element" lang="de">CRM & Salesforce Experte | Digitale Transformation gestalten</span>
+                     <span class="lang-element" lang="en" style="display:none;">CRM & Salesforce Expert | Shaping Digital Transformation</span>
+                </p>
+                <p class="hero-statement-common">
+                    <span class="lang-element" lang="de">Als <strong>Gestalter und konsequenter Umsetzer</strong> mit Fokus auf Zuverlässigkeit transformiere ich komplexe CRM-Visionen in greifbare Erfolge. Ich biete die Expertise für eine <strong>verlässlich</strong> gestaltete digitale Transformation – eine Basis für nachhaltiges <strong>Vertrauen</strong>.</span>
+                    <span class="lang-element" lang="en" style="display:none;">As a <strong>shaper and consistent implementer</strong> with a focus on reliability, I transform complex CRM visions into tangible successes. I offer the expertise for a <strong>reliably</strong> designed digital transformation – a foundation for sustainable <strong>trust</strong>.</span>
+                </p>
+                <div class="contact-details-grid">
+                    <a href="mailto:steffen.s.koller@gmail.com" class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" /><path d="M19 8.839 10.772 13.16a3.25 3.25 0 0 1-3.544 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" /></svg>
+                        <span>steffen.s.koller@gmail.com</span>
+                    </a>
+                    <p class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" /></svg>
+                        <span>+49 176 105 197 03</span>
+                    </p>
+                    <div class="contact-item text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" class="language-icon-svg">
+                             <path d="M 110,15 C 165,15 209,40 209,75 C 209,110 165,135 110,135 C 105,135 100,134.5 95,133.5 C 77,133 27.5,140 15,140 L 60.5,115 C 62,118 65,124.5 60,126.5 C 50,130 20,110 20,75 C 20,40 55,15 110,15 Z" />
+                             <text x="110" y="80" font-family="'Noto Sans SC', Arial, sans-serif" font-size="70" font-weight="300" fill="#000b1a" text-anchor="middle" dominant-baseline="central">文</text>
+                        </svg>
+                        <div class="language-items-wrapper">
+                            <div class="language-item relative"><span class="language-trigger" tabindex="0">DE</span><div class="language-tooltip"><span class="lang-element" lang="de">Deutsch: Muttersprache</span><span class="lang-element" lang="en" style="display:none;">German: Native</span></div></div>
+                            <div class="language-item relative"><span class="language-trigger" tabindex="0">EN</span><div class="language-tooltip"><span class="lang-element" lang="de">Englisch: Verhandlungssicher</span><span class="lang-element" lang="en" style="display:none;">English: Fluent</span></div></div>
+                            <div class="language-item relative"><span class="language-trigger" tabindex="0">FR</span><div class="language-tooltip"><span class="lang-element" lang="de">Französisch: Erweiterte Grundkenntnisse</span><span class="lang-element" lang="en" style="display:none;">French: Advanced basic</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-padding">
+            <section class="mb-12" id="short-profile-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">KURZPROFIL</span>
+                    <span class="lang-element" lang="en" style="display:none;">SHORT PROFILE</span>
+                </h2>
+                <div class="space-y-6 text-slate-700 leading-relaxed"> <!-- text-slate-700 will be overridden by body.dark-mode color -->
+                    <div class="lang-element" lang="de">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Erfahrener Program Owner & Automotive CRM-Experte</h4>
+                                <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von Kundenbeziehungsprozessen bei Mercedes-Benz.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang-element" lang="en" style="display:none;">
+                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Experienced Program Owner & Automotive CRM Expert</h4>
+                                <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of customer relationship processes at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang-element" lang="de">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                            <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Strategische Führung & Implementierung europaweiter Salesforce CRM-Programme</h4>
+                                <p class="mt-1 text-sm">Meine Kernkompetenz liegt in der <strong>strategischen Führung, Lösungsgestaltung und Implementierung komplexer, europaweiter Salesforce-basierter CRM-Programme (Sales, Service, Marketing, Experience & Data Cloud)</strong>. Diese Lösungen unterstützen flexibel <strong>diverse Vertriebsmodelle (Agentur & Retail)</strong>, decken <strong>Sales, After Sales & Finance Use Cases</strong> ab und sind tief in POS-Systeme integriert (Fokus <strong>Sales Activity Management - SAM</strong>). Aktuell von >5.000 Anwendern in 16 europäischen Märkten genutzt, mit dem Ziel, diese Zahl durch weitere Go-Lives in diesem Jahr auf <strong>>10.000 Anwender</strong> zu steigern.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang-element" lang="en" style="display:none;">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                            <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Strategic Leadership & Implementation of Europe-wide Salesforce CRM Programs</h4>
+                                <p class="mt-1 text-sm">My core competence lies in the <strong>strategic leadership, solution design, and implementation of complex, Europe-wide Salesforce-based CRM programs (Sales, Service, Marketing, Experience & Data Cloud)</strong>. These solutions flexibly support <strong>various sales models (agency & retail)</strong>, cover <strong>Sales, After Sales & Finance Use Cases</strong>, and are deeply integrated into POS systems (focus on <strong>Sales Activity Management - SAM</strong>). Currently used by >5,000 users in 16 European markets, with the goal to increase this number to <strong>>10.000 users</strong> through further go-lives this year.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang-element" lang="de">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                             <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3.75H6.375c-1.036 0-1.875.84-1.875 1.875v11.25c0 1.035.84 1.875 1.875 1.875h11.25c1.035 0 1.875-.84 1.875-1.875V10.5m-12.375-6.75h9.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-9.375c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125zM9 12.75h6M9 16.5h6"></path></svg> <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Verbindung von Automotive-Expertise mit agiler Entwicklung & KI-Innovation</h4>
+                                <p class="mt-1 text-sm">Ich verbinde Automotive-Expertise mit agiler Produktentwicklung, dem Einsatz innovativer Technologien (inkl. <strong>KI-Lösungen wie Salesforce Agentforce</strong>) und der Leitung <strong>anspruchsvoller Transitionsprojekte ganzer Entwicklungsmannschaften mit signifikanter Effizienzsteigerung (ca. 40%)</strong>. Fokus: Schaffung einer <strong>standardisierten, harmonisierten europäischen CRM-Landschaft</strong> für zukünftige Marktanforderungen und exzellente Kundenerlebnisse.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang-element" lang="en" style="display:none;">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3.75H6.375c-1.036 0-1.875.84-1.875 1.875v11.25c0 1.035.84 1.875 1.875 1.875h11.25c1.035 0 1.875-.84 1.875-1.875V10.5m-12.375-6.75h9.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-9.375c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125zM9 12.75h6M9 16.5h6"></path></svg> <div class="flex-1">
+                                <h4 class="profile-block-title-variant-a">Combining Automotive Expertise with Agile Development & AI Innovation</h4>
+                                <p class="mt-1 text-sm">I combine automotive expertise with agile product development, the use of innovative technologies (including <strong>AI solutions like Salesforce Agentforce</strong>), and the leadership of <strong>demanding transition projects for entire development teams with significant efficiency increases (approx. 40%)</strong>. Focus: Creation of a <strong>standardized, harmonized European CRM landscape</strong> for future market requirements and excellent customer experiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12" id="core-competencies-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">KERNKOMPETENZEN</span>
+                    <span class="lang-element" lang="en" style="display:none;">CORE COMPETENCIES</span>
+                </h2>
+                <div class="card-grid-competencies">
+                    <div class="competency-item-base">
+                        <span class="competency-icon">⚙️</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">Salesforce Platform Leadership</span>
+                                <span class="lang-element" lang="en" style="display:none;">Salesforce Platform Leadership</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Umfassende Steuerung und Entwicklung von Salesforce-Lösungen über Sales, Service, Marketing, Experience & Data Cloud.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Comprehensive management and development of Salesforce solutions across Sales, Service, Marketing, Experience & Data Cloud.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="competency-item-base">
+                        <span class="competency-icon">🚗</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">Automotive CRM & Digitale Transformation</span>
+                                <span class="lang-element" lang="en" style="display:none;">Automotive CRM & Digital Transformation</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Gestaltung digitaler Kundenprozesse im Automotive-Sektor für Sales, After Sales & Finance Use Cases.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Designing digital customer processes in the automotive sector for Sales, After Sales & Finance use cases.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="competency-item-base">
+                        <span class="competency-icon">🏗️</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">Lösungsarchitektur & Solution Management</span>
+                                <span class="lang-element" lang="en" style="display:none;">Solution Architecture & Solution Management</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Entwurf und Management von CRM-Lösungen für Agenturmodelle, SAM und POS-Integrationen.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Design and management of CRM solutions for agency models, SAM, and POS integrations.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="competency-item-base">
+                        <span class="competency-icon">🔄</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">Agile Program & Transition Management</span>
+                                <span class="lang-element" lang="en" style="display:none;">Agile Program & Transition Management</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Effiziente Leitung agiler Programme und Transitionsprojekte mit Fokus auf Leistungssteigerung (ca. 40% in Transition).</span>
+                                <span class="lang-element" lang="en" style="display:none;">Efficient management of agile programs and transition projects with a focus on performance increase (approx. 40% in transition).</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="competency-item-base">
+                        <span class="competency-icon">💡</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">KI im CRM</span>
+                                <span class="lang-element" lang="en" style="display:none;">AI in CRM</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Pilotierung und strategische Implementierung von KI-Lösungen wie Salesforce Agentforce zur Effizienz- und Qualitätssteigerung.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Piloting and strategic implementation of AI solutions like Salesforce Agentforce for efficiency and quality improvement.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="competency-item-base">
+                        <span class="competency-icon">🤝</span>
+                        <div>
+                            <h3 class="competency-title-text">
+                                <span class="lang-element" lang="de">Stakeholder Management & Kommunikation</span>
+                                <span class="lang-element" lang="en" style="display:none;">Stakeholder Management & Communication</span>
+                            </h3>
+                            <p class="competency-description-text">
+                                <span class="lang-element" lang="de">Effektive Kommunikation und Management von Stakeholder-Erwartungen bis auf Top-Management-Ebene (E-Level).</span>
+                                <span class="lang-element" lang="en" style="display:none;">Effective communication and management of stakeholder expectations up to top management level (E-Level).</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12" id="professional-experience-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">BERUFSERFAHRUNG</span>
+                    <span class="lang-element" lang="en" style="display:none;">PROFESSIONAL EXPERIENCE</span>
+                </h2>
+                <div class="experience-carousel-container">
+                    <div class="carousel-dots-combined" id="experienceCarouselDots"></div>
+                    <div class="experience-carousel-track-container">
+                        <div class="experience-carousel-track">
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Program Owner & Solution Manager Mercedes-Benz CRM</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Program Owner & Solution Manager Mercedes-Benz CRM</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Mercedes-Benz AG, MX/DAC, Stuttgart | 03/2023 – aktuell</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Mercedes-Benz AG, MX/DAC, Stuttgart | 03/2023 – Present</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Strategische CRM-Programmführung (Salesforce):</strong> Gesamtverantwortung für die europaweite MB CRM-Landschaft (Strategie, Architektur, Entwicklung) für Retail/Agenturmodelle & Sales/After Sales/Finance Use Cases (Fokus SAM & POS Integration in MBC POS (= digitaler Verkäuferarbeitsplatz der Zukunft bei Mercedes-Benz)), Ziel >10.000 Anwender.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Strategic Salesforce CRM Program Leadership (Europe-wide):</strong> Overall responsibility for the MB CRM landscape (strategy, architecture, development) for agency/retail models & Sales/After Sales/Finance use cases (SAM & POS focus, integration into MBC POS (= digital salesperson workstation of the future at Mercedes-Benz)), targeting >10,000 users.</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Leitung organisatorische Transition & Effizienzsteigerung (~40%)</strong> der MB CRM Entwicklungsmannschaft (extern zu intern), inkl. Change Management, Prozess- & Datenqualitätsoptimierung.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Led MB CRM Development Team Transition & Efficiency Increase (~40%):</strong> Managed shift from external to internal, including change management, plus process and data quality optimization initiatives.</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Salesforce Solution Design & KI-Implementierung (Agentforce):</strong> Lösungsverantwortung für Salesforce CRM; Förderung & Pilotierung von KI (inkl. GenAI/PredAI Use Cases mit HS Aachen) zur Effizienz- & Qualitätssteigerung.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Salesforce CRM Solution Design & AI Implementation (Agentforce):</strong> Solution ownership for Salesforce CRM; drove AI promotion & piloting (incl. GenAI/PredAI use cases with HS Aachen) for enhanced efficiency and quality.</span>
+                                    </li>
+                                     <li>
+                                        <span class="lang-element" lang="de"><strong>Stakeholder Management (bis Top-Management):</strong> Proaktives Erwartungsmanagement und Übersetzung von Business-Anforderungen in technische Roadmaps.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Stakeholder Management (up to Top-Management):</strong> Proactively managed expectations and translated business requirements into technical roadmaps.</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Etablierung einer zukunftsfähigen, europaweit standardisierten CRM-Plattform für Agilität in Vertriebsmodellen, tiefe POS-Integration und datengetriebene Kundenzentrierung.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Establishment of a future-proof, Europe-wide standardized CRM platform for agility in sales models, deep POS integration, and data-driven customer centricity.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                     <span class="lang-element" lang="de">Product Owner / Development Lead OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)</span>
+                                     <span class="lang-element" lang="en" style="display:none;">Product Owner / Development Lead OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Europaweite Salesforce CRM-Implementierung & Skalierung:</strong> Leitung der Einführung von OneCRM für <strong>>3.000 Nutzer in 12 europäischen Märkten</strong> (Retail, After Sales), inkl. Ablösung von >8 Legacy-Systemen mit signifikanter Kosten- & Komplexitätsreduktion.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Europe-wide Salesforce CRM Implementation & Scaling:</strong> Led the introduction of OneCRM for <strong>>3,000 users in 12 European markets</strong> (Retail, After Sales), incl. replacement of >8 legacy systems with significant cost & complexity reduction.</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Agile Teamführung & Transformation:</strong> Aufbau & Leitung internationaler Salesforce-Entwicklungsteams (bis zu 100 Mitglieder, davon ~50 MA in direkter technischer Leitung) unter Anwendung agiler Methoden (Scrum, Kanban) und Salesforce Best Practices.</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Agile Team Leadership & Transformation:</strong> Built & led international Salesforce development teams (up to 100 members, with ~50 employees in direct technical leadership) using agile methods (Scrum, Kanban) and Salesforce Best Practices.</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de"><strong>Technische Lösungsverantwortung & Prozessharmonisierung:</strong> Verantwortung für die Entwicklung einer skalierbaren Multi-Cloud Salesforce-Architektur (inkl. Data Cloud) sowie Vereinheitlichung von Vertriebs-, Service- & After Sales Prozessen (SAM-Grundlagen).</span>
+                                        <span class="lang-element" lang="en" style="display:none;"><strong>Technical Solution Ownership & Process Harmonization:</strong> Responsible for developing a scalable multi-cloud Salesforce architecture (incl. Data Cloud) and standardizing sales, service & after-sales processes (SAM fundamentals).</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Schaffung einer 360°-Kundensicht; Steigerung Vertriebseffizienz & Lead-Conversion-Rate.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Creation of a 360° customer view; increased sales efficiency & lead conversion rate.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Projektleitung und Requirements Engineer – oCRM Frankreich</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Project Lead and Requirements Engineer – oCRM France</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Daimler AG, ITS/MC, Stuttgart | 01/2017 – 12/2017</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Daimler AG, ITS/MC, Stuttgart | 01/2017 – 12/2017</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Technische Projektleitung oCRM Frankreich; Kampagnen Management mit Oracle Siebel (Bestandteil von oCRM (= Kampagnentool für Mercedes-Benz)) initial als Standard implementiert (dazu auch die Massendatenmigration aus Legacy-Systemen).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Technical project management for oCRM France; Initially implemented campaign management with Oracle Siebel (part of oCRM (= campaign tool for Mercedes-Benz)) as standard (including mass data migration from legacy systems).</span>
+                                    </li>
+                                </ul>
+                                 <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Erfolgreiches Enablement oCRM Frankreich; Sicherstellung Datenverfügbarkeit und standardisiertes Kampagnenmanagement.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Successful enablement of oCRM France; ensured data availability and standardized campaign management.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Business Architekt – Fachdesign und Spezifikation Retail Systeme</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Business Architect – Functional Design and Specification Retail Systems</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Daimler AG, MS/MER, Stuttgart | 08/2014 – 12/2016</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Daimler AG, MS/MER, Stuttgart | 08/2014 – 12/2016</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Fachliche Leitung CRM Integration Group; Harmonisierung MBC POS (= digitaler Verkäuferarbeitsplatz der Zukunft bei Mercedes-Benz) mit Salesforce-Landschaft.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Functional lead for CRM Integration Group; harmonization of MBC POS (= digital salesperson workstation of the future at Mercedes-Benz) with Salesforce landscape.</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de">Fachdesign Sales Activity & Lead Management für MBC POS (internationale Rollouts).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Functional design of Sales Activity & Lead Management for MBC POS (international rollouts).</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Konsistente CRM-Prozesse im Retail; verbesserte Nutzerakzeptanz MBC POS.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Consistent CRM processes in retail; improved user acceptance of MBC POS.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Senior Consultant – Customer Contact Center Strategie</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Senior Consultant – Customer Contact Center Strategy</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Automotive Training & Consulting GmbH (für Daimler AG) | 06/2013 – 07/2014</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Automotive Training & Consulting GmbH (for Daimler AG) | 06/2013 – 07/2014</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Entwicklung einer Strategie zur Optimierung der zentralen Customer Contact Center (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Development of a strategy to optimize central Customer Contact Centers (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience).</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Strategisches Konzept für globale Kundenkontaktprozesse als Pilotierungsbasis.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Strategic concept for global customer contact processes as a basis for piloting.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Senior Consultant – BDC Rollout & Governance</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Senior Consultant – BDC Rollout & Governance</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Automotive Training & Consulting GmbH (für Daimler AG) | 01/2011 – 05/2013</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Automotive Training & Consulting GmbH (for Daimler AG) | 01/2011 – 05/2013</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Internationale Markt Readiness Analysen & Rolloutbegleitung Business Development Center (BDC).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">International market readiness analyses & rollout support for Business Development Centers (BDC).</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de">Verantwortung für das gesamte Reporting: Aufbau und Entwicklung von Dashboards, KPI-Reports und Management-Präsentationen zur Erfolgsmessung der BDC-Aktivitäten.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Responsibility for all reporting: Setup and development of dashboards, KPI reports, and management presentations to measure the success of BDC activities.</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Erfolgreiche Pilotierung/Implementierung von LMS & BDC-Strukturen international; Etablierung eines transparenten Performance-Monitorings.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Successful piloting/implementation of LMS & BDC structures internationally; Establishment of transparent performance monitoring.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Senior Consultant – Business Development Center (BDC) & Lead Management Systeme (LMS)</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Senior Consultant – Business Development Center (BDC) & Lead Management Systems (LMS)</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Daimler Protics GmbH (für Daimler AG) | 05/2008 – 12/2010</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Daimler Protics GmbH (for Daimler AG) | 05/2008 – 12/2010</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Internationale Projektleitung & Rollout-Management für BDC- & LMS-Systeme (Fokus Europa & Übersee).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">International project lead & rollout management for BDC & LMS systems (focus Europe & overseas).</span>
+                                    </li>
+                                    <li>
+                                        <span class="lang-element" lang="de">Strategische Beratung & Prozessoptimierung im Lead-to-Sales-Funnel.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Strategic consulting & process optimization in the lead-to-sales funnel.</span>
+                                    </li>
+                                     <li>
+                                        <span class="lang-element" lang="de">Konzeption und Pilotierung des BDC-Ansatzes für den After Sales Bereich zur Steigerung der Kundenbindung und Service-Umsätze.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Conception and piloting of the BDC approach for the After Sales area to increase customer loyalty and service revenue.</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Professionalisierung BDC-Kanäle (Sales & After Sales); Etablierung standardisierter Lead Management Prozesse.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Professionalization of BDC channels (Sales & After Sales); establishment of standardized lead management processes.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="job-experience-card">
+                                <h3 class="text-xl font-semibold job-title">
+                                    <span class="lang-element" lang="de">Consultant – Business Development Center (BDC)</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Consultant – Business Development Center (BDC)</span>
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-3">
+                                    <span class="lang-element" lang="de">Daimler Protics GmbH (für Daimler AG) | 04/2005 – 04/2008</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Daimler Protics GmbH (for Daimler AG) | 04/2005 – 04/2008</span>
+                                </p>
+                                <ul class="text-sm custom-bullets mb-3 text-slate-700">
+                                    <li>
+                                        <span class="lang-element" lang="de">Entwicklung & Rollout-Sicherung von BDC-Vertriebskanälen.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Development & rollout assurance of BDC sales channels.</span>
+                                    </li>
+                                     <li>
+                                        <span class="lang-element" lang="de">Konzeption Sales Lead Management Systeme (LMS).</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Conception of Sales Lead Management Systems (LMS).</span>
+                                    </li>
+                                </ul>
+                                <div class="key-results-style-a">
+                                    <strong class="key-results-label">
+                                        <span class="lang-element" lang="de">Key Results:</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Key Results:</span>
+                                    </strong>
+                                    <span class="key-results-text-content">
+                                        <span class="lang-element" lang="de">Professionalisierung BDC-Kanäle; Etablierung standardisierter Lead Management Prozesse.</span>
+                                        <span class="lang-element" lang="en" style="display:none;">Professionalization of BDC channels; establishment of standardized lead management processes.</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-button-combined prev" id="prevExperience">
+                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <button class="carousel-button-combined next" id="nextExperience">
+                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="mb-12" id="expertise-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">EXPERTISE</span>
+                    <span class="lang-element" lang="en" style="display:none;">EXPERTISE</span>
+                </h2>
+
+                <div class="expertise-meta-card">
+                    <h4 class="expertise-meta-card-title">
+                        <span class="lang-element" lang="de">Management & Methoden</span>
+                        <span class="lang-element" lang="en" style="display:none;">Management & Methods</span>
+                    </h4>
+                    <ul class="item-grid">
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Führung</strong> interdisziplinärer & internationaler Teams mit Fokus auf globale Projekte und Kulturen</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Leadership</strong> of interdisciplinary & international teams with a focus on global projects and cultures</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Agile Entwicklung</strong> (Scrum, Kanban) & DevOps-Prinzipien zur kontinuierlichen Verbesserung und Effizienzsteigerung</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Agile Development</strong> (Scrum, Kanban) & DevOps Principles for continuous improvement and efficiency gains</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de">Organisatorische <strong>Transition & Change Management</strong> (ganzheitliche Betriebsmodelle und nachhaltiger Kulturwandel)</span>
+                            <span class="lang-element" lang="en" style="display:none;">Organizational <strong>Transition & Change Management</strong> (holistic operating models and sustainable cultural change)</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Stakeholder Management</strong> & Anforderungsanalyse (bis Top-Management/E-Level)</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Stakeholder Management</strong> & Requirements Analysis (up to Top Management/E-Level)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="expertise-meta-card">
+                    <h4 class="expertise-meta-card-title">
+                        <span class="lang-element" lang="de">Salesforce & CRM-Lösungen</span>
+                        <span class="lang-element" lang="en" style="display:none;">Salesforce & CRM Solutions</span>
+                    </h4>
+                    <ul class="item-grid">
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Salesforce Plattform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce für KI-gestützte Prozesse</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Salesforce Platform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce for AI-driven processes</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Lightning Platform</strong> (LWC, Apex, Flows) für anspruchsvolle und performante Custom-Entwicklungen</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Lightning Platform</strong> (LWC, Apex, Flows) for sophisticated and performant custom developments</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>CRM-Strategie,</strong> -Implementierung & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agenturmodell)</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>CRM Strategy,</strong> Implementation & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agency Model)</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration für nahtlose Vertriebsprozesse</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration for seamless sales processes</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>After Sales & Finance</strong> Prozessintegration im CRM zur 360-Grad-Sicht</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>After Sales & Finance</strong> Process Integration in CRM for a 360-degree view</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="expertise-meta-card">
+                    <h4 class="expertise-meta-card-title">
+                        <span class="lang-element" lang="de">Technologie & Branchenwissen</span>
+                        <span class="lang-element" lang="en" style="display:none;">Technology & Industry Knowledge</span>
+                    </h4>
+                    <ul class="item-grid">
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Datenqualitäts- management</strong> & Governance für valide Daten</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Data Quality Management</strong> & Governance for valid data</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events für Echtzeit-Daten)</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Solution Architecture</strong> & Complex System Integrations (API-based, Kafka Event Streaming, Salesforce Platform Events for real-time data)</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Automotive</strong> Branchenexpertise & digitale Transformation im Fahrzeugvertrieb und -service</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Automotive</strong> Industry Expertise & Digital Transformation in vehicle sales and service</span>
+                        </li>
+                        <li class="item-style-k">
+                            <span class="lang-element" lang="de"><strong>Grundlagen Finanzwesen</strong> & Bankwirtschaftslehre (Basis für Finance Use Cases und Reporting)</span>
+                            <span class="lang-element" lang="en" style="display:none;"><strong>Fundamentals of Finance</strong> & Banking (Basis for Finance Use Cases and Reporting)</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-12" id="qualification-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">QUALIFIZIERUNG & WEITERBILDUNG</span>
+                    <span class="lang-element" lang="en" style="display:none;">QUALIFICATION & FURTHER EDUCATION</span>
+                </h2>
+                <div class="qualification-grid">
+                    <div class="qualification-card-base">
+                        <h4 class="education-item-title">
+                            <span class="lang-element" lang="de">Studium „Betriebswirtschaftslehre“</span>
+                            <span class="lang-element" lang="en" style="display:none;">Studies in "Business Administration"</span>
+                        </h4>
+                        <p class="education-institution">
+                            <span class="lang-element" lang="de">Hochschule Nürtingen</span>
+                            <span class="lang-element" lang="en" style="display:none;">Nuertingen University</span>
+                        </p>
+                        <div class="education-details">
+                            <p>
+                                <strong class="education-highlight">
+                                    <span class="lang-element" lang="de">Diplom-Betriebswirt</span>
+                                    <span class="lang-element" lang="en" style="display:none;">Diplom-Betriebswirt (German equivalent to MBA)</span>
+                                </strong>
+                                <span class="lang-element" lang="de"> in den Bereichen Wirtschaftsinformatik, Organisation und Projektmanagement, Finanzmanagement und Bankwirtschaftslehre.</span>
+                                <span class="lang-element" lang="en" style="display:none;"> in the fields of Business Informatics, Organization and Project Management, Financial Management and Banking.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="qualification-card-base">
+                        <h4 class="education-item-title">
+                            <span class="lang-element" lang="de">Kaufmännische Ausbildung Schwerpunkt Finanzen (IHK)</span>
+                            <span class="lang-element" lang="en" style="display:none;">Commercial Training with Focus on Finance (IHK)</span>
+                        </h4>
+                        <p class="education-institution">
+                            <span class="lang-element" lang="de">Landesbank Baden-Württemberg</span>
+                            <span class="lang-element" lang="en" style="display:none;">Landesbank Baden-Württemberg</span>
+                        </p>
+                        <div class="education-details">
+                            <p>
+                                <span class="lang-element" lang="de">Ausbildung zum <strong class="education-highlight">Finanzassistent</strong> als Basis für umfassendes kaufmännisches, prozessuales und finanzwirtschaftliches Wissen, insbesondere in den Bereichen Bank, Steuer und Versicherung.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Training as <strong class="education-highlight">Financial Assistant</strong> as a basis for comprehensive commercial, procedural, and financial knowledge, particularly in banking, tax, and insurance.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="qualification-card-base">
+                        <h4 class="education-item-title">
+                            <span class="lang-element" lang="de">Fortbildungen & Zertifikate (Auszug)</span>
+                            <span class="lang-element" lang="en" style="display:none;">Further Training & Certificates (Excerpt)</span>
+                        </h4>
+                        <ul class="custom-bullets-qual space-y-2 mt-3">
+                            <li><span class="lang-element" lang="de"><strong class="education-highlight">SCRUM</strong> Product Owner (Daimler Corporate Academy)</span><span class="lang-element" lang="en" style="display:none;"><strong class="education-highlight">SCRUM</strong> Product Owner (Daimler Corporate Academy)</span></li>
+                            <li><span class="lang-element" lang="de">European Business <strong class="education-highlight">Coach</strong> (EBC)</span><span class="lang-element" lang="en" style="display:none;">European Business <strong class="education-highlight">Coach</strong> (EBC)</span></li>
+                            <li><span class="lang-element" lang="de">Zertifizierter Senior <strong class="education-highlight">Process Manager</strong> (SPCM)</span><span class="lang-element" lang="en" style="display:none;">Certified Senior <strong class="education-highlight">Process Manager</strong> (SPCM)</span></li>
+                            <li><span class="lang-element" lang="de">Zertifizierter <strong class="education-highlight">Projektmanagement</strong>-Fachmann Level D (GBM-IPMA)</span><span class="lang-element" lang="en" style="display:none;">Certified <strong class="education-highlight">Project Management</strong> Professional Level D (GBM-IPMA)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12" id="insights-section">
+                <h2 class="section-main-title">
+                    <span class="lang-element" lang="de">INSIGHTS</span>
+                    <span class="lang-element" lang="en" style="display:none;">INSIGHTS</span>
+                </h2>
+
+                <div>
+                    <h3 class="subsection-title">
+                        <span class="lang-element" lang="de">Meine Werte</span>
+                        <span class="lang-element" lang="en" style="display:none;">My Values</span>
+                    </h3>
+                    <div class="card-grid">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/0070D2/FFFFFF?text=Trust" alt="Vertrauen Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Vertrauen / Zuverlässigkeit</span><span class="lang-element" lang="en" style="display:none;">Trust / Reliability</span></h4>
+                                    <p><span class="lang-element" lang="de">Grundlage jeder erfolgreichen Zusammenarbeit und Partnerschaft.</span><span class="lang-element" lang="en" style="display:none;">The foundation of every successful collaboration and partnership.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/00A1E0/FFFFFF?text=Commitment" alt="Engagement Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Begeisterung / Engagement</span><span class="lang-element" lang="en" style="display:none;">Enthusiasm / Commitment</span></h4>
+                                    <p><span class="lang-element" lang="de">Mit Leidenschaft und vollem Einsatz gemeinsame Ziele verfolgen.</span><span class="lang-element" lang="en" style="display:none;">Pursuing common goals with passion and full dedication.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                     <img src="https://placehold.co/200x200/001639/FFFFFF?text=Responsibility" alt="Verantwortung Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Eigenverantwortung / Motivation</span><span class="lang-element" lang="en" style="display:none;">Personal Responsibility / Motivation</span></h4>
+                                    <p><span class="lang-element" lang="de">Proaktives Handeln und die Motivation, stets das Beste zu geben.</span><span class="lang-element" lang="en" style="display:none;">Proactive action and the motivation to always give one's best.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/4B5563/FFFFFF?text=Openness" alt="Offenheit Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Offenheit / Ehrlichkeit / Direktheit</span><span class="lang-element" lang="en" style="display:none;">Openness / Honesty / Directness</span></h4>
+                                    <p><span class="lang-element" lang="de">Transparente Kommunikation und ein aufrichtiger Umgang miteinander.</span><span class="lang-element" lang="en" style="display:none;">Transparent communication and sincere interaction with one another.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title">
+                        <span class="lang-element" lang="de">Persönliche Einblicke</span>
+                        <span class="lang-element" lang="en" style="display:none;">Personal Insights</span>
+                    </h3>
+                    <div class="card-grid">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/0070D2/FFFFFF?text=Familie" alt="Familie Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Familie</span><span class="lang-element" lang="en" style="display:none;">Family</span></h4>
+                                    <p><span class="lang-element" lang="de">Der wichtigste Anker und tägliche Inspiration.</span><span class="lang-element" lang="en" style="display:none;">The most important anchor and daily inspiration.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/00A1E0/FFFFFF?text=Sport" alt="Sport Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Sport</span><span class="lang-element" lang="en" style="display:none;">Sports</span></h4>
+                                    <p><span class="lang-element" lang="de">Ausgleich für Körper und Geist – Laufen, Fitness & Skifahren.</span><span class="lang-element" lang="en" style="display:none;">Balance for body and mind – running, fitness & skiing.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                     <img src="https://placehold.co/200x200/001639/FFFFFF?text=Tech" alt="Digitale Passion Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Digitale Passion</span><span class="lang-element" lang="en" style="display:none;">Digital Passion</span></h4>
+                                    <p><span class="lang-element" lang="de">Faszination für KI, IoT, Google-Ökosystem und die digitale Transformation.</span><span class="lang-element" lang="en" style="display:none;">Fascination for AI, IoT, the Google ecosystem, and digital transformation.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="https://placehold.co/200x200/4B5563/FFFFFF?text=Natur" alt="Wandern Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt';">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4><span class="lang-element" lang="de">Wandern</span><span class="lang-element" lang="en" style="display:none;">Hiking</span></h4>
+                                    <p><span class="lang-element" lang="de">Die Natur entdecken und neue Perspektiven gewinnen.</span><span class="lang-element" lang="en" style="display:none;">Discovering nature and gaining new perspectives.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="web-footer">
+        <p>&copy; <span id="currentYear"></span> Steffen Koller.
+            <span class="lang-element" lang="de">Alle Rechte vorbehalten.</span>
+            <span class="lang-element" lang="en" style="display:none;">All rights reserved.</span>
+        </p>
+    </footer>
+
+
+    <script>
+        let currentLang = 'de';
+        let activeTooltip = null;
+
+        function setLanguage(newLang) {
+            const elementsToToggle = document.querySelectorAll('.lang-element');
+            const langButtonTextEl = document.getElementById('langButtonText');
+
+            elementsToToggle.forEach(el => {
+                if (el.getAttribute('lang') === newLang) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            document.documentElement.lang = newLang;
+            if (newLang === 'de') {
+                document.title = 'Steffen Koller - Program Owner & Solution Manager';
+                 if (langButtonTextEl) langButtonTextEl.textContent = 'EN';
+            } else {
+                document.title = 'Steffen Koller - Program Owner & Solution Manager';
+                if (langButtonTextEl) langButtonTextEl.textContent = 'DE';
+            }
+            currentLang = newLang;
+        }
+
+        function toggleLanguage() {
+            const newLang = currentLang === 'de' ? 'en' : 'de';
+            setLanguage(newLang);
+        }
+
+        function adjustLayoutForNavBar() {
+            const navBar = document.querySelector('.fixed-top-navigation-bar');
+            if (navBar) {
+                let navBarHeight = navBar.offsetHeight;
+                document.documentElement.style.setProperty('--navbar-height', `${navBarHeight}px`);
+            }
+        }
+
+        // Dark Mode Toggle Functionality
+        const darkModeToggleButton = document.getElementById('darkModeToggleButton');
+        const body = document.body;
+        const moonIcon = document.getElementById('darkModeIconMoon');
+        const sunIcon = document.getElementById('darkModeIconSun');
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        darkModeToggleButton.addEventListener('click', () => {
+            setDarkMode(!body.classList.contains('dark-mode'));
+        });
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            setDarkMode(true);
+        } else {
+            setDarkMode(false); // Default to light, or if 'disabled' or null
+        }
+
+
+        function initializePage() {
+            const langButtonTextEl = document.getElementById('langButtonText');
+            if (currentLang === 'de') {
+                if (langButtonTextEl) langButtonTextEl.textContent = 'EN';
+            } else {
+                if (langButtonTextEl) langButtonTextEl.textContent = 'DE';
+            }
+            setLanguage(currentLang);
+
+
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            document.querySelectorAll('.flip-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('is-flipped');
+                });
+            });
+
+            const langToggleButton = document.getElementById('toggleLangButton');
+            if (langToggleButton) {
+                langToggleButton.addEventListener('click', toggleLanguage);
+            }
+
+            const carouselContainer = document.querySelector('.experience-carousel-container');
+            if (carouselContainer) {
+                const track = carouselContainer.querySelector('.experience-carousel-track');
+                const slides = Array.from(track.children);
+                const nextButton = carouselContainer.querySelector('.carousel-button-combined.next');
+                const prevButton = carouselContainer.querySelector('.carousel-button-combined.prev');
+                const dotsContainer = carouselContainer.querySelector('#experienceCarouselDots');
+                let currentIndex = 0;
+
+                function updateCarousel() {
+                    if (slides.length > 0) {
+                        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                        updateDots();
+                    }
+                }
+
+                function updateDots() {
+                    if (dotsContainer) {
+                        const dots = Array.from(dotsContainer.children);
+                        dots.forEach((dot, index) => {
+                            if (index === currentIndex) {
+                                dot.classList.add('active-dot');
+                            } else {
+                                dot.classList.remove('active-dot');
+                            }
+                        });
+                    }
+                }
+
+                function createDots() {
+                    if (dotsContainer && slides.length > 0) {
+                        dotsContainer.innerHTML = '';
+                        slides.forEach((_, index) => {
+                            const dot = document.createElement('span');
+                            dot.classList.add('carousel-dot-combined');
+                            dot.dataset.slideTo = index;
+                            dot.setAttribute('aria-label', `Station ${index + 1}`);
+                            dot.addEventListener('click', () => {
+                                currentIndex = index;
+                                updateCarousel();
+                            });
+                            dotsContainer.appendChild(dot);
+                        });
+                    } else if (dotsContainer) {
+                        dotsContainer.style.display = 'none';
+                    }
+                }
+
+                if (slides.length > 0) {
+                    createDots();
+                    updateCarousel();
+                } else {
+                    if(prevButton) prevButton.style.display = 'none';
+                    if(nextButton) nextButton.style.display = 'none';
+                }
+
+
+                if (nextButton && prevButton && slides.length > 0) {
+                    nextButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        updateCarousel();
+                    });
+
+                    prevButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                    });
+
+                    let touchstartX = 0;
+                    let touchendX = 0;
+
+                    track.addEventListener('touchstart', function(event) {
+                        touchstartX = event.changedTouches[0].screenX;
+                    }, {passive: true});
+
+                    track.addEventListener('touchend', function(event) {
+                        touchendX = event.changedTouches[0].screenX;
+                        handleSwipe();
+                    }, {passive: true});
+
+                    function handleSwipe() {
+                        const swipeThreshold = 50;
+                        if (touchendX < touchstartX && (touchstartX - touchendX > swipeThreshold)) {
+                            currentIndex = (currentIndex + 1) % slides.length;
+                            updateCarousel();
+                        }
+                        if (touchendX > touchstartX && (touchendX - touchstartX > swipeThreshold)) {
+                            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                            updateCarousel();
+                        }
+                    }
+
+                    window.addEventListener('resize', () => {
+                        updateCarousel();
+                        adjustLayoutForNavBar();
+                    });
+                }
+            }
+
+
+            const languageItems = document.querySelectorAll('.language-item');
+            languageItems.forEach(item => {
+                const trigger = item.querySelector('.language-trigger');
+                const tooltip = item.querySelector('.language-tooltip');
+
+                if (trigger && tooltip) {
+                     item.addEventListener('mouseenter', () => {
+                         tooltip.style.opacity = '1';
+                         tooltip.style.visibility = 'visible';
+                    });
+                    item.addEventListener('mouseleave', () => {
+                         tooltip.style.opacity = '0';
+                         tooltip.style.visibility = 'hidden';
+                    });
+                    trigger.addEventListener('focus', () => {
+                         tooltip.style.opacity = '1';
+                         tooltip.style.visibility = 'visible';
+                    });
+                    trigger.addEventListener('blur', () => {
+                        if (!item.matches(':hover') && !tooltip.matches(':hover')) {
+                           tooltip.style.opacity = '0';
+                           tooltip.style.visibility = 'hidden';
+                        }
+                    });
+                }
+            });
+
+            adjustLayoutForNavBar();
+            window.addEventListener('resize', adjustLayoutForNavBar);
+            window.addEventListener('load', adjustLayoutForNavBar);
+        }
+
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+
+</body>
+</html>
