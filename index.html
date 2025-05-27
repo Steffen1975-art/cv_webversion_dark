@@ -608,8 +608,8 @@
                 <svg id="darkModeIconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                 </svg>
-                <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" style="display:none;">
-                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 001.414 1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd" />
+                <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" style="display:none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
             </button>
         </div>
@@ -1261,7 +1261,7 @@
                         "<strong>Technische Lösungsverantwortung & Prozessharmonisierung:</strong> Verantwortung für die Entwicklung einer skalierbaren Multi-Cloud Salesforce-Architektur (inkl. Data Cloud) sowie Vereinheitlichung von Vertriebs-, Service- & After Sales Prozessen (SAM-Grundlagen)."
                     ],
                     tasksEn: [
-                        "<strong>Europe-wide Salesforce CRM Implementation & Scaling:</strong> Led the introduction of OneCRM for <strong>>3,000 users in 12 European markets</strong> (Retail, After Sales), incl. replacement of >8 legacy systems with significant cost & complexity reduction.",
+                        "<strong>Europe-wide Salesforce CRM Implementation & Scaling:</strong> Led the introduction of OneCRM for <strong>>3.000 users in 12 European markets</strong> (Retail, After Sales), incl. replacement of >8 legacy systems with significant cost & complexity reduction.",
                         "<strong>Agile Team Leadership & Transformation:</strong> Built & led international Salesforce development teams (up to 100 members, with ~50 employees in direct technical leadership) using agile methods (Scrum, Kanban) and Salesforce Best Practices.",
                         "<strong>Technical Solution Ownership & Process Harmonization:</strong> Responsible for developing a scalable multi-cloud Salesforce architecture (incl. Data Cloud) and standardizing sales, service & after-sales processes (SAM fundamentals)."
                     ],
@@ -1409,7 +1409,6 @@
                 const ul = document.createElement('ul');
                 ul.classList.add('text-sm', 'custom-bullets', 'mb-3', 'text-slate-700');
                 
-                // Erstelle Container für deutsche und englische Aufgabenlisten
                 const tasksDeContainer = document.createElement('div');
                 tasksDeContainer.classList.add('lang-element');
                 tasksDeContainer.setAttribute('lang', 'de');
@@ -1451,8 +1450,7 @@
 
                 card.appendChild(title);
                 card.appendChild(company);
-                // Füge die sprachspezifischen Aufgabenlisten-Container hinzu
-                const tasksWrapper = document.createElement('div'); // Wrapper für beide Sprachversionen der Aufgaben
+                const tasksWrapper = document.createElement('div'); 
                 tasksWrapper.appendChild(tasksDeContainer);
                 tasksWrapper.appendChild(tasksEnContainer);
                 card.appendChild(tasksWrapper);
