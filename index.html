@@ -73,6 +73,16 @@
             margin-bottom: 0.35rem;
             transition: color 0.3s ease;
         }
+        
+        .main-icon-svg { /* Klasse für die Haupt-Icons im Kurzprofil */
+            width: 2.5rem; /* w-10 */
+            height: 2.5rem; /* h-10 */
+            color: #2563eb; /* text-blue-600 */
+            flex-shrink: 0;
+            margin-right: 1.25rem; /* mr-5 */
+            margin-top: 0.25rem; /* mt-1 */
+        }
+
 
         /* --- Styles for New Hero Section --- */
         .hero-section-common {
@@ -194,9 +204,9 @@
                  border-bottom-left-radius: 0;
             }
              .hero-c-v2-var2 .text-pane {
-                border-bottom-left-radius: 0.75rem;
-                border-bottom-right-radius: 0.75rem;
-                border-top-right-radius: 0;
+                 border-bottom-left-radius: 0.75rem;
+                 border-bottom-right-radius: 0.75rem;
+                 border-top-right-radius: 0;
             }
          }
         /* --- End of Styles for New Hero Section --- */
@@ -541,6 +551,9 @@
         body.dark-mode .profile-block-title-variant-a {
             color: #e0e7ff; /* Dark: very light blue/lavender for titles */
         }
+        body.dark-mode .main-icon-svg {
+             color: #93c5fd; /* Dark: light blue for main icons */
+        }
         
         /* Dark Hero Section - already dark, ensure text contrast if needed */
         body.dark-mode .hero-c-v2-var2 .language-icon-svg text {
@@ -724,9 +737,7 @@
 
     </style>
 </head>
-<body class="bg-slate-100"> <!-- Default light mode class -->
-
-    <div class="fixed-top-navigation-bar">
+<body class="bg-slate-100"> <div class="fixed-top-navigation-bar">
         <nav class="quick-links-nav" aria-label="Schnellnavigation">
             <a href="#page-header">
                 <span class="lang-element" lang="de">Profil</span>
@@ -759,11 +770,9 @@
                 <span id="langButtonText">EN</span>
             </button>
             <button id="darkModeToggleButton" class="action-button dark-mode-toggle" aria-label="Dark Mode umschalten">
-                <!-- Moon Icon (default for light mode) -->
                 <svg id="darkModeIconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                 </svg>
-                <!-- Sun Icon (for dark mode, initially hidden) -->
                 <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" style="display:none;">
                     <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 001.414 1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd" />
                 </svg>
@@ -823,10 +832,13 @@
                     <span class="lang-element" lang="de">KURZPROFIL</span>
                     <span class="lang-element" lang="en" style="display:none;">SHORT PROFILE</span>
                 </h2>
-                <div class="space-y-6 text-slate-700 leading-relaxed"> <!-- text-slate-700 will be overridden by body.dark-mode color -->
+                <div class="space-y-6 text-slate-700 leading-relaxed"> 
                     <div class="lang-element" lang="de">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-award">
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                            </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Erfahrener Program Owner & Automotive CRM-Experte</h4>
                                 <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von Kundenbeziehungsprozessen bei Mercedes-Benz.</p>
@@ -835,7 +847,10 @@
                     </div>
                     <div class="lang-element" lang="en" style="display:none;">
                          <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-award">
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                            </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Experienced Program Owner & Automotive CRM Expert</h4>
                                 <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of customer relationship processes at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
@@ -844,7 +859,13 @@
                     </div>
                     <div class="lang-element" lang="de">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-network">
+                                <rect x="16" y="16" width="6" height="6" rx="1"/>
+                                <rect x="2" y="16" width="6" height="6" rx="1"/>
+                                <rect x="9" y="2" width="6" height="6" rx="1"/>
+                                <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/>
+                                <path d="M12 12V8"/>
+                            </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Strategische Führung & Implementierung europaweiter Salesforce CRM-Programme</h4>
                                 <p class="mt-1 text-sm">Meine Kernkompetenz liegt in der <strong>strategischen Führung, Lösungsgestaltung und Implementierung komplexer, europaweiter Salesforce-basierter CRM-Programme (Sales, Service, Marketing, Experience & Data Cloud)</strong>. Diese Lösungen unterstützen flexibel <strong>diverse Vertriebsmodelle (Agentur & Retail)</strong>, decken <strong>Sales, After Sales & Finance Use Cases</strong> ab und sind tief in POS-Systeme integriert (Fokus <strong>Sales Activity Management - SAM</strong>). Aktuell von >5.000 Anwendern in 16 europäischen Märkten genutzt, mit dem Ziel, diese Zahl durch weitere Go-Lives in diesem Jahr auf <strong>>10.000 Anwender</strong> zu steigern.</p>
@@ -853,7 +874,13 @@
                     </div>
                     <div class="lang-element" lang="en" style="display:none;">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-network">
+                                <rect x="16" y="16" width="6" height="6" rx="1"/>
+                                <rect x="2" y="16" width="6" height="6" rx="1"/>
+                                <rect x="9" y="2" width="6" height="6" rx="1"/>
+                                <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/>
+                                <path d="M12 12V8"/>
+                            </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Strategic Leadership & Implementation of Europe-wide Salesforce CRM Programs</h4>
                                 <p class="mt-1 text-sm">My core competence lies in the <strong>strategic leadership, solution design, and implementation of complex, Europe-wide Salesforce-based CRM programs (Sales, Service, Marketing, Experience & Data Cloud)</strong>. These solutions flexibly support <strong>various sales models (agency & retail)</strong>, cover <strong>Sales, After Sales & Finance Use Cases</strong>, and are deeply integrated into POS systems (focus on <strong>Sales Activity Management - SAM</strong>). Currently used by >5,000 users in 16 European markets, with the goal to increase this number to <strong>>10.000 users</strong> through further go-lives this year.</p>
@@ -862,7 +889,8 @@
                     </div>
                     <div class="lang-element" lang="de">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                             <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3.75H6.375c-1.036 0-1.875.84-1.875 1.875v11.25c0 1.035.84 1.875 1.875 1.875h11.25c1.035 0 1.875-.84 1.875-1.875V10.5m-12.375-6.75h9.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-9.375c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125zM9 12.75h6M9 16.5h6"></path></svg> <div class="flex-1">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                            <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Verbindung von Automotive-Expertise mit agiler Entwicklung & KI-Innovation</h4>
                                 <p class="mt-1 text-sm">Ich verbinde Automotive-Expertise mit agiler Produktentwicklung, dem Einsatz innovativer Technologien (inkl. <strong>KI-Lösungen wie Salesforce Agentforce</strong>) und der Leitung <strong>anspruchsvoller Transitionsprojekte ganzer Entwicklungsmannschaften mit signifikanter Effizienzsteigerung (ca. 40%)</strong>. Fokus: Schaffung einer <strong>standardisierten, harmonisierten europäischen CRM-Landschaft</strong> für zukünftige Marktanforderungen und exzellente Kundenerlebnisse.</p>
                             </div>
@@ -870,7 +898,8 @@
                     </div>
                     <div class="lang-element" lang="en" style="display:none;">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg class="w-10 h-10 text-blue-600 mr-5 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3.75H6.375c-1.036 0-1.875.84-1.875 1.875v11.25c0 1.035.84 1.875 1.875 1.875h11.25c1.035 0 1.875-.84 1.875-1.875V10.5m-12.375-6.75h9.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-9.375c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125zM9 12.75h6M9 16.5h6"></path></svg> <div class="flex-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                           <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Combining Automotive Expertise with Agile Development & AI Innovation</h4>
                                 <p class="mt-1 text-sm">I combine automotive expertise with agile product development, the use of innovative technologies (including <strong>AI solutions like Salesforce Agentforce</strong>), and the leadership of <strong>demanding transition projects for entire development teams with significant efficiency increases (approx. 40%)</strong>. Focus: Creation of a <strong>standardized, harmonized European CRM landscape</strong> for future market requirements and excellent customer experiences.</p>
                             </div>
@@ -1551,20 +1580,23 @@
         function setDarkMode(isDark) {
             if (isDark) {
                 body.classList.add('dark-mode');
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'block';
                 localStorage.setItem('darkMode', 'enabled');
             } else {
                 body.classList.remove('dark-mode');
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                if (sunIcon) sunIcon.style.display = 'none';
                 localStorage.setItem('darkMode', 'disabled');
             }
         }
 
-        darkModeToggleButton.addEventListener('click', () => {
-            setDarkMode(!body.classList.contains('dark-mode'));
-        });
+        if (darkModeToggleButton) {
+            darkModeToggleButton.addEventListener('click', () => {
+                setDarkMode(!body.classList.contains('dark-mode'));
+            });
+        }
+        
 
         // Check for saved dark mode preference
         if (localStorage.getItem('darkMode') === 'enabled') {
@@ -1681,7 +1713,7 @@
                     }, {passive: true});
 
                     function handleSwipe() {
-                        const swipeThreshold = 50;
+                        const swipeThreshold = 50; 
                         if (touchendX < touchstartX && (touchstartX - touchendX > swipeThreshold)) {
                             currentIndex = (currentIndex + 1) % slides.length;
                             updateCarousel();
@@ -1720,13 +1752,13 @@
                     });
                     trigger.addEventListener('blur', () => {
                         if (!item.matches(':hover') && !tooltip.matches(':hover')) {
-                           tooltip.style.opacity = '0';
-                           tooltip.style.visibility = 'hidden';
+                             tooltip.style.opacity = '0';
+                             tooltip.style.visibility = 'hidden';
                         }
                     });
                 }
             });
-
+            
             adjustLayoutForNavBar();
             window.addEventListener('resize', adjustLayoutForNavBar);
             window.addEventListener('load', adjustLayoutForNavBar);
