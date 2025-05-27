@@ -6,6 +6,7 @@
     <title>Steffen Koller - Program Owner & Solution Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         :root {
             --navbar-height: 42px; /* Default, JS will update */
@@ -74,13 +75,13 @@
             transition: color 0.3s ease;
         }
         
-        .main-icon-svg { /* Klasse für die Haupt-Icons im Kurzprofil */
-            width: 2.5rem; /* w-10 */
-            height: 2.5rem; /* h-10 */
+        .main-icon-svg { /* Klasse für die SVGs im Kurzprofil */
+            width: 2.5rem; 
+            height: 2.5rem; 
             color: #2563eb; /* text-blue-600 */
             flex-shrink: 0;
-            margin-right: 1.25rem; /* mr-5 */
-            margin-top: 0.25rem; /* mt-1 */
+            margin-right: 1.25rem; 
+            margin-top: 0.25rem; 
         }
 
 
@@ -92,7 +93,7 @@
             border-top-left-radius: 0.75rem;
             border-top-right-radius: 0.75rem;
         }
-        .hero-c-v2-var2 { /* This section is already dark-ish, so minimal changes for dark mode */
+        .hero-c-v2-var2 { 
             background: linear-gradient(155deg, #000b1a 0%, #00224d 100%);
             color: #ced4da;
         }
@@ -160,7 +161,7 @@
             vertical-align: middle;
         }
         .hero-c-v2-var2 .language-icon-svg { fill: #4dabf7; }
-        .hero-c-v2-var2 .language-icon-svg text { fill: #000b1a; transition: fill 0.3s ease; } /* Light mode text in SVG */
+        .hero-c-v2-var2 .language-icon-svg text { fill: #000b1a; transition: fill 0.3s ease; } 
 
         .language-items-wrapper { display: flex; align-items: center; gap: 0.35rem; }
         .language-trigger {
@@ -174,7 +175,7 @@
         .language-item .language-tooltip {
             opacity: 0; visibility: hidden; position: absolute; bottom: 100%; left: 50%;
             transform: translateX(-50%) translateY(-0.25rem); margin-bottom: 0.25rem; padding: 0.5rem;
-            background-color: #1e293b; /* Tooltip background */
+            background-color: #1e293b; 
             color: white; font-size: 0.75rem; border-radius: 0.375rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 50; white-space: nowrap;
             transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.3s ease; pointer-events: none;
@@ -182,38 +183,22 @@
         .language-item.relative:hover .language-tooltip { opacity: 1; visibility: visible; pointer-events: auto; }
 
         @media (min-width: 768px) {
-            .hero-section-common {
-                flex-direction: row;
-            }
+            .hero-section-common { flex-direction: row; }
             .hero-c-v2-var2 .image-pane { width: 30%; padding: 3rem 1.5rem;}
             .hero-c-v2-var2 .text-pane  { width: 70%; padding: 3rem 2.5rem;}
             .hero-c-v2-var2 .profile-image-common { width: 13rem; height: 13rem;}
-            .hero-c-v2-var2 .image-pane {
-                border-top-right-radius: 0;
-                border-bottom-left-radius: 0.75rem;
-            }
-            .hero-c-v2-var2 .text-pane {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                border-top-right-radius: 0.75rem;
-                border-bottom-right-radius: 0.75rem;
-            }
+            .hero-c-v2-var2 .image-pane { border-top-right-radius: 0; border-bottom-left-radius: 0.75rem; }
+            .hero-c-v2-var2 .text-pane { border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0.75rem; border-bottom-right-radius: 0.75rem; }
         }
          @media (max-width: 767px) {
-            .hero-c-v2-var2 .image-pane {
-                 border-bottom-left-radius: 0;
-            }
-             .hero-c-v2-var2 .text-pane {
-                 border-bottom-left-radius: 0.75rem;
-                 border-bottom-right-radius: 0.75rem;
-                 border-top-right-radius: 0;
-            }
+            .hero-c-v2-var2 .image-pane { border-bottom-left-radius: 0; }
+            .hero-c-v2-var2 .text-pane { border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border-top-right-radius: 0; }
          }
         /* --- End of Styles for New Hero Section --- */
 
         /* Styles for Expertise Section */
         .expertise-meta-card {
-            background-color: #e0f2fe; border: 1px solid #bae6fd; /* Light mode */
+            background-color: #e0f2fe; border: 1px solid #bae6fd; 
             border-radius: 0.75rem;
             padding: 1.25rem; box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
             margin-bottom: 2rem; display: flex; flex-direction: column;
@@ -223,8 +208,8 @@
             transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0, 112, 210, 0.2);
         }
         .expertise-meta-card-title {
-            font-size: 1.15rem; font-weight: 600; color: #001639; /* Light mode */
-            margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; /* Light mode */
+            font-size: 1.15rem; font-weight: 600; color: #001639; 
+            margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; 
             transition: color 0.3s ease, border-bottom-color 0.3s ease;
         }
         .expertise-meta-card ul.item-grid {
@@ -233,9 +218,9 @@
             gap: 0.8rem; flex-grow: 1;
         }
         .expertise-meta-card li.item-style-k {
-            background-color: #f0f8ff; color: #1e3a8a; /* Light mode */
+            background-color: #f0f8ff; color: #1e3a8a; 
             border-radius: 0.5rem;
-            border: 1px solid #d1e0ff; /* Light mode */
+            border: 1px solid #d1e0ff; 
             box-shadow: 0px 2px 4px rgba(0, 86, 179, 0.08), inset 1px 1px 1px rgba(255,255,255,0.4);
             font-size: 0.85rem;
             min-height: 140px; display: flex; flex-direction: column;
@@ -245,32 +230,23 @@
             transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         .expertise-meta-card li.item-style-k:hover {
-            background-color: #ffffff; border-color: #c0d4f0; /* Light mode hover */
+            background-color: #ffffff; border-color: #c0d4f0; 
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0px 4px 8px rgba(0, 86, 179, 0.12), inset 1px 1px 2px rgba(255,255,255,0.6);
         }
         .expertise-meta-card li.item-style-k strong {
-            font-weight: 600; color: #002240; display: block; /* Light mode */
+            font-weight: 600; color: #002240; display: block; 
             margin-bottom: 0.25rem; font-size: 0.88rem;
             transition: color 0.3s ease;
         }
         @media (max-width: 480px) {
-            .expertise-meta-card ul.item-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem;
-            }
-            .expertise-meta-card li.item-style-k {
-                min-height: 75px; justify-content: flex-start;
-                padding: 0.8rem; font-size: 0.8rem;
-            }
-             .expertise-meta-card li.item-style-k strong { font-size: 0.82rem; }
+            .expertise-meta-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
+            .expertise-meta-card li.item-style-k { min-height: 75px; justify-content: flex-start; padding: 0.8rem; font-size: 0.8rem; }
+            .expertise-meta-card li.item-style-k strong { font-size: 0.82rem; }
         }
          @media (max-width: 360px) {
-             .expertise-meta-card ul.item-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem;
-            }
-            .expertise-meta-card li.item-style-k {
-                min-height: 65px; font-size: 0.78rem; padding: 0.75rem;
-            }
+            .expertise-meta-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
+            .expertise-meta-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
             .expertise-meta-card li.item-style-k strong { font-size: 0.8rem; }
          }
         /* End of Styles for Expertise Section */
@@ -279,7 +255,7 @@
             padding-left: 1.75em; position: relative; margin-bottom: 0.5rem;
         }
         ul.custom-bullets > li::before {
-            content: "•"; color: #0070D2; /* Light mode bullet color */
+            content: "•"; color: #0070D2; 
             font-weight: bold;
             position: absolute; left: 0.5em; top: 0.1em;
             transition: color 0.3s ease;
@@ -287,35 +263,43 @@
 
         /* Styles for Core Competencies Cards */
         .competency-item-base {
-            border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1.25rem; /* Light mode */
-            transition: all 0.3s ease-in-out; background-color: #f9fafb; /* Light mode */
-            display: flex; align-items: flex-start;
+            border: 1px solid #e5e7eb; 
+            border-radius: 0.5rem; 
+            padding: 1.25rem; 
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+            background-color: #f9fafb; 
+            display: flex; 
+            align-items: flex-start;
         }
         .competency-item-base:hover {
-            transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,112,210,0.15); /* Light mode hover */
+            transform: translateY(-3px); 
         }
-        .competency-icon {
-            font-size: 1.75rem; margin-right: 0.75rem; color: #0070D2; /* Light mode */
-            flex-shrink: 0; margin-top: 0.125rem;
-            transition: color 0.3s ease;
+        .competency-icon-material { 
+            font-family: 'Material Icons';
+            font-size: 1.9rem; 
+            margin-right: 0.9rem; 
+            flex-shrink: 0;
+            margin-top: 0.05rem; 
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         .competency-title-text {
-            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.35rem; /* Light mode */
+            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.35rem; 
             transition: color 0.3s ease;
         }
         .competency-description-text {
-            font-size: 0.875rem; color: #4b5563; line-height: 1.6; /* Light mode */
+            font-size: 0.875rem; color: #4b5563; line-height: 1.6; 
             transition: color 0.3s ease;
         }
         .card-grid-competencies {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
         /* End of Styles for Core Competencies Cards */
 
         /* Styles for Qualification Section */
         .qualification-card-base {
-            background-color: #ffffff; padding: 1.5rem; border-radius: 0.5rem; /* Light mode */
+            background-color: #ffffff; padding: 1.5rem; border-radius: 0.5rem; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease;
         }
@@ -325,28 +309,24 @@
         .qualification-grid {
             display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem;
         }
-        @media (min-width: 768px) {
-            .qualification-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (min-width: 1024px) {
-            .qualification-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        @media (min-width: 768px) { .qualification-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .qualification-grid { grid-template-columns: repeat(3, 1fr); } }
         .education-institution {
-            font-size: 0.875rem; color: #6b7280; margin-top: 0.1rem; margin-bottom: 0.5rem; /* Light mode */
+            font-size: 0.875rem; color: #6b7280; margin-top: 0.1rem; margin-bottom: 0.5rem; 
             transition: color 0.3s ease;
         }
         .education-details p, .education-details {
-            color: #374151; font-size: 0.875rem; line-height: 1.6; /* Light mode */
+            color: #374151; font-size: 0.875rem; line-height: 1.6; 
             transition: color 0.3s ease;
         }
-        .education-highlight { font-weight: 600; color: #0070D2; transition: color 0.3s ease;} /* Light mode */
+        .education-highlight { font-weight: 600; color: #0070D2; transition: color 0.3s ease;} 
         ul.custom-bullets-qual > li {
             padding-left: 1.75em; position: relative; margin-bottom: 0.5rem;
-            font-size: 0.875rem; color: #374151; /* Light mode */
+            font-size: 0.875rem; color: #374151; 
             transition: color 0.3s ease;
         }
         ul.custom-bullets-qual > li::before {
-            content: "✓"; color: #0070D2; font-weight: bold; /* Light mode */
+            content: "✓"; color: #0070D2; font-weight: bold; 
             position: absolute; left: 0.5em; top: 0.1em;
             transition: color 0.3s ease;
         }
@@ -366,60 +346,47 @@
             transition: transform 0.8s; transform-style: preserve-3d;
             border-radius: 0.75rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
-        .flip-card:hover .flip-card-inner {
-             transform: scale(1.02) rotateY(var(--tw-rotate-y, 0deg));
-        }
-        .flip-card.is-flipped .flip-card-inner {
-            transform: scale(1.02) rotateY(180deg);
-        }
-         .flip-card.is-flipped:hover .flip-card-inner {
-            transform: scale(1.05) rotateY(180deg);
-        }
-        .flip-card-front,
-        .flip-card-back {
+        .flip-card:hover .flip-card-inner { transform: scale(1.02) rotateY(var(--tw-rotate-y, 0deg)); }
+        .flip-card.is-flipped .flip-card-inner { transform: scale(1.02) rotateY(180deg); }
+        .flip-card.is-flipped:hover .flip-card-inner { transform: scale(1.05) rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
             position: absolute; width: 100%; height: 100%;
             -webkit-backface-visibility: hidden; backface-visibility: hidden;
             border-radius: 0.75rem; display: flex; flex-direction: column;
             justify-content: center; align-items: center; padding: 1.25rem;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .flip-card-front { background-color: #f8f9fa; color: #333; } /* Light mode */
-        .flip-card-front img {
-            max-width: 75%; max-height: 75%; object-fit: contain;
-        }
-        .flip-card-back {
-            background-color: #0070D2; color: white; transform: rotateY(180deg); /* Light mode */
-        }
-        .flip-card-back h4 {
-            font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; /* Light mode (already white) */
-        }
+        .flip-card-front { background-color: #f8f9fa; color: #333; } 
+        .flip-card-front img { max-width: 75%; max-height: 75%; object-fit: contain; }
+        .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); } 
+        .flip-card-back h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; } 
         .flip-card-back p { font-size: 0.9rem; }
         /* End of Flip Card Styles */
 
-        /* Experience Carousel Styles - Key Results Style A applied */
+        /* Experience Carousel Styles */
         .experience-carousel-container { position: relative; }
         .experience-carousel-track-container { overflow: hidden; width: 100%; }
         .experience-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
         .job-experience-card {
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
-            background-color: #f9fafb; border-radius: 0.75rem; /* Light mode */
+            background-color: #f9fafb; border-radius: 0.75rem; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem;
             position: relative; padding-left: 2.5rem; padding-right: 2.5rem;
             transition: background-color 0.3s ease;
         }
         .key-results-style-a {
-            border: 1px solid #93c5fd; background-color: #eff6ff; /* Light mode */
+            border: 1px solid #93c5fd; background-color: #eff6ff; 
             padding: 0.75rem; border-radius: 0.375rem; margin-top: 1rem;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        .key-results-style-a .key-results-label { color: #1d4ed8; font-weight: 600; transition: color 0.3s ease;} /* Light mode */
+        .key-results-style-a .key-results-label { color: #1d4ed8; font-weight: 600; transition: color 0.3s ease;} 
         .key-results-style-a .key-results-text-content {
-             font-size: 0.875rem; color: #374151; /* Light mode */
+             font-size: 0.875rem; color: #374151; 
              transition: color 0.3s ease;
         }
         .carousel-button-combined {
             position: absolute; top: 50%; transform: translateY(-50%);
-            background-color: rgba(0, 112, 210, 0.6); color: white; /* Light mode */
+            background-color: rgba(0, 112, 210, 0.6); color: white; 
             border: none; width: 1.8rem; height: 1.8rem;
             border-radius: 50%; cursor: pointer; z-index: 10;
             opacity: 0.2; display: flex; align-items: center; justify-content: center;
@@ -427,33 +394,31 @@
         }
         .experience-carousel-track-container:hover ~ .carousel-button-combined,
         .experience-carousel-container:hover .carousel-button-combined { opacity: 1; }
-        .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } /* Light mode hover */
+        .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } 
         .carousel-button-combined.prev { left: 0.5rem; }
         .carousel-button-combined.next { right: 0.5rem; }
         .carousel-button-combined svg { width: 0.9rem; height: 0.9rem; }
-        .carousel-dots-combined {
-            text-align: center; padding-bottom: 1rem; padding-top: 0.5rem;
-        }
+        .carousel-dots-combined { text-align: center; padding-bottom: 1rem; padding-top: 0.5rem; }
         .carousel-dot-combined {
             display: inline-block; width: 0.65rem; height: 0.65rem;
-            margin: 0 0.35rem; background-color: #cbd5e1; /* Light mode */
+            margin: 0 0.35rem; background-color: #cbd5e1; 
             border-radius: 50%; cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .carousel-dot-combined.active-dot { background-color: #0070D2; transform: scale(1.2); } /* Light mode active */
-        .carousel-dot-combined:hover { background-color: #94a3b8; } /* Light mode hover */
+        .carousel-dot-combined.active-dot { background-color: #0070D2; transform: scale(1.2); } 
+        .carousel-dot-combined:hover { background-color: #94a3b8; } 
         /* End of Experience Carousel Styles */
 
         .web-footer {
             text-align: center; padding: 2rem 1rem; font-size: 0.875rem;
-            color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 3rem; /* Light mode */
+            color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 3rem; 
             transition: color 0.3s ease, border-top-color 0.3s ease;
         }
 
-        /* Fixed top navigation bar - Pixel Optimizations */
+        /* Fixed top navigation bar */
         .fixed-top-navigation-bar {
             position: fixed; top: 0; left: 0; width: 100%;
-            background-color: #f0f9ff; /* Light mode */
+            background-color: #f0f9ff; 
             padding: 0 0.5rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.08);
             z-index: 1000; display: flex; align-items: center;
@@ -466,59 +431,30 @@
             gap: 0.05rem 0.2rem;
             align-items: center;
             -ms-overflow-style: none; scrollbar-width: none;
-            padding: 0.1rem 0;
-            padding-right: 10px;
+            padding: 0.1rem 0; padding-right: 10px;
         }
         .fixed-top-navigation-bar .quick-links-nav::-webkit-scrollbar { display: none; }
         .fixed-top-navigation-bar .quick-links-nav a {
-            color: #005FB8; text-decoration: none; /* Light mode */
+            color: #005FB8; text-decoration: none; 
             font-size: 0.65rem;
             padding: 0.1rem 0.22rem;
             border-radius: 0.2rem;
             transition: background-color 0.2s ease, color 0.2s ease;
             flex-shrink: 0;
         }
-        .fixed-top-navigation-bar .quick-links-nav a:hover {
-            background-color: #0070D2; color: white; /* Light mode hover */
-        }
-        .nav-actions-wrapper {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            margin-left: 0.5rem;
-        }
-        .nav-divider {
-            width: 1px;
-            height: 20px;
-            background-color: #cbd5e1; /* Light mode */
-            margin: 0 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .action-button { /* For lang and dark mode */
-            background-color: transparent;
-            color: #005FB8; /* Light mode */
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.6rem;
-            padding: 0.15rem 0.25rem;
-            height: 1.8rem;
-            width: 1.8rem;
-            border-radius: 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid transparent;
-            cursor: pointer;
+        .fixed-top-navigation-bar .quick-links-nav a:hover { background-color: #0070D2; color: white; } 
+        .nav-actions-wrapper { display: flex; align-items: center; flex-shrink: 0; margin-left: 0.5rem; }
+        .nav-divider { width: 1px; height: 20px; background-color: #cbd5e1; margin: 0 0.5rem; transition: background-color 0.3s ease; }
+        .action-button { 
+            background-color: transparent; color: #005FB8; 
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.6rem;
+            padding: 0.15rem 0.25rem; height: 1.8rem; width: 1.8rem;
+            border-radius: 0.25rem; display: flex; align-items: center; justify-content: center;
+            border: 1px solid transparent; cursor: pointer;
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         }
-        .action-button:hover {
-            background-color: #0070D2; /* Light mode hover */
-            color: white; /* Light mode hover */
-        }
-        .action-button svg {
-            width: 1rem;
-            height: 1rem;
-        }
+        .action-button:hover { background-color: #0070D2; color: white; } 
+        .action-button svg { width: 1rem; height: 1rem; }
         #langButtonText { font-size: 0.6rem; }
 
         @media (min-width: 768px) {
@@ -531,213 +467,84 @@
             #langButtonText { font-size: 0.7rem; }
         }
 
-
         /* -------------------- DARK MODE STYLES -------------------- */
-        body.dark-mode {
-            background-color: #111827; /* Dark: very dark blue-gray */
-            color: #d1d5db; /* Dark: light gray text */
-        }
-        body.dark-mode .web-resume-container {
-            background-color: #1f2937; /* Dark: dark blue-gray, slightly lighter than body */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        body.dark-mode h2.section-main-title {
-            color: #93c5fd; /* Dark: light blue */
-            border-bottom-color: #3b82f6; /* Dark: brighter blue border */
-        }
+        body.dark-mode { background-color: #111827; color: #d1d5db; }
+        body.dark-mode .web-resume-container { background-color: #1f2937; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        body.dark-mode h2.section-main-title { color: #93c5fd; border-bottom-color: #3b82f6; }
         body.dark-mode h3.subsection-title,
         body.dark-mode h4.education-item-title,
         body.dark-mode h4.profile-block-title,
-        body.dark-mode .profile-block-title-variant-a {
-            color: #e0e7ff; /* Dark: very light blue/lavender for titles */
-        }
-        body.dark-mode .main-icon-svg {
-             color: #93c5fd; /* Dark: light blue for main icons */
-        }
+        body.dark-mode .profile-block-title-variant-a { color: #e0e7ff; }
+        body.dark-mode .main-icon-svg { color: #93c5fd; } /* Kurzprofil Icons Dark Mode */
         
-        /* Dark Hero Section - already dark, ensure text contrast if needed */
-        body.dark-mode .hero-c-v2-var2 .language-icon-svg text {
-            fill: #e0f2fe; /* Dark: very light blue for SVG text */
-        }
-        body.dark-mode .language-item .language-tooltip {
-            background-color: #374151; /* Dark: darker tooltip */
-            color: #e5e7eb;
-        }
+        body.dark-mode .hero-c-v2-var2 .language-icon-svg text { fill: #e0f2fe; }
+        body.dark-mode .language-item .language-tooltip { background-color: #374151; color: #e5e7eb; }
 
-        /* Dark Expertise Section */
-        body.dark-mode .expertise-meta-card {
-            background-color: #1e3a8a; /* Dark: darker blue */
-            border-color: #2563eb; /* Dark: brighter blue border */
-            box-shadow: 0 4px 10px rgba(0, 50, 150, 0.25);
-        }
-        body.dark-mode .expertise-meta-card:hover {
-            box-shadow: 0 8px 15px rgba(0, 50, 150, 0.3);
-        }
-        body.dark-mode .expertise-meta-card-title {
-            color: #93c5fd; /* Dark: light blue */
-            border-bottom-color: #60a5fa; /* Dark: lighter blue */
-        }
-        body.dark-mode .expertise-meta-card li.item-style-k {
-            background-color: #2c3e75; /* Dark: slightly lighter dark blue */
-            color: #bfdbfe; /* Dark: very light blue text */
-            border-color: #3b82f6; /* Dark: medium blue border */
-            box-shadow: 0px 2px 4px rgba(0, 40, 120, 0.15), inset 1px 1px 1px rgba(255,255,255,0.1);
-        }
-        body.dark-mode .expertise-meta-card li.item-style-k:hover {
-            background-color: #374a88; /* Dark: hover darker blue */
-            border-color: #60a5fa; /* Dark: hover lighter blue */
-            box-shadow: 0px 4px 8px rgba(0, 40, 120, 0.2), inset 1px 1px 2px rgba(255,255,255,0.15);
-        }
-        body.dark-mode .expertise-meta-card li.item-style-k strong {
-            color: #e0f2fe; /* Dark: very light blue/white text */
-        }
+        body.dark-mode .expertise-meta-card { background-color: #1e3a8a; border-color: #2563eb; box-shadow: 0 4px 10px rgba(0, 50, 150, 0.25); }
+        body.dark-mode .expertise-meta-card:hover { box-shadow: 0 8px 15px rgba(0, 50, 150, 0.3); }
+        body.dark-mode .expertise-meta-card-title { color: #93c5fd; border-bottom-color: #60a5fa; }
+        body.dark-mode .expertise-meta-card li.item-style-k { background-color: #2c3e75; color: #bfdbfe; border-color: #3b82f6; box-shadow: 0px 2px 4px rgba(0, 40, 120, 0.15), inset 1px 1px 1px rgba(255,255,255,0.1); }
+        body.dark-mode .expertise-meta-card li.item-style-k:hover { background-color: #374a88; border-color: #60a5fa; box-shadow: 0px 4px 8px rgba(0, 40, 120, 0.2), inset 1px 1px 2px rgba(255,255,255,0.15); }
+        body.dark-mode .expertise-meta-card li.item-style-k strong { color: #e0f2fe; }
 
-        /* Dark Custom Bullets */
-        body.dark-mode ul.custom-bullets > li::before {
-            color: #60a5fa; /* Dark: lighter blue bullet */
-        }
-        body.dark-mode ul.custom-bullets-qual > li::before {
-            color: #60a5fa; /* Dark: lighter blue checkmark */
-        }
+        body.dark-mode ul.custom-bullets > li::before { color: #60a5fa; }
+        body.dark-mode ul.custom-bullets-qual > li::before { color: #60a5fa; }
 
-        /* Dark Core Competencies Cards */
-        body.dark-mode .competency-item-base {
-            background-color: #2d3748; /* Dark: dark slate gray */
-            border-color: #374151; /* Dark: darker gray border */
-            color: #a0aec0; /* Dark: light gray text */
+        /* Kernkompetenzen Dark Mode */
+        body.dark-mode .competency-item-base { background-color: #2d3748; border-color: #374151; }
+        body.dark-mode .competency-item-base:hover { box-shadow: 0 4px 16px rgba(186, 230, 253, 0.15); }
+        body.dark-mode .competency-icon-material { 
+            color: #bae6fd; /* Tailwind sky-200 */
+            text-shadow: 
+                0px 0.5px 0.5px rgba(101, 163, 13, 0.95), /* Schärferer Limetten-Akzent (Lime 600) */
+                1px 1px 1px rgba(0, 0, 0, 0.5),        /* Dunkler, definierter Basisschatten für Kontur */
+                0px 2px 3px rgba(101, 163, 13, 0.3);   /* Weicherer Limetten-Glow für den "Glanz" */
         }
-        body.dark-mode .competency-item-base:hover {
-            box-shadow: 0 4px 12px rgba(59,130,246,0.2); /* Dark: blueish shadow */
-        }
-        body.dark-mode .competency-icon {
-            color: #60a5fa; /* Dark: lighter blue icon */
-        }
-        body.dark-mode .competency-title-text {
-            color: #e0e7ff; /* Dark: very light blue/lavender */
-        }
-        body.dark-mode .competency-description-text {
-            color: #9ca3af; /* Dark: medium-light gray */
-        }
+        body.dark-mode .competency-title-text { color: #e0e7ff; }
+        body.dark-mode .competency-description-text { color: #9ca3af; }
         
-        /* Dark Short Profile Section */
-        body.dark-mode .bg-slate-50 { /* Tailwind class override */
-            background-color: #334155; /* Corresponds to dark:bg-slate-700 */
-        }
-        body.dark-mode .text-slate-700 { /* Tailwind class override */
-             color: #cbd5e1; /* Corresponds to dark:text-slate-300 */
-        }
-        body.dark-mode .text-blue-600 { /* Tailwind class override for icon*/
-            color: #93c5fd; /* Corresponds to dark:text-blue-400 */
-        }
+        body.dark-mode .bg-slate-50 { background-color: #334155; }
+        body.dark-mode .text-slate-700 { color: #cbd5e1; }
+        body.dark-mode .text-blue-600 { color: #93c5fd; }
 
 
-        /* Dark Qualification Section */
-        body.dark-mode .qualification-card-base {
-            background-color: #2d3748; /* Dark: dark slate gray */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        body.dark-mode .qualification-card-base:hover {
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .education-institution {
-            color: #a0aec0; /* Dark: light gray */
-        }
-        body.dark-mode .education-details p, body.dark-mode .education-details {
-            color: #d1d5db; /* Dark: light gray */
-        }
-        body.dark-mode .education-highlight {
-            color: #93c5fd; /* Dark: light blue */
-        }
-        body.dark-mode ul.custom-bullets-qual > li {
-            color: #d1d5db; /* Dark: light gray */
-        }
+        body.dark-mode .qualification-card-base { background-color: #2d3748; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        body.dark-mode .qualification-card-base:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+        body.dark-mode .education-institution { color: #a0aec0; }
+        body.dark-mode .education-details p, body.dark-mode .education-details { color: #d1d5db; }
+        body.dark-mode .education-highlight { color: #93c5fd; }
+        body.dark-mode ul.custom-bullets-qual > li { color: #d1d5db; }
 
+        body.dark-mode .flip-card-front { background-color: #374151; color: #e5e7eb; }
+        body.dark-mode .flip-card-back { background-color: #2563eb; color: white; }
+        body.dark-mode .flip-card-back h4 { color: white; }
 
-        /* Dark Flip Cards */
-        body.dark-mode .flip-card-front {
-            background-color: #374151; /* Dark: darker gray */
-            color: #e5e7eb; /* Dark: off-white text */
-        }
-        body.dark-mode .flip-card-back {
-            background-color: #2563eb; /* Dark: brighter blue */
-            color: white;
-        }
-        body.dark-mode .flip-card-back h4 {
-            color: white;
-        }
+        body.dark-mode .job-experience-card { background-color: #2d3748; color: #d1d5db; }
+        body.dark-mode .job-experience-card .text-slate-500 { color: #94a3b8; }
+        body.dark-mode .job-experience-card .text-slate-700 { color: #cbd5e1; }
+        body.dark-mode .key-results-style-a { background-color: #1e3a8a; border-color: #3b82f6; }
+        body.dark-mode .key-results-style-a .key-results-label { color: #93c5fd; }
+        body.dark-mode .key-results-style-a .key-results-text-content { color: #d1d5db; }
+        body.dark-mode .carousel-button-combined { background-color: rgba(59, 130, 246, 0.7); color: #e0f2fe; }
+        body.dark-mode .carousel-button-combined:hover { background-color: #3b82f6; }
+        body.dark-mode .carousel-dot-combined { background-color: #4a5568; }
+        body.dark-mode .carousel-dot-combined.active-dot { background-color: #60a5fa; }
+        body.dark-mode .carousel-dot-combined:hover { background-color: #718096; }
 
+        body.dark-mode .web-footer { color: #a0aec0; border-top-color: #374151; }
 
-        /* Dark Experience Carousel */
-        body.dark-mode .job-experience-card {
-            background-color: #2d3748; /* Dark: dark slate gray */
-            color: #d1d5db; /* Dark: default text in card */
-        }
-        body.dark-mode .job-experience-card .text-slate-500 { /* Tailwind override */
-            color: #94a3b8; /* dark:text-slate-400 */
-        }
-        body.dark-mode .job-experience-card .text-slate-700 { /* Tailwind override */
-            color: #cbd5e1; /* dark:text-slate-300 */
-        }
-
-        body.dark-mode .key-results-style-a {
-            background-color: #1e3a8a; /* Dark: dark blue */
-            border-color: #3b82f6; /* Dark: medium blue border */
-        }
-        body.dark-mode .key-results-style-a .key-results-label {
-            color: #93c5fd; /* Dark: light blue */
-        }
-        body.dark-mode .key-results-style-a .key-results-text-content {
-            color: #d1d5db; /* Dark: light gray */
-        }
-        body.dark-mode .carousel-button-combined {
-            background-color: rgba(59, 130, 246, 0.7); /* Dark: brighter blue, slightly more opaque */
-            color: #e0f2fe;
-        }
-        body.dark-mode .carousel-button-combined:hover {
-            background-color: #3b82f6; /* Dark: brighter blue solid */
-        }
-        body.dark-mode .carousel-dot-combined {
-            background-color: #4a5568; /* Dark: medium gray */
-        }
-        body.dark-mode .carousel-dot-combined.active-dot {
-            background-color: #60a5fa; /* Dark: lighter blue */
-        }
-        body.dark-mode .carousel-dot-combined:hover {
-            background-color: #718096; /* Dark: lighter gray hover */
-        }
-
-        /* Dark Footer */
-        body.dark-mode .web-footer {
-            color: #a0aec0; /* Dark: light gray */
-            border-top-color: #374151; /* Dark: darker gray border */
-        }
-
-        /* Dark Fixed Navigation Bar */
-        body.dark-mode .fixed-top-navigation-bar {
-            background-color: #1a2b46; /* Dark: very dark desaturated blue */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-        }
-        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a {
-            color: #93c5fd; /* Dark: light blue links */
-        }
-        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a:hover {
-            background-color: #2563eb; /* Dark: brighter blue hover */
-            color: #e0f2fe; /* Dark: very light blue text on hover */
-        }
-        body.dark-mode .nav-divider {
-            background-color: #4a5568; /* Dark: medium gray divider */
-        }
-        body.dark-mode .action-button {
-            color: #93c5fd; /* Dark: light blue action buttons */
-        }
-        body.dark-mode .action-button:hover {
-            background-color: #2563eb; /* Dark: brighter blue hover */
-            color: #e0f2fe; /* Dark: very light blue text on hover */
-        }
+        body.dark-mode .fixed-top-navigation-bar { background-color: #1a2b46; box-shadow: 0 2px 5px rgba(0,0,0,0.25); }
+        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a { color: #93c5fd; }
+        body.dark-mode .fixed-top-navigation-bar .quick-links-nav a:hover { background-color: #2563eb; color: #e0f2fe; }
+        body.dark-mode .nav-divider { background-color: #4a5568; }
+        body.dark-mode .action-button { color: #93c5fd; }
+        body.dark-mode .action-button:hover { background-color: #2563eb; color: #e0f2fe; }
 
     </style>
 </head>
-<body class="bg-slate-100"> <div class="fixed-top-navigation-bar">
+<body class="bg-slate-100"> 
+
+    <div class="fixed-top-navigation-bar">
         <nav class="quick-links-nav" aria-label="Schnellnavigation">
             <a href="#page-header">
                 <span class="lang-element" lang="de">Profil</span>
@@ -889,7 +696,7 @@
                     </div>
                     <div class="lang-element" lang="de">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Verbindung von Automotive-Expertise mit agiler Entwicklung & KI-Innovation</h4>
                                 <p class="mt-1 text-sm">Ich verbinde Automotive-Expertise mit agiler Produktentwicklung, dem Einsatz innovativer Technologien (inkl. <strong>KI-Lösungen wie Salesforce Agentforce</strong>) und der Leitung <strong>anspruchsvoller Transitionsprojekte ganzer Entwicklungsmannschaften mit signifikanter Effizienzsteigerung (ca. 40%)</strong>. Fokus: Schaffung einer <strong>standardisierten, harmonisierten europäischen CRM-Landschaft</strong> für zukünftige Marktanforderungen und exzellente Kundenerlebnisse.</p>
@@ -898,7 +705,7 @@
                     </div>
                     <div class="lang-element" lang="en" style="display:none;">
                         <div class="flex items-start p-4 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="main-icon-svg lucide lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
                            <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Combining Automotive Expertise with Agile Development & AI Innovation</h4>
                                 <p class="mt-1 text-sm">I combine automotive expertise with agile product development, the use of innovative technologies (including <strong>AI solutions like Salesforce Agentforce</strong>), and the leadership of <strong>demanding transition projects for entire development teams with significant efficiency increases (approx. 40%)</strong>. Focus: Creation of a <strong>standardized, harmonized European CRM landscape</strong> for future market requirements and excellent customer experiences.</p>
@@ -915,12 +722,12 @@
                 </h2>
                 <div class="card-grid-competencies">
                     <div class="competency-item-base">
-                        <span class="competency-icon">⚙️</span>
+                        <span class="competency-icon-material">hub</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">Salesforce Platform Leadership</span>
                                 <span class="lang-element" lang="en" style="display:none;">Salesforce Platform Leadership</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Umfassende Steuerung und Entwicklung von Salesforce-Lösungen über Sales, Service, Marketing, Experience & Data Cloud.</span>
                                 <span class="lang-element" lang="en" style="display:none;">Comprehensive management and development of Salesforce solutions across Sales, Service, Marketing, Experience & Data Cloud.</span>
@@ -928,12 +735,12 @@
                         </div>
                     </div>
                     <div class="competency-item-base">
-                        <span class="competency-icon">🚗</span>
+                        <span class="competency-icon-material">directions_car</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">Automotive CRM & Digitale Transformation</span>
                                 <span class="lang-element" lang="en" style="display:none;">Automotive CRM & Digital Transformation</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Gestaltung digitaler Kundenprozesse im Automotive-Sektor für Sales, After Sales & Finance Use Cases.</span>
                                 <span class="lang-element" lang="en" style="display:none;">Designing digital customer processes in the automotive sector for Sales, After Sales & Finance use cases.</span>
@@ -941,12 +748,12 @@
                         </div>
                     </div>
                     <div class="competency-item-base">
-                        <span class="competency-icon">🏗️</span>
+                        <span class="competency-icon-material">widgets</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">Lösungsarchitektur & Solution Management</span>
                                 <span class="lang-element" lang="en" style="display:none;">Solution Architecture & Solution Management</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Entwurf und Management von CRM-Lösungen für Agenturmodelle, SAM und POS-Integrationen.</span>
                                 <span class="lang-element" lang="en" style="display:none;">Design and management of CRM solutions for agency models, SAM, and POS integrations.</span>
@@ -954,12 +761,12 @@
                         </div>
                     </div>
                     <div class="competency-item-base">
-                        <span class="competency-icon">🔄</span>
+                        <span class="competency-icon-material">loop</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">Agile Program & Transition Management</span>
                                 <span class="lang-element" lang="en" style="display:none;">Agile Program & Transition Management</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Effiziente Leitung agiler Programme und Transitionsprojekte mit Fokus auf Leistungssteigerung (ca. 40% in Transition).</span>
                                 <span class="lang-element" lang="en" style="display:none;">Efficient management of agile programs and transition projects with a focus on performance increase (approx. 40% in transition).</span>
@@ -967,12 +774,12 @@
                         </div>
                     </div>
                     <div class="competency-item-base">
-                        <span class="competency-icon">💡</span>
+                        <span class="competency-icon-material">auto_awesome</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">KI im CRM</span>
                                 <span class="lang-element" lang="en" style="display:none;">AI in CRM</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Pilotierung und strategische Implementierung von KI-Lösungen wie Salesforce Agentforce zur Effizienz- und Qualitätssteigerung.</span>
                                 <span class="lang-element" lang="en" style="display:none;">Piloting and strategic implementation of AI solutions like Salesforce Agentforce for efficiency and quality improvement.</span>
@@ -980,12 +787,12 @@
                         </div>
                     </div>
                     <div class="competency-item-base">
-                        <span class="competency-icon">🤝</span>
+                        <span class="competency-icon-material">groups</span>
                         <div>
-                            <h3 class="competency-title-text">
+                            <h4 class="competency-title-text">
                                 <span class="lang-element" lang="de">Stakeholder Management & Kommunikation</span>
                                 <span class="lang-element" lang="en" style="display:none;">Stakeholder Management & Communication</span>
-                            </h3>
+                            </h4>
                             <p class="competency-description-text">
                                 <span class="lang-element" lang="de">Effektive Kommunikation und Management von Stakeholder-Erwartungen bis auf Top-Management-Ebene (E-Level).</span>
                                 <span class="lang-element" lang="en" style="display:none;">Effective communication and management of stakeholder expectations up to top management level (E-Level).</span>
@@ -1573,40 +1380,56 @@
 
         // Dark Mode Toggle Functionality
         const darkModeToggleButton = document.getElementById('darkModeToggleButton');
-        const body = document.body;
+        const bodyElement = document.body; // body in bodyElement umbenannt, um Konflikte zu vermeiden
         const moonIcon = document.getElementById('darkModeIconMoon');
         const sunIcon = document.getElementById('darkModeIconSun');
 
         function setDarkMode(isDark) {
             if (isDark) {
-                body.classList.add('dark-mode');
+                bodyElement.classList.add('dark-mode');
                 if (moonIcon) moonIcon.style.display = 'none';
                 if (sunIcon) sunIcon.style.display = 'block';
-                localStorage.setItem('darkMode', 'enabled');
+                localStorage.setItem('themePreference', 'dark');
             } else {
-                body.classList.remove('dark-mode');
+                bodyElement.classList.remove('dark-mode');
                 if (moonIcon) moonIcon.style.display = 'block';
                 if (sunIcon) sunIcon.style.display = 'none';
-                localStorage.setItem('darkMode', 'disabled');
+                localStorage.setItem('themePreference', 'light');
             }
         }
+        
+        function initializeTheme() {
+            let prefersDarkInitial = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let storedTheme = localStorage.getItem('themePreference');
+            let currentThemeIsDark;
+
+            if (storedTheme) {
+                currentThemeIsDark = storedTheme === 'dark';
+            } else {
+                currentThemeIsDark = prefersDarkInitial;
+            }
+            setDarkMode(currentThemeIsDark);
+        }
+
 
         if (darkModeToggleButton) {
             darkModeToggleButton.addEventListener('click', () => {
-                setDarkMode(!body.classList.contains('dark-mode'));
+                setDarkMode(!bodyElement.classList.contains('dark-mode'));
             });
         }
         
-
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            setDarkMode(true);
-        } else {
-            setDarkMode(false); // Default to light, or if 'disabled' or null
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (!localStorage.getItem('themePreference')) { 
+                    setDarkMode(event.matches);
+                }
+            });
         }
 
 
         function initializePage() {
+            initializeTheme(); // Theme initialisieren
+
             const langButtonTextEl = document.getElementById('langButtonText');
             if (currentLang === 'de') {
                 if (langButtonTextEl) langButtonTextEl.textContent = 'EN';
