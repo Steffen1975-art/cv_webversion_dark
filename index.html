@@ -251,15 +251,25 @@
          }
         /* End of Styles for Expertise Section */
 
+        ul.custom-bullets { /* KORRIGIERT: padding-left hier, nicht auf li direkt für besseres Wrapping */
+            list-style: none;
+            padding-left: 0; /* Basis-Reset */
+        }
         ul.custom-bullets > li {
-            padding-left: 1.75em; position: relative; margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.75em; /* Platz für den Bullet und den ersten Einzug */
+            margin-bottom: 0.5rem;
         }
         ul.custom-bullets > li::before {
-            content: "•"; color: #0070D2; 
+            content: "•"; 
+            color: #0070D2; 
             font-weight: bold;
-            position: absolute; left: 0.5em; top: 0.1em;
+            position: absolute; 
+            left: 0.5em; /* Positioniert den Bullet innerhalb des Paddings */
+            top: 0.1em; /* Vertikale Ausrichtung, ggf. anpassen */
             transition: color 0.3s ease;
         }
+
 
         /* Styles for Core Competencies Cards */
         .competency-item-base {
@@ -445,17 +455,26 @@
         .fixed-top-navigation-bar .quick-links-nav a:hover { background-color: #0070D2; color: white; } 
         .nav-actions-wrapper { display: flex; align-items: center; flex-shrink: 0; margin-left: 0.5rem; }
         .nav-divider { width: 1px; height: 20px; background-color: #cbd5e1; margin: 0 0.5rem; transition: background-color 0.3s ease; }
+        
         .action-button { 
             background-color: transparent; color: #005FB8; 
-            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.6rem;
-            padding: 0.15rem 0.25rem; height: 1.8rem; width: 1.8rem;
+            font-family: 'Inter', sans-serif; font-weight: 600;
+            height: 1.8rem; width: 1.8rem; 
+            padding: 0.3rem; 
             border-radius: 0.25rem; display: flex; align-items: center; justify-content: center;
             border: 1px solid transparent; cursor: pointer;
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         }
         .action-button:hover { background-color: #0070D2; color: white; } 
-        .action-button svg { width: 1rem; height: 1rem; }
-        #langButtonText { font-size: 0.6rem; }
+        
+        .action-button svg {
+            width: 1rem; 
+            height: 1rem;
+        }
+        #langButtonText {
+            font-size: 0.75rem; 
+            line-height: 1; 
+        }
 
         @media (min-width: 768px) {
             .fixed-top-navigation-bar { padding: 0 1rem; }
@@ -463,8 +482,17 @@
             .quick-links-nav a { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
             .nav-actions-wrapper { margin-left: 1rem; }
             .nav-divider { margin: 0 0.75rem; }
-            .action-button { font-size: 0.7rem; height: 2rem; width: 2rem; }
-            #langButtonText { font-size: 0.7rem; }
+            .action-button { 
+                height: 2rem; width: 2rem; 
+                padding: 0.4rem; 
+            }
+            .action-button svg {
+                width: 1.1rem; 
+                height: 1.1rem;
+            }
+            #langButtonText {
+                font-size: 0.85rem; 
+            }
         }
 
         /* -------------------- DARK MODE STYLES -------------------- */
@@ -482,8 +510,8 @@
 
         /* Expertise Section Dark Mode - ANGEPASST */
         body.dark-mode .expertise-meta-card {
-            background-color: #1a2b46; /* Navigationsblau als Hintergrund */
-            border: 1px solid #3b82f6; /* Blauer Rand */
+            background-color: #1a2b46; 
+            border: 1px solid #3b82f6; 
             box-shadow: 0 4px 10px rgba(0, 20, 50, 0.25); 
         }
         body.dark-mode .expertise-meta-card:hover {
@@ -516,11 +544,11 @@
         body.dark-mode .competency-item-base { background-color: #2d3748; border-color: #374151; }
         body.dark-mode .competency-item-base:hover { box-shadow: 0 4px 16px rgba(186, 230, 253, 0.15); }
         body.dark-mode .competency-icon-material { 
-            color: #bae6fd; /* Tailwind sky-200 */
+            color: #bae6fd; 
             text-shadow: 
-                0px 0.5px 0.5px rgba(101, 163, 13, 0.95), /* Schärferer Limetten-Akzent */
-                1px 1px 1px rgba(0, 0, 0, 0.5),        /* Dunkler, definierter Basisschatten */
-                0px 2px 3px rgba(101, 163, 13, 0.3);   /* Weicherer Limetten-Glow */
+                0px 0.5px 0.5px rgba(101, 163, 13, 0.95), 
+                1px 1px 1px rgba(0, 0, 0, 0.5),        
+                0px 2px 3px rgba(101, 163, 13, 0.3);   
         }
         body.dark-mode .competency-title-text { color: #e0e7ff; }
         body.dark-mode .competency-description-text { color: #9ca3af; }
@@ -605,10 +633,10 @@
                 <span id="langButtonText">EN</span>
             </button>
             <button id="darkModeToggleButton" class="action-button dark-mode-toggle" aria-label="Dark Mode umschalten">
-                <svg id="darkModeIconMoon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <svg id="darkModeIconMoon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                 </svg>
-                <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" style="display:none;">
+                <svg id="darkModeIconSun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display:none;">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
             </button>
@@ -1406,19 +1434,21 @@
                 company.appendChild(companyDe);
                 company.appendChild(companyEn);
 
-                const ul = document.createElement('ul');
-                ul.classList.add('text-sm', 'custom-bullets', 'mb-3', 'text-slate-700');
+                // Korrigierte Logik für Aufgabenlisten
+                const tasksWrapper = document.createElement('div');
                 
-                const tasksDeContainer = document.createElement('div');
-                tasksDeContainer.classList.add('lang-element');
-                tasksDeContainer.setAttribute('lang', 'de');
-                job.tasksDe.forEach(task => tasksDeContainer.appendChild(createTaskListItem(task)));
+                const ulDe = document.createElement('ul');
+                ulDe.classList.add('text-sm', 'custom-bullets', 'mb-3', 'text-slate-700', 'lang-element');
+                ulDe.setAttribute('lang', 'de');
+                job.tasksDe.forEach(task => ulDe.appendChild(createTaskListItem(task)));
+                tasksWrapper.appendChild(ulDe);
                 
-                const tasksEnContainer = document.createElement('div');
-                tasksEnContainer.classList.add('lang-element');
-                tasksEnContainer.setAttribute('lang', 'en');
-                tasksEnContainer.style.display = 'none';
-                job.tasksEn.forEach(task => tasksEnContainer.appendChild(createTaskListItem(task)));
+                const ulEn = document.createElement('ul');
+                ulEn.classList.add('text-sm', 'custom-bullets', 'mb-3', 'text-slate-700', 'lang-element');
+                ulEn.setAttribute('lang', 'en');
+                ulEn.style.display = 'none';
+                job.tasksEn.forEach(task => ulEn.appendChild(createTaskListItem(task)));
+                tasksWrapper.appendChild(ulEn);
 
 
                 const keyResultsDiv = document.createElement('div');
@@ -1450,9 +1480,6 @@
 
                 card.appendChild(title);
                 card.appendChild(company);
-                const tasksWrapper = document.createElement('div'); 
-                tasksWrapper.appendChild(tasksDeContainer);
-                tasksWrapper.appendChild(tasksEnContainer);
                 card.appendChild(tasksWrapper);
                 card.appendChild(keyResultsDiv);
                 return card;
@@ -1516,6 +1543,31 @@
                         currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
                         updateExperienceCarousel();
                     });
+                }
+                // KORRIGIERTE Swipe-Logik für Berufserfahrung
+                let touchstartX = 0;
+                let touchendX = 0;
+
+                carouselTrack.addEventListener('touchstart', function(event) {
+                    touchstartX = event.changedTouches[0].screenX;
+                }, {passive: true});
+
+                carouselTrack.addEventListener('touchend', function(event) {
+                    touchendX = event.changedTouches[0].screenX;
+                    handleExperienceSwipe();
+                }, {passive: true});
+
+                function handleExperienceSwipe() {
+                    if (jobExperiencesData.length === 0) return; 
+                    const swipeThreshold = 50; 
+                    if (touchendX < touchstartX && (touchstartX - touchendX > swipeThreshold)) { // Swiped left
+                        currentExperienceIndex = (currentExperienceIndex + 1) % jobExperiencesData.length;
+                        updateExperienceCarousel();
+                    }
+                    if (touchendX > touchstartX && (touchendX - touchstartX > swipeThreshold)) { // Swiped right
+                        currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                        updateExperienceCarousel();
+                    }
                 }
             }
 
