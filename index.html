@@ -200,15 +200,15 @@
         .expertise-carousel-container { position: relative; }
         .expertise-carousel-track-container { overflow: hidden; width: 100%; }
         .expertise-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .expertise-slide-card { /* New class for individual expertise slides */
+        .expertise-slide-card { 
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #e0f2fe; border: 1px solid #bae6fd; 
             border-radius: 0.75rem;
-            padding: 1.5rem 2.8rem; /* Increased horizontal padding */
+            padding: 1.5rem 3.2rem; /* Increased horizontal padding for button clearance */
             box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        .expertise-slide-card-title { /* Title within an expertise slide */
+        .expertise-slide-card-title { 
             font-size: 1.15rem; font-weight: 600; color: #001639; 
             margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; 
             transition: color 0.3s ease, border-bottom-color 0.3s ease;
@@ -218,13 +218,13 @@
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 0.8rem;
         }
-        .expertise-slide-card li.item-style-k { /* Reusing existing item style */
+        .expertise-slide-card li.item-style-k { 
             background-color: #f0f8ff; color: #1e3a8a; 
             border-radius: 0.5rem;
             border: 1px solid #d1e0ff; 
             box-shadow: 0px 2px 4px rgba(0, 86, 179, 0.08), inset 1px 1px 1px rgba(255,255,255,0.4);
             font-size: 0.85rem;
-            min-height: 100px; /* Adjusted min-height for items in carousel */
+            min-height: 100px; 
             display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
             padding: 0.8rem; overflow-wrap: break-word; word-wrap: break-word;
@@ -241,7 +241,7 @@
             margin-bottom: 0.25rem; font-size: 0.88rem;
             transition: color 0.3s ease;
         }
-        .carousel-hint { /* Generic class for carousel hints */
+        .carousel-hint { 
             color: #6b7280; 
             transition: color 0.3s ease;
         }
@@ -249,13 +249,13 @@
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
             .expertise-slide-card li.item-style-k { min-height: 75px; padding: 0.8rem; font-size: 0.8rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.82rem; }
-            .expertise-slide-card { padding: 1.5rem 2.2rem; } /* Adjust padding for smaller screens */
+            .expertise-slide-card { padding: 1.5rem 2.5rem; } /* Adjust padding for smaller screens */
         }
          @media (max-width: 360px) {
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
             .expertise-slide-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.8rem; }
-            .expertise-slide-card { padding: 1.5rem 2rem; } /* Further adjust padding */
+            .expertise-slide-card { padding: 1.5rem 2.2rem; } /* Further adjust padding */
            }
         /* End of Styles for Expertise Section (Carousel) */
 
@@ -405,7 +405,7 @@
         .job-experience-card { /* Specific to experience */
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #f9fafb; border-radius: 0.75rem; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 2.8rem; /* Increased horizontal padding */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.2rem; /* Increased horizontal padding */
             position: relative; 
             transition: background-color 0.3s ease;
         }
