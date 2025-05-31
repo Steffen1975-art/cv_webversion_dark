@@ -196,60 +196,69 @@
            }
         /* --- End of Styles for New Hero Section --- */
 
-        /* Styles for Expertise Section */
-        .expertise-meta-card {
+        /* Styles for Expertise Section (Carousel) */
+        .expertise-carousel-container { position: relative; }
+        .expertise-carousel-track-container { overflow: hidden; width: 100%; }
+        .expertise-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .expertise-slide-card { /* New class for individual expertise slides */
+            flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #e0f2fe; border: 1px solid #bae6fd; 
             border-radius: 0.75rem;
-            padding: 1.25rem; box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
-            margin-bottom: 2rem; display: flex; flex-direction: column;
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s, box-shadow 0.2s;
+            padding: 1.5rem 2.8rem; /* Increased horizontal padding */
+            box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        .expertise-meta-card:hover {
-            transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0, 112, 210, 0.2);
-        }
-        .expertise-meta-card-title {
+        .expertise-slide-card-title { /* Title within an expertise slide */
             font-size: 1.15rem; font-weight: 600; color: #001639; 
             margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; 
             transition: color 0.3s ease, border-bottom-color 0.3s ease;
         }
-        .expertise-meta-card ul.item-grid {
+        .expertise-slide-card ul.item-grid {
             list-style: none; padding-left: 0; margin-top: 0.5rem; display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 0.8rem; flex-grow: 1;
+            gap: 0.8rem;
         }
-        .expertise-meta-card li.item-style-k {
+        .expertise-slide-card li.item-style-k { /* Reusing existing item style */
             background-color: #f0f8ff; color: #1e3a8a; 
             border-radius: 0.5rem;
             border: 1px solid #d1e0ff; 
             box-shadow: 0px 2px 4px rgba(0, 86, 179, 0.08), inset 1px 1px 1px rgba(255,255,255,0.4);
             font-size: 0.85rem;
-            min-height: 140px; display: flex; flex-direction: column;
+            min-height: 100px; /* Adjusted min-height for items in carousel */
+            display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
             padding: 0.8rem; overflow-wrap: break-word; word-wrap: break-word;
             overflow: visible;
             transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-        .expertise-meta-card li.item-style-k:hover {
+        .expertise-slide-card li.item-style-k:hover {
             background-color: #ffffff; border-color: #c0d4f0; 
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0px 4px 8px rgba(0, 86, 179, 0.12), inset 1px 1px 2px rgba(255,255,255,0.6);
         }
-        .expertise-meta-card li.item-style-k strong {
+        .expertise-slide-card li.item-style-k strong {
             font-weight: 600; color: #002240; display: block; 
             margin-bottom: 0.25rem; font-size: 0.88rem;
             transition: color 0.3s ease;
         }
+        .carousel-hint { /* Generic class for carousel hints */
+            color: #6b7280; 
+            transition: color 0.3s ease;
+        }
         @media (max-width: 480px) {
-            .expertise-meta-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
-            .expertise-meta-card li.item-style-k { min-height: 75px; justify-content: flex-start; padding: 0.8rem; font-size: 0.8rem; }
-            .expertise-meta-card li.item-style-k strong { font-size: 0.82rem; }
+            .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
+            .expertise-slide-card li.item-style-k { min-height: 75px; padding: 0.8rem; font-size: 0.8rem; }
+            .expertise-slide-card li.item-style-k strong { font-size: 0.82rem; }
+            .expertise-slide-card { padding: 1.5rem 2.2rem; } /* Adjust padding for smaller screens */
         }
          @media (max-width: 360px) {
-            .expertise-meta-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
-            .expertise-meta-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
-            .expertise-meta-card li.item-style-k strong { font-size: 0.8rem; }
+            .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
+            .expertise-slide-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
+            .expertise-slide-card li.item-style-k strong { font-size: 0.8rem; }
+            .expertise-slide-card { padding: 1.5rem 2rem; } /* Further adjust padding */
            }
-        /* End of Styles for Expertise Section */
+        /* End of Styles for Expertise Section (Carousel) */
+
 
         ul.custom-bullets { 
             list-style: none;
@@ -382,19 +391,25 @@
         .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); } 
         .flip-card-back h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; } 
         .flip-card-back p { font-size: 0.9rem; }
+        .insights-hint { /* Class for the hint text in Insights/Energizer section */
+            color: #6b7280; /* Default light mode color (slate-500) */
+            transition: color 0.3s ease;
+        }
         /* End of Flip Card Styles */
 
-        /* Experience Carousel Styles */
-        .experience-carousel-container { position: relative; }
-        .experience-carousel-track-container { overflow: hidden; width: 100%; }
-        .experience-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .job-experience-card {
+        /* Generic Carousel Styles (used by Experience and Expertise) */
+        .carousel-container { position: relative; } 
+        .carousel-track-container { overflow: hidden; width: 100%; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        
+        .job-experience-card { /* Specific to experience */
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #f9fafb; border-radius: 0.75rem; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem;
-            position: relative; padding-left: 2.5rem; padding-right: 2.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 2.8rem; /* Increased horizontal padding */
+            position: relative; 
             transition: background-color 0.3s ease;
         }
+        
         .key-results-style-a {
             border: 1px solid #93c5fd; background-color: #eff6ff; 
             padding: 0.75rem; border-radius: 0.375rem; margin-top: 1rem;
@@ -402,8 +417,8 @@
         }
         .key-results-style-a .key-results-label { 
             color: #1d4ed8; 
-            font-weight: 600; /* Behält die Fettung bei */
-            font-size: 0.875rem; /* Gleiche Größe wie Text-Content */
+            font-weight: 600; 
+            font-size: 0.875rem; 
             transition: color 0.3s ease;
         } 
         .key-results-style-a .key-results-text-content {
@@ -419,8 +434,8 @@
             opacity: 0.2; display: flex; align-items: center; justify-content: center;
             transition: background-color 0.2s ease, opacity 0.3s ease, color 0.3s ease;
         }
-        .experience-carousel-track-container:hover ~ .carousel-button-combined,
-        .experience-carousel-container:hover .carousel-button-combined { opacity: 1; }
+        .carousel-track-container:hover ~ .carousel-button-combined, 
+        .carousel-container:hover .carousel-button-combined { opacity: 1; }
         .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } 
         .carousel-button-combined.prev { left: 0.5rem; }
         .carousel-button-combined.next { right: 0.5rem; }
@@ -434,7 +449,7 @@
         }
         .carousel-dot-combined.active-dot { background-color: #0070D2; transform: scale(1.2); } 
         .carousel-dot-combined:hover { background-color: #94a3b8; } 
-        /* End of Experience Carousel Styles */
+        /* End of Carousel Styles */
 
         .web-footer {
             text-align: center; padding: 2rem 1rem; font-size: 0.875rem;
@@ -539,8 +554,8 @@
         /* Kurzprofil & Berufserfahrung & Expertise: Fett markierte Keywords hervorheben */
         body.dark-mode #short-profile-section .lang-element p strong,
         body.dark-mode .job-experience-card ul.custom-bullets > li > strong,
-        body.dark-mode .expertise-meta-card li.item-style-k strong {
-            color: #f0f9ff; /* Sehr heller Blauton (Tailwind sky-50) */
+        body.dark-mode .expertise-slide-card li.item-style-k strong { /* Updated for expertise carousel */
+            color: #f0f9ff; 
             font-weight: 700; 
         }
 
@@ -549,48 +564,40 @@
         body.dark-mode .job-experience-card ul.custom-bullets > li,
         body.dark-mode .job-experience-card .key-results-style-a .key-results-text-content,
         body.dark-mode .education-details p, 
-        body.dark-mode .education-details, /* Gilt für p und div Container */
+        body.dark-mode .education-details, 
         body.dark-mode ul.custom-bullets-qual > li,
-        body.dark-mode .expertise-meta-card li.item-style-k { /* Standardtext in Expertise Cards */
-            color: #9ca3af; /* Mittleres Grau (Tailwind slate-400/coolGray-400) - wie bei Kompetenzbeschreibungen */
+        body.dark-mode .expertise-slide-card li.item-style-k { /* Updated for expertise carousel */
+            color: #9ca3af; 
         }
-        /* Sicherstellen, dass education-highlight hell bleibt, falls es von der obigen Regel beeinflusst wird */
          body.dark-mode .education-highlight,
          body.dark-mode ul.custom-bullets-qual > li > strong.education-highlight { 
-             color: #93c5fd !important; /* Wichtig, um Spezifität zu überschreiben, falls nötig */
+             color: #93c5fd !important; 
         }
 
 
         body.dark-mode .hero-c-v2-var2 .language-icon-svg text { fill: #e0f2fe; }
         body.dark-mode .language-item .language-tooltip { background-color: #374151; color: #e5e7eb; }
 
-        /* Expertise Section & Key Results Dark Mode - ANGEPASST */
-        body.dark-mode .expertise-meta-card {
+        /* Expertise Section (Carousel) & Key Results Dark Mode */
+        body.dark-mode .expertise-slide-card { /* Dark mode for expertise slides */
             background-color: #1a2b46; 
-            border: 1px solid #4b5563; /* Dunklerer Grau-Blau Ton (slate-600) */
+            border: 1px solid #4b5563; 
             box-shadow: 0 4px 10px rgba(0, 20, 50, 0.25); 
         }
-        body.dark-mode .expertise-meta-card:hover {
-            box-shadow: 0 6px 12px rgba(100, 116, 139, 0.2); 
-            border-color: #6b7280; /* Hellerer Grau-Blau Ton im Hover (slate-500) */
-        }
-        body.dark-mode .expertise-meta-card-title {
+        body.dark-mode .expertise-slide-card-title { /* Dark mode for titles in expertise slides */
             color: #93c5fd; 
-            border-bottom-color: #6b7280; /* Passend zur Hover-Rahmenfarbe */
+            border-bottom-color: #6b7280; 
         }
-        /* Standardtext in Expertise-Karten wird oben globaler gesetzt */
-        body.dark-mode .expertise-meta-card li.item-style-k {
+        body.dark-mode .expertise-slide-card li.item-style-k { /* Dark mode for items in expertise slides */
             background-color: #2d3748; 
-            /* color: #bfdbfe;  Wird durch die globale #9ca3af Regel oben abgedeckt */
             border-color: #4b5563; 
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), inset 1px 1px 1px rgba(255,255,255,0.05); 
         }
-        body.dark-mode .expertise-meta-card li.item-style-k:hover {
+        body.dark-mode .expertise-slide-card li.item-style-k:hover {
             background-color: #374151; 
             border-color: #6b7280; 
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25), inset 1px 1px 2px rgba(255,255,255,0.08);
         }
-        /* Keywords in Expertise werden oben global mit #f0f9ff gesetzt */
         
         body.dark-mode .key-results-style-a { 
             background-color: #1a2b46; 
@@ -600,7 +607,12 @@
             color: #93c5fd; 
             font-size: 0.875rem; 
         }
-        /* Standardtext für Key Results wird oben bei .job-experience-card mit #9ca3af gesetzt */
+        body.dark-mode .carousel-hint { /* Dark mode for generic carousel hint */
+            color: #9ca3af; 
+        }
+        body.dark-mode .insights-hint { /* Dark mode for insights hint */
+            color: #9ca3af;
+        }
 
 
         body.dark-mode ul.custom-bullets > li::before { color: #60a5fa; }
@@ -703,7 +715,7 @@
     <div class="web-resume-container">
         <section id="page-header" class="hero-section-common hero-c-v2-var2">
             <div class="image-pane">
-                 <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/2022-04-22-Steffen-Koller-0749-square.jpg" alt="Steffen Koller" onerror="this.onerror=null; this.src='https://placehold.co/220x220/E2E8F0/475569?text=Bild+fehlt';" class="profile-image-common">
+                 <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/2022-04-22-Steffen-Koller-0749-square.jpg" alt="Steffen Koller" onerror="this.onerror=null; this.src='https://placehold.co/220x220/E2E8F0/475569?text=Profilbild+fehlt';" class="profile-image-common">
             </div>
             <div class="text-pane">
                 <h1 class="hero-name mb-1">
@@ -920,10 +932,14 @@
                     <span class="lang-element" lang="de">BERUFSERFAHRUNG</span>
                     <span class="lang-element" lang="en" style="display:none;">PROFESSIONAL EXPERIENCE</span>
                 </h2>
-                <div class="experience-carousel-container">
+                <div class="experience-carousel-container carousel-container"> 
+                    <p class="text-xs text-slate-500 text-center mt-2 mb-1 italic carousel-hint"> 
+                        <span class="lang-element" lang="de">Wischen oder klicken für weitere Stationen</span>
+                        <span class="lang-element" lang="en" style="display:none;">Swipe or click for more entries</span>
+                    </p>
                     <div class="carousel-dots-combined" id="experienceCarouselDots"></div>
-                    <div class="experience-carousel-track-container">
-                        <div class="experience-carousel-track" id="experienceCarouselTrack">
+                    <div class="experience-carousel-track-container carousel-track-container"> 
+                        <div class="experience-carousel-track carousel-track" id="experienceCarouselTrack"> 
                             </div>
                     </div>
                     <button class="carousel-button-combined prev" id="prevExperience">
@@ -940,83 +956,22 @@
                     <span class="lang-element" lang="de">EXPERTISE</span>
                     <span class="lang-element" lang="en" style="display:none;">EXPERTISE</span>
                 </h2>
-                <div class="expertise-meta-card">
-                    <h4 class="expertise-meta-card-title">
-                        <span class="lang-element" lang="de">Management & Methoden</span>
-                        <span class="lang-element" lang="en" style="display:none;">Management & Methods</span>
-                    </h4>
-                    <ul class="item-grid">
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Führung</strong> interdisziplinärer & internationaler Teams mit Fokus auf globale Projekte und Kulturen</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Leadership</strong> of interdisciplinary & international teams with a focus on global projects and cultures</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Agile Entwicklung</strong> (Scrum, Kanban) & DevOps-Prinzipien zur kontinuierlichen Verbesserung und Effizienzsteigerung</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Agile Development</strong> (Scrum, Kanban) & DevOps Principles for continuous improvement and efficiency gains</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de">Organisatorische <strong>Transition & Change Management</strong> (ganzheitliche Betriebsmodelle und nachhaltiger Kulturwandel)</span>
-                            <span class="lang-element" lang="en" style="display:none;">Organizational <strong>Transition & Change Management</strong> (holistic operating models and sustainable cultural change)</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Stakeholder Management</strong> & Anforderungsanalyse (bis Top-Management/E-Level)</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Stakeholder Management</strong> & Requirements Analysis (up to Top Management/E-Level)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="expertise-meta-card">
-                    <h4 class="expertise-meta-card-title">
-                        <span class="lang-element" lang="de">Salesforce & CRM-Lösungen</span>
-                        <span class="lang-element" lang="en" style="display:none;">Salesforce & CRM Solutions</span>
-                    </h4>
-                    <ul class="item-grid">
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Salesforce Plattform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce für KI-gestützte Prozesse</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Salesforce Platform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce for AI-driven processes</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Lightning Platform</strong> (LWC, Apex, Flows) für anspruchsvolle und performante Custom-Entwicklungen</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Lightning Platform</strong> (LWC, Apex, Flows) for sophisticated and performant custom developments</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>CRM-Strategie,</strong> -Implementierung & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agenturmodell)</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>CRM Strategy,</strong> Implementation & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agency Model)</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration für nahtlose Vertriebsprozesse</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration for seamless sales processes</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>After Sales & Finance</strong> Prozessintegration im CRM zur 360-Grad-Sicht</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>After Sales & Finance</strong> Process Integration in CRM for a 360-degree view</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="expertise-meta-card">
-                    <h4 class="expertise-meta-card-title">
-                        <span class="lang-element" lang="de">Technologie & Branchenwissen</span>
-                        <span class="lang-element" lang="en" style="display:none;">Technology & Industry Knowledge</span>
-                    </h4>
-                    <ul class="item-grid">
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Datenqualitäts- management</strong> & Governance für valide Daten</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Data Quality Management</strong> & Governance for valid data</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events für Echtzeit-Daten)</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Solution Architecture</strong> & Complex System Integrations (API-based, Kafka Event Streaming, Salesforce Platform Events for real-time data)</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Automotive</strong> Branchenexpertise & digitale Transformation im Fahrzeugvertrieb und -service</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Automotive</strong> Industry Expertise & Digital Transformation in vehicle sales and service</span>
-                        </li>
-                        <li class="item-style-k">
-                            <span class="lang-element" lang="de"><strong>Grundlagen Finanzwesen</strong> & Bankwirtschaftslehre (Basis für Finance Use Cases und Reporting)</span>
-                            <span class="lang-element" lang="en" style="display:none;"><strong>Fundamentals of Finance</strong> & Banking (Basis for Finance Use Cases and Reporting)</span>
-                        </li>
-                    </ul>
+                <div class="expertise-carousel-container carousel-container"> 
+                    <p class="text-xs text-slate-500 text-center mt-2 mb-1 italic carousel-hint">
+                        <span class="lang-element" lang="de">Wischen oder klicken für weitere Expertise-Bereiche</span>
+                        <span class="lang-element" lang="en" style="display:none;">Swipe or click for more expertise areas</span>
+                    </p>
+                    <div class="carousel-dots-combined" id="expertiseCarouselDots"></div>
+                    <div class="expertise-carousel-track-container carousel-track-container">
+                        <div class="expertise-carousel-track carousel-track" id="expertiseCarouselTrack">
+                            </div>
+                    </div>
+                    <button class="carousel-button-combined prev" id="prevExpertise">
+                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <button class="carousel-button-combined next" id="nextExpertise">
+                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </button>
                 </div>
             </section>
 
@@ -1084,6 +1039,10 @@
                     <span class="lang-element" lang="de">INSIGHTS</span>
                     <span class="lang-element" lang="en" style="display:none;">INSIGHTS</span>
                 </h2>
+                <p class="text-xs text-slate-500 mt-[-1rem] mb-3 italic insights-hint text-center">
+                    <span class="lang-element" lang="de">Klicke auf die Karten, um mehr zu erfahren.</span>
+                    <span class="lang-element" lang="en" style="display:none;">Click on the cards to learn more.</span>
+                </p>
                 <div>
                     <h3 class="subsection-title">
                         <span class="lang-element" lang="de">Meine Werte</span>
@@ -1139,8 +1098,8 @@
 
                 <div>
                     <h3 class="subsection-title">
-                        <span class="lang-element" lang="de">Persönliche Einblicke</span>
-                        <span class="lang-element" lang="en" style="display:none;">Personal Insights</span>
+                        <span class="lang-element" lang="de">Energizer</span>
+                        <span class="lang-element" lang="en" style="display:none;">Energizer</span>
                     </h3>
                     <div class="card-grid">
                         <div class="flip-card">
@@ -1168,7 +1127,7 @@
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                     <img src="https://placehold.co/200x200/001639/FFFFFF?text=Tech&font=inter" alt="Digitale Passion Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Digitale Passion konnte nicht geladen werden.';">
+                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Digital_Passion.jpeg" alt="Digitale Passion" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Bild für Digitale Passion konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
                                     <h4><span class="lang-element" lang="de">Digitale Passion</span><span class="lang-element" lang="en">Digital Passion</span></h4>
@@ -1449,13 +1408,79 @@
                 }
             ];
 
-            const carouselTrack = document.querySelector('#professional-experience-section .experience-carousel-track');
-            const dotsContainer = document.querySelector('#professional-experience-section #experienceCarouselDots');
+            const expertiseData = [
+                {
+                    titleDe: "Management & Methoden",
+                    titleEn: "Management & Methods",
+                    itemsDe: [
+                        "<strong>Führung</strong> interdisziplinärer & internationaler Teams mit Fokus auf globale Projekte und Kulturen",
+                        "<strong>Agile Entwicklung</strong> (Scrum, Kanban) & DevOps-Prinzipien zur kontinuierlichen Verbesserung und Effizienzsteigerung",
+                        "Organisatorische <strong>Transition & Change Management</strong> (ganzheitliche Betriebsmodelle und nachhaltiger Kulturwandel)",
+                        "<strong>Stakeholder Management</strong> & Anforderungsanalyse (bis Top-Management/E-Level)"
+                    ],
+                    itemsEn: [
+                        "<strong>Leadership</strong> of interdisciplinary & international teams with a focus on global projects and cultures",
+                        "<strong>Agile Development</strong> (Scrum, Kanban) & DevOps Principles for continuous improvement and efficiency gains",
+                        "Organizational <strong>Transition & Change Management</strong> (holistic operating models and sustainable cultural change)",
+                        "<strong>Stakeholder Management</strong> & Requirements Analysis (up to Top Management/E-Level)"
+                    ]
+                },
+                {
+                    titleDe: "Salesforce & CRM-Lösungen",
+                    titleEn: "Salesforce & CRM Solutions",
+                    itemsDe: [
+                        "<strong>Salesforce Plattform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce für KI-gestützte Prozesse",
+                        "<strong>Lightning Platform</strong> (LWC, Apex, Flows) für anspruchsvolle und performante Custom-Entwicklungen",
+                        "<strong>CRM-Strategie,</strong> -Implementierung & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agenturmodell)",
+                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration für nahtlose Vertriebsprozesse",
+                        "<strong>After Sales & Finance</strong> Prozessintegration im CRM zur 360-Grad-Sicht"
+                    ],
+                    itemsEn: [
+                        "<strong>Salesforce Platform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce for AI-driven processes",
+                        "<strong>Lightning Platform</strong> (LWC, Apex, Flows) for sophisticated and performant custom developments",
+                        "<strong>CRM Strategy,</strong> Implementation & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agency Model)",
+                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration for seamless sales processes",
+                        "<strong>After Sales & Finance</strong> Process Integration in CRM for a 360-degree view"
+                    ]
+                },
+                {
+                    titleDe: "Technologie & Branchenwissen",
+                    titleEn: "Technology & Industry Knowledge",
+                    itemsDe: [
+                        "<strong>Datenqualitäts- management</strong> & Governance für valide Daten",
+                        "<strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events für Echtzeit-Daten)",
+                        "<strong>Automotive</strong> Branchenexpertise & digitale Transformation im Fahrzeugvertrieb und -service",
+                        "<strong>Finanzwesen</strong> & Bankwirtschaftslehre (Basis für Finance Use Cases und Reporting)"
+                    ],
+                    itemsEn: [
+                        "<strong>Data Quality Management</strong> & Governance for valid data",
+                        "<strong>Solution Architecture</strong> & Complex System Integrations (API-based, Kafka Event Streaming, Salesforce Platform Events for real-time data)",
+                        "<strong>Automotive</strong> Industry Expertise & Digital Transformation in vehicle sales and service",
+                        "<strong>Finance</strong> & Banking (Basis for Finance Use Cases and Reporting)"
+                    ]
+                }
+            ];
+
+
+            const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
+            const experienceDotsContainer = document.getElementById('experienceCarouselDots');
             let currentExperienceIndex = 0;
+
+            const expertiseCarouselTrack = document.getElementById('expertiseCarouselTrack');
+            const expertiseDotsContainer = document.getElementById('expertiseCarouselDots');
+            let currentExpertiseIndex = 0;
+
 
             function createTaskListItem(taskText) {
                 const li = document.createElement('li');
-                li.innerHTML = taskText; // Allows HTML like <strong>
+                li.innerHTML = taskText; 
+                return li;
+            }
+            
+            function createExpertiseListItem(itemText) {
+                const li = document.createElement('li');
+                li.classList.add('item-style-k');
+                li.innerHTML = itemText; // Allows HTML like <strong>
                 return li;
             }
 
@@ -1464,7 +1489,7 @@
                 card.classList.add('job-experience-card');
 
                 const title = document.createElement('h3');
-                title.classList.add('text-xl', 'font-semibold', 'mb-1' /* Tailwind classes for styling */);
+                title.classList.add('text-xl', 'font-semibold', 'mb-1');
                 title.classList.add('job-title'); 
 
                 const titleDe = document.createElement('span');
@@ -1545,89 +1570,162 @@
                 return card;
             }
 
+            function createExpertiseSlide(expertiseCategory) {
+                const slide = document.createElement('div');
+                slide.classList.add('expertise-slide-card');
 
-            function populateExperienceCarousel() {
-                if (!carouselTrack) return;
-                carouselTrack.innerHTML = ''; 
-                jobExperiencesData.forEach(job => {
-                    carouselTrack.appendChild(createJobCard(job)); 
-                });
-                createExperienceDots();
-                updateExperienceCarousel();
-                setLanguage(currentLang); 
+                const title = document.createElement('h4');
+                title.classList.add('expertise-slide-card-title');
+                const titleDe = document.createElement('span');
+                titleDe.classList.add('lang-element');
+                titleDe.setAttribute('lang', 'de');
+                titleDe.textContent = expertiseCategory.titleDe;
+                const titleEn = document.createElement('span');
+                titleEn.classList.add('lang-element');
+                titleEn.setAttribute('lang', 'en');
+                titleEn.style.display = 'none';
+                titleEn.textContent = expertiseCategory.titleEn;
+                title.appendChild(titleDe);
+                title.appendChild(titleEn);
+                slide.appendChild(title);
+
+                const itemsWrapper = document.createElement('div');
+                const ulDe = document.createElement('ul');
+                ulDe.classList.add('item-grid', 'lang-element');
+                ulDe.setAttribute('lang', 'de');
+                expertiseCategory.itemsDe.forEach(item => ulDe.appendChild(createExpertiseListItem(item)));
+                itemsWrapper.appendChild(ulDe);
+
+                const ulEn = document.createElement('ul');
+                ulEn.classList.add('item-grid', 'lang-element');
+                ulEn.setAttribute('lang', 'en');
+                ulEn.style.display = 'none';
+                expertiseCategory.itemsEn.forEach(item => ulEn.appendChild(createExpertiseListItem(item)));
+                itemsWrapper.appendChild(ulEn);
+                
+                slide.appendChild(itemsWrapper);
+                return slide;
             }
-            
-            function createExperienceDots() {
-                if (!dotsContainer || jobExperiencesData.length === 0) return;
+
+
+            function populateCarousel(carouselId, data, cardCreationFunction, dotsContainerId, currentIndexVariable) {
+                const track = document.getElementById(carouselId);
+                const dotsContainer = document.getElementById(dotsContainerId);
+                if (!track || !dotsContainer) return;
+
+                track.innerHTML = '';
+                data.forEach(item => {
+                    track.appendChild(cardCreationFunction(item));
+                });
+
                 dotsContainer.innerHTML = '';
-                jobExperiencesData.forEach((_, index) => {
+                data.forEach((_, index) => {
                     const dot = document.createElement('span');
                     dot.classList.add('carousel-dot-combined');
                     dot.dataset.slideTo = index;
-                    dot.setAttribute('aria-label', `Station ${index + 1}`);
+                    dot.setAttribute('aria-label', `Folie ${index + 1}`);
                     dot.addEventListener('click', () => {
-                        currentExperienceIndex = index;
-                        updateExperienceCarousel();
+                        if (carouselId === 'experienceCarouselTrack') {
+                            currentExperienceIndex = index;
+                            updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                        } else if (carouselId === 'expertiseCarouselTrack') {
+                            currentExpertiseIndex = index;
+                            updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
+                        }
                     });
                     dotsContainer.appendChild(dot);
                 });
-            }
-
-            function updateExperienceCarousel() {
-                if (!carouselTrack || jobExperiencesData.length === 0) return;
-                carouselTrack.style.transform = `translateX(-${currentExperienceIndex * 100}%)`;
-                if (dotsContainer) {
-                    const dots = Array.from(dotsContainer.children);
-                    dots.forEach((dot, index) => {
-                        if (index === currentExperienceIndex) {
-                            dot.classList.add('active-dot');
-                        } else {
-                            dot.classList.remove('active-dot');
-                        }
-                    });
+                
+                if (carouselId === 'experienceCarouselTrack') {
+                     updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                } else if (carouselId === 'expertiseCarouselTrack') {
+                     updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
                 }
             }
             
-            if (carouselTrack) { 
-                populateExperienceCarousel();
+            function updateCarousel(trackId, currentIndex, dotsContainerId) {
+                const track = document.getElementById(trackId);
+                const dotsContainer = document.getElementById(dotsContainerId);
+                if (!track || !dotsContainer) return;
 
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                const dots = Array.from(dotsContainer.children);
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active-dot');
+                    } else {
+                        dot.classList.remove('active-dot');
+                    }
+                });
+            }
+            
+            // Initialize Experience Carousel
+            if (experienceCarouselTrack) { 
+                populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots', currentExperienceIndex);
                 const nextButtonExp = document.getElementById('nextExperience');
                 const prevButtonExp = document.getElementById('prevExperience');
 
                 if (nextButtonExp && prevButtonExp && jobExperiencesData.length > 0) {
                     nextButtonExp.addEventListener('click', () => {
                         currentExperienceIndex = (currentExperienceIndex + 1) % jobExperiencesData.length;
-                        updateExperienceCarousel();
+                        updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
                     });
                     prevButtonExp.addEventListener('click', () => {
                         currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
-                        updateExperienceCarousel();
+                        updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
                     });
                 }
-                let touchstartX = 0;
-                let touchendX = 0;
-
-                carouselTrack.addEventListener('touchstart', function(event) {
-                    touchstartX = event.changedTouches[0].screenX;
-                }, {passive: true});
-
-                carouselTrack.addEventListener('touchend', function(event) {
-                    touchendX = event.changedTouches[0].screenX;
-                    handleExperienceSwipe();
-                }, {passive: true});
-
-                function handleExperienceSwipe() {
-                    if (jobExperiencesData.length === 0) return; 
+                // Swipe functionality for Experience Carousel
+                let expTouchstartX = 0;
+                let expTouchendX = 0;
+                experienceCarouselTrack.addEventListener('touchstart', function(event) { expTouchstartX = event.changedTouches[0].screenX; }, {passive: true});
+                experienceCarouselTrack.addEventListener('touchend', function(event) {
+                    expTouchendX = event.changedTouches[0].screenX;
                     const swipeThreshold = 50; 
-                    if (touchendX < touchstartX && (touchstartX - touchendX > swipeThreshold)) { 
+                    if (jobExperiencesData.length === 0) return; 
+                    if (expTouchendX < expTouchstartX && (expTouchstartX - expTouchendX > swipeThreshold)) { 
                         currentExperienceIndex = (currentExperienceIndex + 1) % jobExperiencesData.length;
-                        updateExperienceCarousel();
                     }
-                    if (touchendX > touchstartX && (touchendX - touchstartX > swipeThreshold)) { 
+                    if (expTouchendX > expTouchstartX && (expTouchendX - expTouchstartX > swipeThreshold)) { 
                         currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
-                        updateExperienceCarousel();
                     }
+                    updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                }, {passive: true});
+            }
+
+            // Initialize Expertise Carousel
+            if (expertiseCarouselTrack) {
+                populateCarousel('expertiseCarouselTrack', expertiseData, createExpertiseSlide, 'expertiseCarouselDots', currentExpertiseIndex);
+                const nextButtonExp = document.getElementById('nextExpertise');
+                const prevButtonExp = document.getElementById('prevExpertise');
+
+                if (nextButtonExp && prevButtonExp && expertiseData.length > 0) {
+                    nextButtonExp.addEventListener('click', () => {
+                        currentExpertiseIndex = (currentExpertiseIndex + 1) % expertiseData.length;
+                        updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
+                    });
+                    prevButtonExp.addEventListener('click', () => {
+                        currentExpertiseIndex = (currentExpertiseIndex - 1 + expertiseData.length) % expertiseData.length;
+                        updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
+                    });
                 }
+                 // Swipe functionality for Expertise Carousel
+                let expertiseTouchstartX = 0;
+                let expertiseTouchendX = 0;
+                expertiseCarouselTrack.addEventListener('touchstart', function(event) { expertiseTouchstartX = event.changedTouches[0].screenX; }, {passive: true});
+                expertiseCarouselTrack.addEventListener('touchend', function(event) {
+                    expertiseTouchendX = event.changedTouches[0].screenX;
+                    const swipeThreshold = 50; 
+                    if (expertiseData.length === 0) return; 
+                    if (expertiseTouchendX < expertiseTouchstartX && (expertiseTouchstartX - expertiseTouchendX > swipeThreshold)) { 
+                        currentExpertiseIndex = (currentExpertiseIndex + 1) % expertiseData.length;
+                    }
+                    if (expertiseTouchendX > expertiseTouchstartX && (expertiseTouchendX - expertiseTouchstartX > swipeThreshold)) { 
+                        currentExpertiseIndex = (currentExpertiseIndex - 1 + expertiseData.length) % expertiseData.length;
+                    }
+                    updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
+                }, {passive: true});
             }
 
 
