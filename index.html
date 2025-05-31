@@ -197,14 +197,16 @@
         /* --- End of Styles for New Hero Section --- */
 
         /* Styles for Expertise Section (Carousel) */
-        .expertise-carousel-container { position: relative; }
+        .expertise-carousel-container { position: relative; } /* Outer container for the whole expertise carousel section */
+        .carousel-main-area { position: relative; } /* New wrapper for track and buttons */
+
         .expertise-carousel-track-container { overflow: hidden; width: 100%; }
         .expertise-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
         .expertise-slide-card { 
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #e0f2fe; border: 1px solid #bae6fd; 
             border-radius: 0.75rem;
-            padding: 1.5rem 3.5rem; /* Further increased horizontal padding for button clearance */
+            padding: 1.5rem 3.8rem; /* Increased horizontal padding further for button clearance */
             box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
@@ -249,13 +251,13 @@
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
             .expertise-slide-card li.item-style-k { min-height: 75px; padding: 0.8rem; font-size: 0.8rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.82rem; }
-            .expertise-slide-card { padding: 1.5rem 2.8rem; } /* Adjust padding for smaller screens */
+            .expertise-slide-card { padding: 1.5rem 3rem; } /* Adjust padding for smaller screens */
         }
          @media (max-width: 360px) {
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
             .expertise-slide-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.8rem; }
-            .expertise-slide-card { padding: 1.5rem 2.5rem; } /* Further adjust padding */
+            .expertise-slide-card { padding: 1.5rem 2.8rem; } /* Further adjust padding */
            }
         /* End of Styles for Expertise Section (Carousel) */
 
@@ -405,7 +407,7 @@
         .job-experience-card { /* Specific to experience */
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #f9fafb; border-radius: 0.75rem; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.2rem; /* Increased horizontal padding */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.5rem; /* Increased horizontal padding */
             position: relative; 
             transition: background-color 0.3s ease;
         }
@@ -434,8 +436,7 @@
             opacity: 0.2; display: flex; align-items: center; justify-content: center;
             transition: background-color 0.2s ease, opacity 0.3s ease, color 0.3s ease;
         }
-        .carousel-track-container:hover ~ .carousel-button-combined, 
-        .carousel-container:hover .carousel-button-combined { opacity: 1; }
+        .carousel-main-area:hover .carousel-button-combined { opacity: 1; } /* Show buttons on hover of main area */
         .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } 
         .carousel-button-combined.prev { left: 0.5rem; }
         .carousel-button-combined.next { right: 0.5rem; }
@@ -938,16 +939,17 @@
                         <span class="lang-element" lang="en" style="display:none;">Swipe or click for more entries</span>
                     </p>
                     <div class="carousel-dots-combined" id="experienceCarouselDots"></div>
-                    <div class="experience-carousel-track-container carousel-track-container"> 
-                        <div class="experience-carousel-track carousel-track" id="experienceCarouselTrack"> 
-                            </div>
+                    <div class="carousel-main-area"> <div class="experience-carousel-track-container carousel-track-container"> 
+                            <div class="experience-carousel-track carousel-track" id="experienceCarouselTrack"> 
+                                </div>
+                        </div>
+                        <button class="carousel-button-combined prev" id="prevExperience">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <button class="carousel-button-combined next" id="nextExperience">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                        </button>
                     </div>
-                    <button class="carousel-button-combined prev" id="prevExperience">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                    </button>
-                    <button class="carousel-button-combined next" id="nextExperience">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
-                    </button>
                 </div>
             </section>
 
@@ -962,16 +964,17 @@
                         <span class="lang-element" lang="en" style="display:none;">Swipe or click for more expertise areas</span>
                     </p>
                     <div class="carousel-dots-combined" id="expertiseCarouselDots"></div>
-                    <div class="expertise-carousel-track-container carousel-track-container">
-                        <div class="expertise-carousel-track carousel-track" id="expertiseCarouselTrack">
-                            </div>
+                    <div class="carousel-main-area"> <div class="expertise-carousel-track-container carousel-track-container">
+                            <div class="expertise-carousel-track carousel-track" id="expertiseCarouselTrack">
+                                </div>
+                        </div>
+                        <button class="carousel-button-combined prev" id="prevExpertise">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <button class="carousel-button-combined next" id="nextExpertise">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                        </button>
                     </div>
-                    <button class="carousel-button-combined prev" id="prevExpertise">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                    </button>
-                    <button class="carousel-button-combined next" id="nextExpertise">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
-                    </button>
                 </div>
             </section>
 
