@@ -197,8 +197,8 @@
         /* --- End of Styles for New Hero Section --- */
 
         /* Styles for Expertise Section (Carousel) */
-        .expertise-carousel-container { position: relative; } /* Outer container for the whole expertise carousel section */
-        .carousel-main-area { position: relative; } /* New wrapper for track and buttons */
+        .expertise-carousel-container { position: relative; } 
+        .carousel-main-area { position: relative; } /* Wrapper for track and buttons for better centering */
 
         .expertise-carousel-track-container { overflow: hidden; width: 100%; }
         .expertise-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
@@ -251,13 +251,13 @@
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
             .expertise-slide-card li.item-style-k { min-height: 75px; padding: 0.8rem; font-size: 0.8rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.82rem; }
-            .expertise-slide-card { padding: 1.5rem 3rem; } /* Adjust padding for smaller screens */
+            .expertise-slide-card { padding: 1.5rem 3rem; } 
         }
          @media (max-width: 360px) {
             .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
             .expertise-slide-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
             .expertise-slide-card li.item-style-k strong { font-size: 0.8rem; }
-            .expertise-slide-card { padding: 1.5rem 2.8rem; } /* Further adjust padding */
+            .expertise-slide-card { padding: 1.5rem 2.8rem; } 
            }
         /* End of Styles for Expertise Section (Carousel) */
 
@@ -774,7 +774,7 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Erfahrener Program Owner & Automotive CRM-Experte</h4>
-                                <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von Kundenbeziehungsprozessen bei Mercedes-Benz.</p>
+                                <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von <strong>CRM und Sales Prozessen</strong> bei Mercedes-Benz.</p>
                             </div>
                         </div>
                     </div>
@@ -786,7 +786,7 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Experienced Program Owner & Automotive CRM Expert</h4>
-                                <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of customer relationship processes at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
+                                <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of <strong>CRM and sales processes</strong> at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
                             </div>
                         </div>
                     </div>
@@ -920,8 +920,8 @@
                                 <span class="lang-element" lang="en" style="display:none;">Stakeholder Management & Communication</span>
                             </h4>
                             <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Effektive Kommunikation und Management von Stakeholder-Erwartungen bis auf Top-Management-Ebene (E-Level).</span>
-                                <span class="lang-element" lang="en" style="display:none;">Effective communication and management of stakeholder expectations up to top management level (E-Level).</span>
+                                <span class="lang-element" lang="de">Effektive Kommunikation und Management von Stakeholder-Erwartungen bis auf Top-Management-Ebene.</span>
+                                <span class="lang-element" lang="en" style="display:none;">Effective communication and management of stakeholder expectations up to top management level.</span>
                             </p>
                         </div>
                     </div>
@@ -939,9 +939,11 @@
                         <span class="lang-element" lang="en" style="display:none;">Swipe or click for more entries</span>
                     </p>
                     <div class="carousel-dots-combined" id="experienceCarouselDots"></div>
-                    <div class="carousel-main-area"> <div class="experience-carousel-track-container carousel-track-container"> 
+                    <div class="carousel-main-area"> 
+                        <div class="experience-carousel-track-container carousel-track-container"> 
                             <div class="experience-carousel-track carousel-track" id="experienceCarouselTrack"> 
-                                </div>
+                                <!-- Job cards will be dynamically inserted here by JavaScript -->
+                            </div>
                         </div>
                         <button class="carousel-button-combined prev" id="prevExperience">
                             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
@@ -964,9 +966,11 @@
                         <span class="lang-element" lang="en" style="display:none;">Swipe or click for more expertise areas</span>
                     </p>
                     <div class="carousel-dots-combined" id="expertiseCarouselDots"></div>
-                    <div class="carousel-main-area"> <div class="expertise-carousel-track-container carousel-track-container">
+                    <div class="carousel-main-area"> 
+                        <div class="expertise-carousel-track-container carousel-track-container">
                             <div class="expertise-carousel-track carousel-track" id="expertiseCarouselTrack">
-                                </div>
+                                <!-- Expertise slides will be dynamically inserted here by JavaScript -->
+                            </div>
                         </div>
                         <button class="carousel-button-combined prev" id="prevExpertise">
                             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
@@ -1298,8 +1302,8 @@
                     keyResultsEn: "Establishment of a future-proof, Europe-wide standardized CRM platform for agility in sales models, deep POS integration, and data-driven customer centricity."
                 },
                 {
-                    titleDe: "Product Owner / Development Lead OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
-                    titleEn: "Product Owner / Development Lead OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
+                    titleDe: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)", 
+                    titleEn: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)", 
                     companyDe: "Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023",
                     companyEn: "Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023",
                     tasksDe: [
@@ -1346,68 +1350,54 @@
                     keyResultsEn: "Consistent CRM processes in retail; improved user acceptance of MBC POS."
                 },
                 {
-                    titleDe: "Senior Consultant – Customer Contact Center Strategie",
-                    titleEn: "Senior Consultant – Customer Contact Center Strategy",
+                    titleDe: "Customer Contact Center Strategie", 
+                    titleEn: "Customer Contact Center Strategy", 
                     companyDe: "Automotive Training & Consulting GmbH (für Daimler AG) | 06/2013 – 07/2014",
                     companyEn: "Automotive Training & Consulting GmbH (for Daimler AG) | 06/2013 – 07/2014",
                     tasksDe: [
-                        "Entwicklung einer Strategie zur Optimierung der zentralen <strong>Customer Contact Center</strong> (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience)."
+                        "Entwicklung einer Strategie zur Optimierung der zentralen <strong>Customer Contact Center</strong> (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience); <strong>globale Anwendbarkeit und Umsetzung der Strategie</strong>." 
                     ],
                     tasksEn: [
-                        "Development of a strategy to optimize central <strong>Customer Contact Centers</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience)."
+                        "Development of a strategy to optimize central <strong>Customer Contact Centers</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience); <strong>global applicability and implementation of the strategy</strong>." 
                     ],
                     keyResultsDe: "Strategisches Konzept für globale Kundenkontaktprozesse als Pilotierungsbasis.",
                     keyResultsEn: "Strategic concept for global customer contact processes as a basis for piloting."
                 },
                 {
-                    titleDe: "Senior Consultant – BDC Rollout & Governance",
-                    titleEn: "Senior Consultant – BDC Rollout & Governance",
+                    titleDe: "BDC Enablement, Governance and Measurement", 
+                    titleEn: "BDC Enablement, Governance and Measurement", 
                     companyDe: "Automotive Training & Consulting GmbH (für Daimler AG) | 01/2011 – 05/2013",
                     companyEn: "Automotive Training & Consulting GmbH (for Daimler AG) | 01/2011 – 05/2013",
                     tasksDe: [
-                        "Internationale <strong>Markt Readiness</strong> Analysen & Rolloutbegleitung <strong>Business Development Center</strong> (BDC).",
+                        "Internationale <strong>Markt Readiness</strong> Analysen & Rolloutbegleitung <strong>Business Development Center</strong> (BDC), <strong>u.a. Fokusmarkt China</strong>.", 
                         "Verantwortung für das gesamte <strong>Reporting</strong>: Aufbau und Entwicklung von Dashboards, KPI-Reports und Management-Präsentationen zur Erfolgsmessung der BDC-Aktivitäten."
                     ],
                     tasksEn: [
-                        "International <strong>market readiness</strong> analyses & rollout support for <strong>Business Development Centers</strong> (BDC).",
+                        "International <strong>market readiness</strong> analyses & rollout support for <strong>Business Development Centers</strong> (BDC), <strong>including focus market China</strong>.", 
                         "Responsibility for all <strong>reporting</strong>: Setup and development of dashboards, KPI reports, and management presentations to measure the success of BDC activities."
                     ],
                     keyResultsDe: "Erfolgreiche Pilotierung/Implementierung von LMS & BDC-Strukturen international; Etablierung eines transparenten Performance-Monitorings.",
                     keyResultsEn: "Successful piloting/implementation of LMS & BDC structures internationally; Establishment of transparent performance monitoring."
                 },
-                {
-                    titleDe: "Senior Consultant – Business Development Center (BDC) & Lead Management Systeme (LMS)",
-                    titleEn: "Senior Consultant – Business Development Center (BDC) & Lead Management Systems (LMS)",
-                    companyDe: "Daimler Protics GmbH (für Daimler AG) | 05/2008 – 12/2010",
-                    companyEn: "Daimler Protics GmbH (for Daimler AG) | 05/2008 – 12/2010",
+                { 
+                    titleDe: "Business Development Center (BDC) & Lead Management Systeme (LMS)", 
+                    titleEn: "Business Development Center (BDC) & Lead Management Systems (LMS)", 
+                    companyDe: "Daimler Protics GmbH (für Daimler AG) | 04/2005 – 12/2010",
+                    companyEn: "Daimler Protics GmbH (for Daimler AG) | 04/2005 – 12/2010",
                     tasksDe: [
-                        "Internationale <strong>Projektleitung</strong> & Rollout-Management für BDC- & <strong>Lead Management Systeme</strong> (LMS) (Fokus Europa & Übersee).",
-                        "Strategische Beratung & Prozessoptimierung im <strong>Lead-to-Sales-Funnel</strong>.",
+                        "Entwicklung, Konzeption und Rollout-Sicherung von <strong>Business Development Center</strong> (BDC)-Vertriebskanälen und Sales <strong>Lead Management Systemen</strong> (LMS).",
+                        "Übernahme internationaler <strong>Projektleitung</strong> für BDC- & LMS-Rollouts (Fokus Europa & Übersee) als Senior Consultant.",
+                        "Strategische Beratung zur Prozessoptimierung im <strong>Lead-to-Sales-Funnel</strong>.",
                         "Konzeption und Pilotierung des BDC-Ansatzes für den <strong>After Sales Bereich</strong> zur Steigerung der Kundenbindung und Service-Umsätze."
                     ],
                     tasksEn: [
-                        "International <strong>project lead</strong> & rollout management for BDC & <strong>Lead Management Systems</strong> (LMS) (focus Europe & overseas).",
-                        "Strategic consulting & process optimization in the <strong>lead-to-sales funnel</strong>.",
+                        "Development, conception, and rollout assurance of <strong>Business Development Center</strong> (BDC) sales channels and Sales <strong>Lead Management Systems</strong> (LMS).",
+                        "Assumption of international <strong>project leadership</strong> for BDC & LMS rollouts (focus Europe & overseas) as Senior Consultant.",
+                        "Strategic consulting for process optimization in the <strong>lead-to-sales funnel</strong>.",
                         "Conception and piloting of the BDC approach for the <strong>After Sales area</strong> to increase customer loyalty and service revenue."
                     ],
-                    keyResultsDe: "Professionalisierung BDC-Kanäle (Sales & After Sales); Etablierung standardisierter Lead Management Prozesse.",
-                    keyResultsEn: "Professionalization of BDC channels (Sales & After Sales); establishment of standardized lead management processes."
-                },
-                {
-                    titleDe: "Consultant – Business Development Center (BDC)",
-                    titleEn: "Consultant – Business Development Center (BDC)",
-                    companyDe: "Daimler Protics GmbH (für Daimler AG) | 04/2005 – 04/2008",
-                    companyEn: "Daimler Protics GmbH (for Daimler AG) | 04/2005 – 04/2008",
-                    tasksDe: [
-                        "Entwicklung & Rollout-Sicherung von <strong>Business Development Center</strong> (BDC)-Vertriebskanälen.",
-                        "Konzeption Sales <strong>Lead Management Systeme</strong> (LMS)."
-                    ],
-                    tasksEn: [
-                        "Development & rollout assurance of <strong>Business Development Center</strong> (BDC) sales channels.",
-                        "Conception of Sales <strong>Lead Management Systems</strong> (LMS)."
-                    ],
-                    keyResultsDe: "Professionalisierung BDC-Kanäle; Etablierung standardisierter Lead Management Prozesse.",
-                    keyResultsEn: "Professionalization of BDC channels; establishment of standardized lead management processes."
+                    keyResultsDe: "Professionalisierung der BDC-Kanäle (Sales & After Sales) und Etablierung standardisierter, internationaler Lead Management Prozesse.",
+                    keyResultsEn: "Professionalization of BDC channels (Sales & After Sales) and establishment of standardized, international lead management processes."
                 }
             ];
 
