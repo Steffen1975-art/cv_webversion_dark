@@ -196,71 +196,6 @@
            }
         /* --- End of Styles for New Hero Section --- */
 
-        /* Styles for Expertise Section (Carousel) */
-        .expertise-carousel-container { position: relative; } 
-        .carousel-main-area { position: relative; } /* Wrapper for track and buttons for better centering */
-
-        .expertise-carousel-track-container { overflow: hidden; width: 100%; }
-        .expertise-carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .expertise-slide-card { 
-            flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
-            background-color: #e0f2fe; border: 1px solid #bae6fd; 
-            border-radius: 0.75rem;
-            padding: 1.5rem 3.8rem; /* Increased horizontal padding further for button clearance */
-            box-shadow: 0 4px 10px rgba(0, 112, 210, 0.15);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .expertise-slide-card-title { 
-            font-size: 1.15rem; font-weight: 600; color: #001639; 
-            margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #0070D2; 
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
-        }
-        .expertise-slide-card ul.item-grid {
-            list-style: none; padding-left: 0; margin-top: 0.5rem; display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 0.8rem;
-        }
-        .expertise-slide-card li.item-style-k { 
-            background-color: #f0f8ff; color: #1e3a8a; 
-            border-radius: 0.5rem;
-            border: 1px solid #d1e0ff; 
-            box-shadow: 0px 2px 4px rgba(0, 86, 179, 0.08), inset 1px 1px 1px rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-            min-height: 100px; 
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0.8rem; overflow-wrap: break-word; word-wrap: break-word;
-            overflow: visible;
-            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-        .expertise-slide-card li.item-style-k:hover {
-            background-color: #ffffff; border-color: #c0d4f0; 
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0px 4px 8px rgba(0, 86, 179, 0.12), inset 1px 1px 2px rgba(255,255,255,0.6);
-        }
-        .expertise-slide-card li.item-style-k strong {
-            font-weight: 600; color: #002240; display: block; 
-            margin-bottom: 0.25rem; font-size: 0.88rem;
-            transition: color 0.3s ease;
-        }
-        .carousel-hint { 
-            color: #6b7280; 
-            transition: color 0.3s ease;
-        }
-        @media (max-width: 480px) {
-            .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; }
-            .expertise-slide-card li.item-style-k { min-height: 75px; padding: 0.8rem; font-size: 0.8rem; }
-            .expertise-slide-card li.item-style-k strong { font-size: 0.82rem; }
-            .expertise-slide-card { padding: 1.5rem 3rem; } 
-        }
-         @media (max-width: 360px) {
-            .expertise-slide-card ul.item-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.6rem; }
-            .expertise-slide-card li.item-style-k { min-height: 65px; font-size: 0.78rem; padding: 0.75rem; }
-            .expertise-slide-card li.item-style-k strong { font-size: 0.8rem; }
-            .expertise-slide-card { padding: 1.5rem 2.8rem; } 
-           }
-        /* End of Styles for Expertise Section (Carousel) */
-
 
         ul.custom-bullets { 
             list-style: none;
@@ -280,26 +215,35 @@
             top: 0.1em; 
             transition: color 0.3s ease;
         }
-        /* Enhanced styling for keywords in professional experience bullet points */
         .job-experience-card ul.custom-bullets > li > strong {
-            font-weight: 600; /* Default light mode weight */
-            color: #1d4ed8; /* Default light mode color for keywords */
+            font-weight: 600; 
+            color: #1d4ed8; 
             transition: color 0.3s ease;
         }
 
-
-        /* Styles for Core Competencies Cards */
-        .competency-item-base {
+        /* Styles for Combined Competency & Expertise Section */
+        .competency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); 
+            gap: 1.5rem;
+        }
+        .competency-card {
             border: 1px solid #e5e7eb; 
             border-radius: 0.5rem; 
             padding: 1.25rem; 
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
             background-color: #f9fafb; 
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             display: flex; 
-            align-items: flex-start;
+            flex-direction: column; 
         }
-        .competency-item-base:hover {
-            transform: translateY(-3px); 
+        .competency-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .competency-header {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 0.75rem;
         }
         .competency-icon-material { 
             font-family: 'Material Icons';
@@ -307,22 +251,49 @@
             margin-right: 0.9rem; 
             flex-shrink: 0;
             margin-top: 0.05rem; 
+            color: #001639; /* Icon color matching competency title */
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease;
         }
         .competency-title-text {
-            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.35rem; 
-            transition: color 0.3s ease;
+            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.25rem; 
         }
         .competency-description-text {
             font-size: 0.875rem; color: #4b5563; line-height: 1.6; 
-            transition: color 0.3s ease;
+            margin-bottom: 1rem; 
         }
-        .card-grid-competencies {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .expertise-subheader {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #005FB8; 
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #e0f2fe; 
+            padding-top: 0.75rem;
         }
-        /* End of Styles for Core Competencies Cards */
+        .expertise-list {
+            list-style: none; 
+            padding-left: 0;
+            font-size: 0.85rem;
+            color: #374151;
+        }
+        .expertise-list li {
+            margin-bottom: 0.35rem;
+            padding-left: 1.25em; 
+            position: relative;
+        }
+        .expertise-list li::before {
+            content: "✓"; 
+            color: #0070D2;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.1em; 
+        }
+        .expertise-list li strong {
+            font-weight: 500; 
+            color: #1e3a8a; 
+        }
 
         /* Styles for Qualification Section */
         .qualification-card-base {
@@ -399,7 +370,7 @@
         }
         /* End of Flip Card Styles */
 
-        /* Generic Carousel Styles (used by Experience and Expertise) */
+        /* Generic Carousel Styles (used by Experience) */
         .carousel-container { position: relative; } 
         .carousel-track-container { overflow: hidden; width: 100%; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
@@ -555,7 +526,7 @@
         /* Kurzprofil & Berufserfahrung & Expertise: Fett markierte Keywords hervorheben */
         body.dark-mode #short-profile-section .lang-element p strong,
         body.dark-mode .job-experience-card ul.custom-bullets > li > strong,
-        body.dark-mode .expertise-slide-card li.item-style-k strong { /* Updated for expertise carousel */
+        body.dark-mode .competency-card .expertise-list li strong {
             color: #f0f9ff; 
             font-weight: 700; 
         }
@@ -567,7 +538,7 @@
         body.dark-mode .education-details p, 
         body.dark-mode .education-details, 
         body.dark-mode ul.custom-bullets-qual > li,
-        body.dark-mode .expertise-slide-card li.item-style-k { /* Updated for expertise carousel */
+        body.dark-mode .competency-card .expertise-list li {
             color: #9ca3af; 
         }
          body.dark-mode .education-highlight,
@@ -578,27 +549,6 @@
 
         body.dark-mode .hero-c-v2-var2 .language-icon-svg text { fill: #e0f2fe; }
         body.dark-mode .language-item .language-tooltip { background-color: #374151; color: #e5e7eb; }
-
-        /* Expertise Section (Carousel) & Key Results Dark Mode */
-        body.dark-mode .expertise-slide-card { /* Dark mode for expertise slides */
-            background-color: #1a2b46; 
-            border: 1px solid #4b5563; 
-            box-shadow: 0 4px 10px rgba(0, 20, 50, 0.25); 
-        }
-        body.dark-mode .expertise-slide-card-title { /* Dark mode for titles in expertise slides */
-            color: #93c5fd; 
-            border-bottom-color: #6b7280; 
-        }
-        body.dark-mode .expertise-slide-card li.item-style-k { /* Dark mode for items in expertise slides */
-            background-color: #2d3748; 
-            border-color: #4b5563; 
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), inset 1px 1px 1px rgba(255,255,255,0.05); 
-        }
-        body.dark-mode .expertise-slide-card li.item-style-k:hover {
-            background-color: #374151; 
-            border-color: #6b7280; 
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25), inset 1px 1px 2px rgba(255,255,255,0.08);
-        }
         
         body.dark-mode .key-results-style-a { 
             background-color: #1a2b46; 
@@ -619,19 +569,15 @@
         body.dark-mode ul.custom-bullets > li::before { color: #60a5fa; }
         body.dark-mode ul.custom-bullets-qual > li::before { color: #60a5fa; }
 
-
-        /* Kernkompetenzen Dark Mode */
-        body.dark-mode .competency-item-base { background-color: #2d3748; border-color: #374151; }
-        body.dark-mode .competency-item-base:hover { box-shadow: 0 4px 16px rgba(186, 230, 253, 0.15); }
-        body.dark-mode .competency-icon-material { 
-            color: #bae6fd; 
-            text-shadow: 
-                0px 0.5px 0.5px rgba(101, 163, 13, 0.95), 
-                1px 1px 1px rgba(0, 0, 0, 0.5),      
-                0px 2px 3px rgba(101, 163, 13, 0.3);    
-        }
+        /* Competencies Dark Mode */
+        body.dark-mode .competency-card { background-color: #2d3748; border-color: #374151; }
+        body.dark-mode .competency-card:hover { box-shadow: 0 4px 16px rgba(186, 230, 253, 0.15); }
+        body.dark-mode .competency-icon-material { color: #bae6fd; }
         body.dark-mode .competency-title-text { color: #e0e7ff; }
         body.dark-mode .competency-description-text { color: #9ca3af; } 
+        body.dark-mode .expertise-subheader { color: #93c5fd; border-top-color: #374151;}
+        body.dark-mode .expertise-list li { color: #cbd5e1; }
+        body.dark-mode .expertise-list li strong { color: #e0f2fe; }
         
         body.dark-mode .bg-slate-50 { background-color: #334155; } 
         body.dark-mode .text-blue-600 { color: #93c5fd; }
@@ -640,9 +586,7 @@
         body.dark-mode .qualification-card-base { background-color: #2d3748; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         body.dark-mode .qualification-card-base:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
         body.dark-mode .education-institution { color: #a0aec0; }
-        /* Standardtext für education-details und custom-bullets-qual wird oben globaler gesetzt */
-
-
+        
         body.dark-mode .flip-card-front { background-color: #374151; color: #e5e7eb; }
         body.dark-mode .flip-card-back { background-color: #2563eb; color: white; }
         body.dark-mode .flip-card-back h4 { color: white; }
@@ -676,17 +620,13 @@
                 <span class="lang-element" lang="de">Profil</span>
                 <span class="lang-element" lang="en" style="display:none;">Profile</span>
             </a>
-            <a href="#core-competencies-section">
+            <a href="#competencies-section">
                 <span class="lang-element" lang="de">Kompetenzen</span>
-                <span class="lang-element" lang="en" style="display:none;">Skills</span>
+                <span class="lang-element" lang="en" style="display:none;">Competencies</span>
             </a>
             <a href="#professional-experience-section">
                 <span class="lang-element" lang="de">Erfahrung</span>
                 <span class="lang-element" lang="en" style="display:none;">Experience</span>
-            </a>
-            <a href="#expertise-section">
-                <span class="lang-element" lang="de">Expertise</span>
-                <span class="lang-element" lang="en" style="display:none;">Expertise</span>
             </a>
             <a href="#qualification-section">
                 <span class="lang-element" lang="de">Qualifizierung</span>
@@ -774,7 +714,7 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Erfahrener Program Owner & Automotive CRM-Experte</h4>
-                                <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von <strong>CRM und Sales Prozessen</strong> bei Mercedes-Benz.</p>
+                                <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von Kundenbeziehungsprozessen bei Mercedes-Benz.</p>
                             </div>
                         </div>
                     </div>
@@ -786,7 +726,7 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Experienced Program Owner & Automotive CRM Expert</h4>
-                                <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of <strong>CRM and sales processes</strong> at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
+                                <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of customer relationship processes at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
                             </div>
                         </div>
                     </div>
@@ -840,94 +780,17 @@
                     </div>
                 </div>
             </section>
-
-            <section class="mb-12" id="core-competencies-section">
+            
+            <section class="mb-12" id="competencies-section">
                 <h2 class="section-main-title">
-                    <span class="lang-element" lang="de">KERNKOMPETENZEN</span>
-                    <span class="lang-element" lang="en" style="display:none;">CORE COMPETENCIES</span>
+                    <span class="lang-element" lang="de">Kompetenzen & Expertise</span>
+                    <span class="lang-element" lang="en" style="display:none;">Competencies & Expertise</span>
                 </h2>
-                <div class="card-grid-competencies">
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">hub</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">Salesforce Platform Leadership</span>
-                                <span class="lang-element" lang="en" style="display:none;">Salesforce Platform Leadership</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Umfassende Steuerung und Entwicklung von Salesforce-Lösungen über Sales, Service, Marketing, Experience & Data Cloud.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Comprehensive management and development of Salesforce solutions across Sales, Service, Marketing, Experience & Data Cloud.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">directions_car</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">Automotive CRM & Digitale Transformation</span>
-                                <span class="lang-element" lang="en" style="display:none;">Automotive CRM & Digital Transformation</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Gestaltung digitaler Kundenprozesse im Automotive-Sektor für Sales, After Sales & Finance Use Cases.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Designing digital customer processes in the automotive sector for Sales, After Sales & Finance use cases.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">widgets</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">Lösungsarchitektur & Solution Management</span>
-                                <span class="lang-element" lang="en" style="display:none;">Solution Architecture & Solution Management</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Entwurf und Management von CRM-Lösungen für Agenturmodelle, SAM und POS-Integrationen.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Design and management of CRM solutions for agency models, SAM, and POS integrations.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">loop</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">Agile Program & Transition Management</span>
-                                <span class="lang-element" lang="en" style="display:none;">Agile Program & Transition Management</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Effiziente Leitung agiler Programme und Transitionsprojekte mit Fokus auf Leistungssteigerung (ca. 40% in Transition).</span>
-                                <span class="lang-element" lang="en" style="display:none;">Efficient management of agile programs and transition projects with a focus on performance increase (approx. 40% in transition).</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">auto_awesome</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">KI im CRM</span>
-                                <span class="lang-element" lang="en" style="display:none;">AI in CRM</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Pilotierung und strategische Implementierung von KI-Lösungen wie Salesforce Agentforce zur Effizienz- und Qualitätssteigerung.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Piloting and strategic implementation of AI solutions like Salesforce Agentforce for efficiency and quality improvement.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="competency-item-base">
-                        <span class="competency-icon-material">groups</span>
-                        <div>
-                            <h4 class="competency-title-text">
-                                <span class="lang-element" lang="de">Stakeholder Management & Kommunikation</span>
-                                <span class="lang-element" lang="en" style="display:none;">Stakeholder Management & Communication</span>
-                            </h4>
-                            <p class="competency-description-text">
-                                <span class="lang-element" lang="de">Effektive Kommunikation und Management von Stakeholder-Erwartungen bis auf Top-Management-Ebene.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Effective communication and management of stakeholder expectations up to top management level.</span>
-                            </p>
-                        </div>
-                    </div>
+                <div class="competency-grid" id="competencyGrid">
+                    <!-- Competency cards will be dynamically inserted here by JavaScript -->
                 </div>
             </section>
-
+            
             <section class="mb-12" id="professional-experience-section">
                 <h2 class="section-main-title">
                     <span class="lang-element" lang="de">BERUFSERFAHRUNG</span>
@@ -949,33 +812,6 @@
                             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
                         </button>
                         <button class="carousel-button-combined next" id="nextExperience">
-                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-12" id="expertise-section">
-                <h2 class="section-main-title">
-                    <span class="lang-element" lang="de">EXPERTISE</span>
-                    <span class="lang-element" lang="en" style="display:none;">EXPERTISE</span>
-                </h2>
-                <div class="expertise-carousel-container carousel-container"> 
-                    <p class="text-xs text-slate-500 text-center mt-2 mb-1 italic carousel-hint">
-                        <span class="lang-element" lang="de">Wischen oder klicken für weitere Expertise-Bereiche</span>
-                        <span class="lang-element" lang="en" style="display:none;">Swipe or click for more expertise areas</span>
-                    </p>
-                    <div class="carousel-dots-combined" id="expertiseCarouselDots"></div>
-                    <div class="carousel-main-area"> 
-                        <div class="expertise-carousel-track-container carousel-track-container">
-                            <div class="expertise-carousel-track carousel-track" id="expertiseCarouselTrack">
-                                <!-- Expertise slides will be dynamically inserted here by JavaScript -->
-                            </div>
-                        </div>
-                        <button class="carousel-button-combined prev" id="prevExpertise">
-                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                        </button>
-                        <button class="carousel-button-combined next" id="nextExpertise">
                             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                         </button>
                     </div>
@@ -1288,33 +1124,37 @@
                     companyEn: "Mercedes-Benz AG, MX/DAC, Stuttgart | 03/2023 – Present",
                     tasksDe: [
                         "<strong>Strategische CRM-Programmführung (Salesforce):</strong> Gesamtverantwortung für die europaweite MB CRM-Landschaft (Strategie, Architektur, Entwicklung) für Retail/Agenturmodelle & Sales/After Sales/Finance Use Cases (Fokus Sales Activities & Point of Sale), Ziel >10.000 Anwender.",
-                        "<strong>Leitung organisatorische Transition & Effizienzsteigerung (~40%)</strong> der MB CRM Entwicklungsmannschaft (extern zu intern), inkl. Change Management, Prozess- & Datenqualitätsoptimierung.",
-                        "<strong>Salesforce Solution Design & KI-Implementierung (Agentforce):</strong> Lösungsverantwortung für Salesforce CRM; Förderung & Pilotierung von KI (inkl. GenAI/PredAI Use Cases mit HS Aachen) zur Effizienz- & Qualitätssteigerung.",
-                        "<strong>Stakeholder Management (bis Top-Management):</strong> Proaktives Erwartungsmanagement und Übersetzung von Business-Anforderungen in technische Roadmaps."
+                        "<strong>Salesforce Solution Design & KI-Implementierung (Agentforce):</strong> Lösungsverantwortung für Salesforce CRM; Förderung & Pilotierung von KI (inkl. GenAI/PredAI Use Cases mit HS Aachen) zur Effizienz- & Qualitätssteigerung sowie Prozess- & <strong>Datenqualitätsoptimierung</strong>.",
+                        "<strong>Leitung organisatorische Transition & Effizienzsteigerung (~40%)</strong> der MB CRM Entwicklungsmannschaft (extern zu intern), inkl. Change Management.",
+                        "<strong>Stakeholder Management (bis Top-Management):</strong> Proaktives Erwartungsmanagement, Übersetzung von Business-Anforderungen in technische Roadmaps, Verantwortung für das <strong>Management Reporting</strong> sowie Aufbau und Überführung des <strong>Programm-Risikomanagements</strong>."
                     ],
                     tasksEn: [
                         "<strong>Strategic Salesforce CRM Program Leadership (Europe-wide):</strong> Overall responsibility for the MB CRM landscape (strategy, architecture, development) for agency/retail models & Sales/After Sales/Finance use cases (focus Sales Activities & Point of Sale), targeting >10,000 users.",
-                        "<strong>Led MB CRM Development Team Transition & Efficiency Increase (~40%):</strong> Managed shift from external to internal, including change management, plus process and data quality optimization initiatives.",
-                        "<strong>Salesforce CRM Solution Design & AI Implementation (Agentforce):</strong> Solution ownership for Salesforce CRM; drove AI promotion & piloting (incl. GenAI/PredAI use cases with HS Aachen) for enhanced efficiency and quality.",
-                        "<strong>Stakeholder Management (up to Top-Management):</strong> Proactively managed expectations and translated business requirements into technical roadmaps."
+                        "<strong>Salesforce CRM Solution Design & AI Implementation (Agentforce):</strong> Solution ownership for Salesforce CRM; drove AI promotion & piloting (incl. GenAI/PredAI use cases with HS Aachen) for enhanced efficiency and quality, as well as process and <strong>data quality optimization</strong>.",
+                        "<strong>Led MB CRM Development Team Transition & Efficiency Increase (~40%):</strong> Managed shift from external to internal, including change management.",
+                        "<strong>Stakeholder Management (up to Top-Management):</strong> Proactively managed expectations, translated business requirements into technical roadmaps, responsible for <strong>management reporting</strong>, and established and transitioned <strong>program risk management</strong>."
                     ],
                     keyResultsDe: "Etablierung einer zukunftsfähigen, europaweit standardisierten CRM-Plattform für Agilität in Vertriebsmodellen, tiefe POS-Integration und datengetriebene Kundenzentrierung.",
                     keyResultsEn: "Establishment of a future-proof, Europe-wide standardized CRM platform for agility in sales models, deep POS integration, and data-driven customer centricity."
                 },
                 {
-                    titleDe: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)", 
-                    titleEn: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)", 
+                    titleDe: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
+                    titleEn: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
                     companyDe: "Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023",
                     companyEn: "Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023",
                     tasksDe: [
                         "<strong>Europaweite Salesforce CRM-Implementierung & Skalierung:</strong> Leitung der Einführung von OneCRM für <strong>>3.000 Nutzer in 12 europäischen Märkten</strong> (Retail, After Sales), inkl. Ablösung von >8 Legacy-Systemen mit signifikanter Kosten- & Komplexitätsreduktion.",
                         "<strong>Agile Teamführung & Transformation:</strong> Aufbau & Leitung internationaler Salesforce-Entwicklungsteams (bis zu 100 Mitglieder, davon ~50 MA in direkter technischer Leitung) unter Anwendung agiler Methoden (Scrum, Kanban) und Salesforce Best Practices.",
-                        "<strong>Technische Lösungsverantwortung & Prozessharmonisierung:</strong> Verantwortung für die Entwicklung einer skalierbaren Multi-Cloud Salesforce-Architektur (inkl. Data Cloud) sowie Vereinheitlichung von Vertriebs-, Service- & After Sales Prozessen (SAM-Grundlagen)."
+                        "<strong>Technische Lösungsverantwortung & Prozessharmonisierung:</strong> Verantwortung für die Entwicklung einer skalierbaren Multi-Cloud Salesforce-Architektur (inkl. Data Cloud) sowie Vereinheitlichung von Vertriebs-, Service- & After Sales Prozessen (SAM-Grundlagen).",
+                        "Eigenständiger Aufbau, Implementierung und Übergabe des <strong>Application Management Service (AMS)</strong> in die Linienfunktion.",
+                        "Entwicklung, Implementierung und Verantwortung des gesamten <strong>Lifecycle-Managements</strong> für MB CRM."
                     ],
                     tasksEn: [
-                        "<strong>Europe-wide Salesforce CRM Implementation & Scaling:</strong> Led the introduction of OneCRM for <strong>>3.000 users in 12 European markets</strong> (Retail, After Sales), incl. replacement of >8 legacy systems with significant cost & complexity reduction.",
+                        "<strong>Europe-wide Salesforce CRM Implementation & Scaling:</strong> Led the introduction of OneCRM for <strong>>3,000 users in 12 European markets</strong> (Retail, After Sales), incl. replacement of >8 legacy systems with significant cost & complexity reduction.",
                         "<strong>Agile Team Leadership & Transformation:</strong> Built & led international Salesforce development teams (up to 100 members, with ~50 employees in direct technical leadership) using agile methods (Scrum, Kanban) and Salesforce Best Practices.",
-                        "<strong>Technical Solution Ownership & Process Harmonization:</strong> Responsible for developing a scalable multi-cloud Salesforce architecture (incl. Data Cloud) and standardizing sales, service & after-sales processes (SAM fundamentals)."
+                        "<strong>Technical Solution Ownership & Process Harmonization:</strong> Responsible for developing a scalable multi-cloud Salesforce architecture (incl. Data Cloud) and standardizing sales, service & after-sales processes (SAM fundamentals).",
+                        "Independent setup, implementation, and handover of the <strong>Application Management Service (AMS)</strong> to the line function.",
+                        "Development, implementation, and responsibility for the entire <strong>lifecycle management</strong> for MB CRM."
                     ],
                     keyResultsDe: "Schaffung einer 360°-Kundensicht; Steigerung Vertriebseffizienz & Lead-Conversion-Rate.",
                     keyResultsEn: "Creation of a 360° customer view; increased sales efficiency & lead conversion rate."
@@ -1350,178 +1190,323 @@
                     keyResultsEn: "Consistent CRM processes in retail; improved user acceptance of MBC POS."
                 },
                 {
-                    titleDe: "Customer Contact Center Strategie", 
-                    titleEn: "Customer Contact Center Strategy", 
+                    titleDe: "Customer Contact Center Strategie",
+                    titleEn: "Customer Contact Center Strategy",
                     companyDe: "Automotive Training & Consulting GmbH (für Daimler AG) | 06/2013 – 07/2014",
                     companyEn: "Automotive Training & Consulting GmbH (for Daimler AG) | 06/2013 – 07/2014",
                     tasksDe: [
-                        "Entwicklung einer Strategie zur Optimierung der zentralen <strong>Customer Contact Center</strong> (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience); <strong>globale Anwendbarkeit und Umsetzung der Strategie</strong>." 
+                        "Entwicklung einer Strategie zur Optimierung der zentralen <strong>Customer Contact Center</strong> (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience); <strong>globale Anwendbarkeit und Umsetzung der Strategie</strong>."
                     ],
                     tasksEn: [
-                        "Development of a strategy to optimize central <strong>Customer Contact Centers</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience); <strong>global applicability and implementation of the strategy</strong>." 
+                        "Development of a strategy to optimize central <strong>Customer Contact Centers</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience); <strong>global applicability and implementation of the strategy</strong>."
                     ],
                     keyResultsDe: "Strategisches Konzept für globale Kundenkontaktprozesse als Pilotierungsbasis.",
                     keyResultsEn: "Strategic concept for global customer contact processes as a basis for piloting."
                 },
                 {
-                    titleDe: "BDC Enablement, Governance and Measurement", 
-                    titleEn: "BDC Enablement, Governance and Measurement", 
+                    titleDe: "BDC Enablement, Governance and Measurement",
+                    titleEn: "BDC Enablement, Governance and Measurement",
                     companyDe: "Automotive Training & Consulting GmbH (für Daimler AG) | 01/2011 – 05/2013",
                     companyEn: "Automotive Training & Consulting GmbH (for Daimler AG) | 01/2011 – 05/2013",
                     tasksDe: [
-                        "Internationale <strong>Markt Readiness</strong> Analysen & Rolloutbegleitung <strong>Business Development Center</strong> (BDC), <strong>u.a. Fokusmarkt China</strong>.", 
+                        "Internationale <strong>Markt Readiness</strong> Analysen & Rolloutbegleitung <strong>Business Development Center</strong> (BDC), <strong>u.a. Fokusmarkt China</strong>.",
                         "Verantwortung für das gesamte <strong>Reporting</strong>: Aufbau und Entwicklung von Dashboards, KPI-Reports und Management-Präsentationen zur Erfolgsmessung der BDC-Aktivitäten."
                     ],
                     tasksEn: [
-                        "International <strong>market readiness</strong> analyses & rollout support for <strong>Business Development Centers</strong> (BDC), <strong>including focus market China</strong>.", 
+                        "International <strong>market readiness</strong> analyses & rollout support for <strong>Business Development Centers</strong> (BDC), <strong>including focus market China</strong>.",
                         "Responsibility for all <strong>reporting</strong>: Setup and development of dashboards, KPI reports, and management presentations to measure the success of BDC activities."
                     ],
                     keyResultsDe: "Erfolgreiche Pilotierung/Implementierung von LMS & BDC-Strukturen international; Etablierung eines transparenten Performance-Monitorings.",
                     keyResultsEn: "Successful piloting/implementation of LMS & BDC structures internationally; Establishment of transparent performance monitoring."
                 },
-                { 
-                    titleDe: "Business Development Center (BDC) & Lead Management Systeme (LMS)", 
-                    titleEn: "Business Development Center (BDC) & Lead Management Systems (LMS)", 
+                {
+                    titleDe: "Business Development Center (BDC) & Lead Management Systeme (LMS)",
+                    titleEn: "Business Development Center (BDC) & Lead Management Systems (LMS)",
                     companyDe: "Daimler Protics GmbH (für Daimler AG) | 04/2005 – 12/2010",
                     companyEn: "Daimler Protics GmbH (for Daimler AG) | 04/2005 – 12/2010",
                     tasksDe: [
                         "Entwicklung, Konzeption und Rollout-Sicherung von <strong>Business Development Center</strong> (BDC)-Vertriebskanälen und Sales <strong>Lead Management Systemen</strong> (LMS).",
                         "Übernahme internationaler <strong>Projektleitung</strong> für BDC- & LMS-Rollouts (Fokus Europa & Übersee) als Senior Consultant.",
                         "Strategische Beratung zur Prozessoptimierung im <strong>Lead-to-Sales-Funnel</strong>.",
-                        "Konzeption und Pilotierung des BDC-Ansatzes für den <strong>After Sales Bereich</strong> zur Steigerung der Kundenbindung und Service-Umsätze."
+                        "Konzeption und Pilotierung des BDC-Ansatzes für den <strong>After Sales Bereich</strong> zur Steigerung der Kundenbindung und Service-Umsätze.",
+                        "Aufbau eines umfassenden <strong>Support-Konzepts</strong> inklusive 2nd und 3rd Level Support."
                     ],
                     tasksEn: [
                         "Development, conception, and rollout assurance of <strong>Business Development Center</strong> (BDC) sales channels and Sales <strong>Lead Management Systems</strong> (LMS).",
                         "Assumption of international <strong>project leadership</strong> for BDC & LMS rollouts (focus Europe & overseas) as Senior Consultant.",
                         "Strategic consulting for process optimization in the <strong>lead-to-sales funnel</strong>.",
-                        "Conception and piloting of the BDC approach for the <strong>After Sales area</strong> to increase customer loyalty and service revenue."
+                        "Conception and piloting of the BDC approach for the <strong>After Sales area</strong> to increase customer loyalty and service revenue.",
+                        "Establishment of a comprehensive <strong>support concept</strong> including 2nd and 3rd level support."
                     ],
                     keyResultsDe: "Professionalisierung der BDC-Kanäle (Sales & After Sales) und Etablierung standardisierter, internationaler Lead Management Prozesse.",
                     keyResultsEn: "Professionalization of BDC channels (Sales & After Sales) and establishment of standardized, international lead management processes."
                 }
             ];
 
-            const expertiseData = [
+            const competenciesData = [
                 {
-                    titleDe: "Management & Methoden",
-                    titleEn: "Management & Methods",
-                    itemsDe: [
-                        "<strong>Führung</strong> interdisziplinärer & internationaler Teams mit Fokus auf globale Projekte und Kulturen",
-                        "<strong>Agile Entwicklung</strong> (Scrum, Kanban) & DevOps-Prinzipien zur kontinuierlichen Verbesserung und Effizienzsteigerung",
-                        "Organisatorische <strong>Transition & Change Management</strong> (ganzheitliche Betriebsmodelle und nachhaltiger Kulturwandel)",
-                        "<strong>Stakeholder Management</strong> & Anforderungsanalyse (bis Top-Management/E-Level)"
+                    icon: "loop",
+                    titleDe: "Agile Program & Transition Management",
+                    titleEn: "Agile Program & Transition Management",
+                    descriptionDe: "Effiziente Leitung agiler Programme und Transitionsprojekte mit Fokus auf Leistungssteigerung.",
+                    descriptionEn: "Efficient management of agile programs and transition projects with a focus on performance increase.",
+                    expertiseDe: [
+                        "<strong>Agile Entwicklung</strong> (Scrum, Kanban) & DevOps-Prinzipien",
+                        "Organisatorische <strong>Transition & Change Management</strong>",
+                        "<strong>Internationale Projektleitung</strong> & Rollout-Management (BDC, LMS, oCRM; Fokus Europa, Übersee, China)",
+                        "Leitung von <strong>Transitionsprojekten</strong> für Entwicklungsteams mit signifikanter Effizienzsteigerung",
+                        "Durchführung von <strong>Markt Readiness Analysen</strong> für internationale Rollouts"
                     ],
-                    itemsEn: [
-                        "<strong>Leadership</strong> of interdisciplinary & international teams with a focus on global projects and cultures",
-                        "<strong>Agile Development</strong> (Scrum, Kanban) & DevOps Principles for continuous improvement and efficiency gains",
-                        "Organizational <strong>Transition & Change Management</strong> (holistic operating models and sustainable cultural change)",
-                        "<strong>Stakeholder Management</strong> & Requirements Analysis (up to Top Management/E-Level)"
+                    expertiseEn: [
+                        "<strong>Agile Development</strong> (Scrum, Kanban) & DevOps Principles",
+                        "Organizational <strong>Transition & Change Management</strong>",
+                        "<strong>International Project Leadership</strong> & Rollout Management (BDC, LMS, oCRM; Focus Europe, Overseas, China)",
+                        "Leading <strong>transition projects</strong> for development teams with significant efficiency increase",
+                        "Conducting <strong>market readiness analyses</strong> for international rollouts"
                     ]
                 },
                 {
-                    titleDe: "Salesforce & CRM-Lösungen",
-                    titleEn: "Salesforce & CRM Solutions",
-                    itemsDe: [
+                    icon: "widgets",
+                    titleDe: "Lösungsarchitektur & Solution Management",
+                    titleEn: "Solution Architecture & Solution Management",
+                    descriptionDe: "Entwurf und Management von CRM-Lösungen für Agenturmodelle, SAM und POS-Integrationen.",
+                    descriptionEn: "Design and management of CRM solutions for agency models, SAM, and POS integrations.",
+                    expertiseDe: [
+                        "<strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events für Echtzeit-Daten)",
+                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration für nahtlose Vertriebsprozesse",
+                        "<strong>Finanzwesen</strong> & Bankwirtschaftslehre (Basis für Finance Use Cases und Reporting)",
+                        "Entwicklung <strong>skalierbarer Multi-Cloud Salesforce-Architekturen</strong> (inkl. Data Cloud)",
+                        "<strong>Massendatenmigration</strong> aus Legacy-Systemen",
+                        "Harmonisierung von POS-Systemen in <strong>heterogene CRM-Landschaften</strong>",
+                        "Prozessoptimierung im <strong>Lead-to-Sales-Funnel</strong>"
+                    ],
+                    expertiseEn: [
+                        "<strong>Solution Architecture</strong> & Complex System Integrations (API-based, Kafka Event Streaming, Salesforce Platform Events for real-time data)",
+                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration for seamless sales processes",
+                        "<strong>Finance</strong> & Banking (Basis for Finance Use Cases and Reporting)",
+                        "Development of <strong>scalable Multi-Cloud Salesforce Architectures</strong> (incl. Data Cloud)",
+                        "<strong>Mass data migration</strong> from legacy systems",
+                        "Harmonization of POS systems in <strong>heterogeneous CRM landscapes</strong>",
+                        "Process optimization in the <strong>lead-to-sales funnel</strong>"
+                    ]
+                },
+                {
+                    icon: "directions_car",
+                    titleDe: "Automotive CRM & Digitale Transformation",
+                    titleEn: "Automotive CRM & Digital Transformation",
+                    descriptionDe: "Gestaltung digitaler Kundenprozesse im Automotive-Sektor für Sales, After Sales & Finance Use Cases.",
+                    descriptionEn: "Designing digital customer processes in the automotive sector for Sales, After Sales & Finance use cases.",
+                    expertiseDe: [
+                        "<strong>Automotive</strong> Branchenexpertise & digitale Transformation im Fahrzeugvertrieb und -service",
+                        "<strong>CRM-Strategie,</strong> -Implementierung & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agenturmodell)",
+                        "Entwicklung von <strong>Customer Contact Center (CCC) Strategien</strong> (MBC2020 – Best Customer Experience)",
+                        "Konzeption & Pilotierung von BDC-Ansätzen für den <strong>After Sales Bereich</strong>"
+                    ],
+                    expertiseEn: [
+                        "<strong>Automotive</strong> Industry Expertise & Digital Transformation in vehicle sales and service",
+                        "<strong>CRM Strategy,</strong> Implementation & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agency Model)",
+                        "Development of <strong>Customer Contact Center (CCC) Strategies</strong> (MBC2020 – Best Customer Experience)",
+                        "Conception & piloting of BDC approaches for the <strong>After Sales area</strong>"
+                    ]
+                },
+                {
+                    icon: "hub",
+                    titleDe: "Salesforce Platform Leadership",
+                    titleEn: "Salesforce Platform Leadership",
+                    descriptionDe: "Umfassende Steuerung und Entwicklung von Salesforce-Lösungen über Sales, Service, Marketing, Experience & Data Cloud.",
+                    descriptionEn: "Comprehensive management and development of Salesforce solutions across Sales, Service, Marketing, Experience & Data Cloud.",
+                    expertiseDe: [
                         "<strong>Salesforce Plattform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce für KI-gestützte Prozesse",
                         "<strong>Lightning Platform</strong> (LWC, Apex, Flows) für anspruchsvolle und performante Custom-Entwicklungen",
-                        "<strong>CRM-Strategie,</strong> -Implementierung & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agenturmodell)",
-                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration für nahtlose Vertriebsprozesse"
+                        "Gesamtverantwortung für <strong>europaweite Salesforce CRM-Landschaften</strong> (>10.000 Anwender)",
+                        "Anwendung von <strong>Salesforce Best Practices</strong> in internationalen Entwicklungsteams"
                     ],
-                    itemsEn: [
+                    expertiseEn: [
                         "<strong>Salesforce Platform:</strong> Sales, Service, Marketing, Experience & Data Cloud, Agentforce for AI-driven processes",
                         "<strong>Lightning Platform</strong> (LWC, Apex, Flows) for sophisticated and performant custom developments",
-                        "<strong>CRM Strategy,</strong> Implementation & Solution Management (Automotive: Sales, After Sales, Finance; Retail/Wholesale, Agency Model)",
-                        "<strong>Sales Activity Management (SAM)</strong> & Point of Sale (POS) Integration for seamless sales processes"
+                        "Overall responsibility for <strong>Europe-wide Salesforce CRM landscapes</strong> (>10,000 users)",
+                        "Application of <strong>Salesforce Best Practices</strong> in international development teams"
                     ]
                 },
                 {
-                    titleDe: "Technologie & Branchenwissen",
-                    titleEn: "Technology & Industry Knowledge",
-                    itemsDe: [
-                        "<strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events für Echtzeit-Daten)",
-                        "<strong>Automotive</strong> Branchenexpertise & digitale Transformation im Fahrzeugvertrieb und -service",
-                        "<strong>Datenqualitäts- management</strong> & Governance für valide Daten",
-                        "<strong>Finanzwesen</strong> & Bankwirtschaftslehre (Basis für Finance Use Cases und Reporting)"
+                    icon: "groups",
+                    titleDe: "Stakeholder Management & Kommunikation",
+                    titleEn: "Stakeholder Management & Communication",
+                    descriptionDe: "Effektive Kommunikation und Management von Stakeholder-Erwartungen.",
+                    descriptionEn: "Effective communication and management of stakeholder expectations.",
+                    expertiseDe: [
+                        "<strong>Stakeholder Management</strong> & Anforderungsanalyse",
+                        "<strong>Führung</strong> interdisziplinärer & internationaler Teams",
+                        "Proaktives Erwartungsmanagement & Übersetzung von Business-Anforderungen in <strong>technische Roadmaps</strong>",
+                        "Fachliche Leitung von <strong>CRM Integration Groups</strong>"
                     ],
-                    itemsEn: [
-                        "<strong>Solution Architecture</strong> & Complex System Integrations (API-based, Kafka Event Streaming, Salesforce Platform Events for real-time data)",
-                        "<strong>Automotive</strong> Industry Expertise & Digital Transformation in vehicle sales and service",
-                        "<strong>Data Quality Management</strong> & Governance for valid data",
-                        "<strong>Finance</strong> & Banking (Basis for Finance Use Cases and Reporting)"
+                    expertiseEn: [
+                        "<strong>Stakeholder Management</strong> & Requirements Analysis",
+                        "<strong>Leadership</strong> of interdisciplinary & international teams",
+                        "Proactive expectation management & translation of business requirements into <strong>technical roadmaps</strong>",
+                        "Functional lead of <strong>CRM Integration Groups</strong>"
+                    ]
+                },
+                {
+                    icon: "auto_awesome",
+                    titleDe: "KI im CRM",
+                    titleEn: "AI in CRM",
+                    descriptionDe: "Pilotierung und strategische Implementierung von KI-Lösungen wie Salesforce Agentforce zur Effizienz- und Qualitätssteigerung.",
+                    descriptionEn: "Piloting and strategic implementation of AI solutions like Salesforce Agentforce for efficiency and quality improvement.",
+                    expertiseDe: [
+                        "Salesforce Agentforce für KI-gestützte Prozesse",
+                        "<strong>Datenqualitäts- management</strong> & Governance für valide Daten (als Grundlage für KI)",
+                        "Förderung & Pilotierung von KI-Use Cases (inkl. <strong>GenAI/PredAI mit HS Aachen</strong>)",
+                        "Entwicklung von <strong>Dashboards, KPI-Reports & Management-Präsentationen</strong> zur Erfolgsmessung"
+                    ],
+                    expertiseEn: [
+                        "Salesforce Agentforce for AI-driven processes",
+                        "<strong>Data Quality Management</strong> & Governance for valid data (as a basis for AI)",
+                        "Promotion & piloting of AI use cases (incl. <strong>GenAI/PredAI with HS Aachen</strong>)",
+                        "Development of <strong>dashboards, KPI reports & management presentations</strong> for performance measurement"
                     ]
                 }
             ];
-
-
-            const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
-            const experienceDotsContainer = document.getElementById('experienceCarouselDots');
-            let currentExperienceIndex = 0;
-
-            const expertiseCarouselTrack = document.getElementById('expertiseCarouselTrack');
-            const expertiseDotsContainer = document.getElementById('expertiseCarouselDots');
-            let currentExpertiseIndex = 0;
-
-
-            function createTaskListItem(taskText) {
-                const li = document.createElement('li');
-                li.innerHTML = taskText; 
-                return li;
-            }
             
-            function createExpertiseListItem(itemText) {
-                const li = document.createElement('li');
-                li.classList.add('item-style-k');
-                li.innerHTML = itemText; // Allows HTML like <strong>
-                return li;
+            const competencyGrid = document.getElementById('competencyGrid');
+
+            function createCompetencyCard(comp) {
+                const card = document.createElement('div');
+                card.classList.add('competency-card');
+
+                const header = document.createElement('div');
+                header.classList.add('competency-header');
+                
+                const icon = document.createElement('span');
+                icon.classList.add('competency-icon-material', 'material-icons');
+                icon.textContent = comp.icon;
+
+                const textWrapper = document.createElement('div');
+                
+                const title = document.createElement('h4');
+                title.classList.add('competency-title-text');
+                const titleDe = document.createElement('span');
+                titleDe.classList.add('lang-element');
+                titleDe.lang = 'de';
+                titleDe.textContent = comp.titleDe;
+                const titleEn = document.createElement('span');
+                titleEn.classList.add('lang-element');
+                titleEn.lang = 'en';
+                titleEn.textContent = comp.titleEn;
+                title.append(titleDe, titleEn);
+
+                const desc = document.createElement('p');
+                desc.classList.add('competency-description-text');
+                const descDe = document.createElement('span');
+                descDe.classList.add('lang-element');
+                descDe.lang = 'de';
+                descDe.textContent = comp.descriptionDe;
+                const descEn = document.createElement('span');
+                descEn.classList.add('lang-element');
+                descEn.lang = 'en';
+                descEn.textContent = comp.descriptionEn;
+                desc.append(descDe, descEn);
+
+                textWrapper.append(title, desc);
+                header.append(icon, textWrapper);
+                card.appendChild(header);
+
+                const subheader = document.createElement('h5');
+                subheader.classList.add('expertise-subheader');
+                const subheaderDe = document.createElement('span');
+                subheaderDe.classList.add('lang-element');
+                subheaderDe.lang = 'de';
+                subheaderDe.textContent = 'Expertise:';
+                const subheaderEn = document.createElement('span');
+                subheaderEn.classList.add('lang-element');
+                subheaderEn.lang = 'en';
+                subheaderEn.textContent = 'Expertise:';
+                subheader.append(subheaderDe, subheaderEn);
+                card.appendChild(subheader);
+
+                const expertiseList = document.createElement('ul');
+                expertiseList.classList.add('expertise-list');
+                
+                comp.expertiseDe.forEach((item, i) => {
+                    const li = document.createElement('li');
+                    
+                    const itemDe = document.createElement('span');
+                    itemDe.classList.add('lang-element');
+                    itemDe.lang = 'de';
+                    itemDe.innerHTML = item;
+                    
+                    const itemEn = document.createElement('span');
+                    itemEn.classList.add('lang-element');
+                    itemEn.lang = 'en';
+                    itemEn.innerHTML = comp.expertiseEn[i] || item; // Fallback to German text if English is missing
+
+                    li.append(itemDe, itemEn);
+                    expertiseList.appendChild(li);
+                });
+                
+                card.appendChild(expertiseList);
+
+                return card;
             }
+
+            function populateCompetencies() {
+                if(!competencyGrid) return;
+                competencyGrid.innerHTML = '';
+                competenciesData.forEach(comp => {
+                    competencyGrid.appendChild(createCompetencyCard(comp));
+                });
+            }
+
 
             function createJobCard(job) {
                 const card = document.createElement('div');
                 card.classList.add('job-experience-card');
 
                 const title = document.createElement('h3');
-                title.classList.add('text-xl', 'font-semibold', 'mb-1');
-                title.classList.add('job-title'); 
+                title.classList.add('text-xl', 'font-semibold', 'mb-1', 'job-title'); 
 
                 const titleDe = document.createElement('span');
                 titleDe.classList.add('lang-element');
-                titleDe.setAttribute('lang', 'de');
+                titleDe.lang = 'de';
                 titleDe.textContent = job.titleDe;
                 const titleEn = document.createElement('span');
                 titleEn.classList.add('lang-element');
-                titleEn.setAttribute('lang', 'en');
-                titleEn.style.display = 'none';
+                titleEn.lang = 'en';
                 titleEn.textContent = job.titleEn;
-                title.appendChild(titleDe);
-                title.appendChild(titleEn);
+                title.append(titleDe, titleEn);
                 
                 const company = document.createElement('p');
                 company.classList.add('text-sm', 'text-slate-500', 'mb-3');
                 const companyDe = document.createElement('span');
                 companyDe.classList.add('lang-element');
-                companyDe.setAttribute('lang', 'de');
+                companyDe.lang = 'de';
                 companyDe.textContent = job.companyDe;
                 const companyEn = document.createElement('span');
                 companyEn.classList.add('lang-element');
-                companyEn.setAttribute('lang', 'en');
-                companyEn.style.display = 'none';
+                companyEn.lang = 'en';
                 companyEn.textContent = job.companyEn;
-                company.appendChild(companyDe);
-                company.appendChild(companyEn);
+                company.append(companyDe, companyEn);
 
                 const tasksWrapper = document.createElement('div');
                 
                 const ulDe = document.createElement('ul');
                 ulDe.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
-                ulDe.setAttribute('lang', 'de');
-                job.tasksDe.forEach(task => ulDe.appendChild(createTaskListItem(task)));
+                ulDe.lang = 'de';
+                job.tasksDe.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+                    ulDe.appendChild(li);
+                });
                 tasksWrapper.appendChild(ulDe);
                 
                 const ulEn = document.createElement('ul');
                 ulEn.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
-                ulEn.setAttribute('lang', 'en');
-                ulEn.style.display = 'none';
-                job.tasksEn.forEach(task => ulEn.appendChild(createTaskListItem(task)));
+                ulEn.lang = 'en';
+                job.tasksEn.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+                    ulEn.appendChild(li);
+                });
                 tasksWrapper.appendChild(ulEn);
 
 
@@ -1530,76 +1515,32 @@
                 
                 const keyResultsLabelDe = document.createElement('strong');
                 keyResultsLabelDe.classList.add('key-results-label', 'lang-element');
-                keyResultsLabelDe.setAttribute('lang', 'de');
+                keyResultsLabelDe.lang = 'de';
                 keyResultsLabelDe.textContent = "Key Results: "; 
                 const keyResultsLabelEn = document.createElement('strong');
                 keyResultsLabelEn.classList.add('key-results-label', 'lang-element');
-                keyResultsLabelEn.setAttribute('lang', 'en');
-                keyResultsLabelEn.style.display = 'none';
+                keyResultsLabelEn.lang = 'en';
                 keyResultsLabelEn.textContent = "Key Results: "; 
                 
-                keyResultsDiv.appendChild(keyResultsLabelDe);
-                keyResultsDiv.appendChild(keyResultsLabelEn);
+                keyResultsDiv.append(keyResultsLabelDe, keyResultsLabelEn);
 
                 const keyResultsTextDe = document.createElement('span');
                 keyResultsTextDe.classList.add('key-results-text-content', 'lang-element');
-                keyResultsTextDe.setAttribute('lang', 'de');
+                keyResultsTextDe.lang = 'de';
                 keyResultsTextDe.textContent = job.keyResultsDe;
                 const keyResultsTextEn = document.createElement('span');
                 keyResultsTextEn.classList.add('key-results-text-content', 'lang-element');
-                keyResultsTextEn.setAttribute('lang', 'en');
-                keyResultsTextEn.style.display = 'none';
+                keyResultsTextEn.lang = 'en';
                 keyResultsTextEn.textContent = job.keyResultsEn;
                 
-                keyResultsDiv.appendChild(keyResultsTextDe);
-                keyResultsDiv.appendChild(keyResultsTextEn);
+                keyResultsDiv.append(keyResultsTextDe, keyResultsTextEn);
 
-                card.appendChild(title);
-                card.appendChild(company);
-                card.appendChild(tasksWrapper);
-                card.appendChild(keyResultsDiv);
+                card.append(title, company, tasksWrapper, keyResultsDiv);
                 return card;
             }
 
-            function createExpertiseSlide(expertiseCategory) {
-                const slide = document.createElement('div');
-                slide.classList.add('expertise-slide-card');
 
-                const title = document.createElement('h4');
-                title.classList.add('expertise-slide-card-title');
-                const titleDe = document.createElement('span');
-                titleDe.classList.add('lang-element');
-                titleDe.setAttribute('lang', 'de');
-                titleDe.textContent = expertiseCategory.titleDe;
-                const titleEn = document.createElement('span');
-                titleEn.classList.add('lang-element');
-                titleEn.setAttribute('lang', 'en');
-                titleEn.style.display = 'none';
-                titleEn.textContent = expertiseCategory.titleEn;
-                title.appendChild(titleDe);
-                title.appendChild(titleEn);
-                slide.appendChild(title);
-
-                const itemsWrapper = document.createElement('div');
-                const ulDe = document.createElement('ul');
-                ulDe.classList.add('item-grid', 'lang-element');
-                ulDe.setAttribute('lang', 'de');
-                expertiseCategory.itemsDe.forEach(item => ulDe.appendChild(createExpertiseListItem(item)));
-                itemsWrapper.appendChild(ulDe);
-
-                const ulEn = document.createElement('ul');
-                ulEn.classList.add('item-grid', 'lang-element');
-                ulEn.setAttribute('lang', 'en');
-                ulEn.style.display = 'none';
-                expertiseCategory.itemsEn.forEach(item => ulEn.appendChild(createExpertiseListItem(item)));
-                itemsWrapper.appendChild(ulEn);
-                
-                slide.appendChild(itemsWrapper);
-                return slide;
-            }
-
-
-            function populateCarousel(carouselId, data, cardCreationFunction, dotsContainerId, currentIndexVariable) {
+            function populateCarousel(carouselId, data, cardCreationFunction, dotsContainerId) {
                 const track = document.getElementById(carouselId);
                 const dotsContainer = document.getElementById(dotsContainerId);
                 if (!track || !dotsContainer) return;
@@ -1608,7 +1549,7 @@
                 data.forEach(item => {
                     track.appendChild(cardCreationFunction(item));
                 });
-
+                
                 dotsContainer.innerHTML = '';
                 data.forEach((_, index) => {
                     const dot = document.createElement('span');
@@ -1616,22 +1557,14 @@
                     dot.dataset.slideTo = index;
                     dot.setAttribute('aria-label', `Folie ${index + 1}`);
                     dot.addEventListener('click', () => {
-                        if (carouselId === 'experienceCarouselTrack') {
-                            currentExperienceIndex = index;
-                            updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
-                        } else if (carouselId === 'expertiseCarouselTrack') {
-                            currentExpertiseIndex = index;
-                            updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
-                        }
+                        window[carouselId + 'Index'] = index;
+                        updateCarousel(carouselId, window[carouselId + 'Index'], dotsContainerId);
                     });
                     dotsContainer.appendChild(dot);
                 });
                 
-                if (carouselId === 'experienceCarouselTrack') {
-                     updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
-                } else if (carouselId === 'expertiseCarouselTrack') {
-                     updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
-                }
+                window[carouselId + 'Index'] = 0;
+                updateCarousel(carouselId, window[carouselId + 'Index'], dotsContainerId);
             }
             
             function updateCarousel(trackId, currentIndex, dotsContainerId) {
@@ -1643,83 +1576,47 @@
                 
                 const dots = Array.from(dotsContainer.children);
                 dots.forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.add('active-dot');
-                    } else {
-                        dot.classList.remove('active-dot');
-                    }
+                    dot.classList.toggle('active-dot', index === currentIndex);
                 });
             }
             
-            // Initialize Experience Carousel
             if (experienceCarouselTrack) { 
-                populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots', currentExperienceIndex);
+                populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
                 const nextButtonExp = document.getElementById('nextExperience');
                 const prevButtonExp = document.getElementById('prevExperience');
+                let expTouchstartX = 0;
+                let expTouchendX = 0;
 
                 if (nextButtonExp && prevButtonExp && jobExperiencesData.length > 0) {
                     nextButtonExp.addEventListener('click', () => {
-                        currentExperienceIndex = (currentExperienceIndex + 1) % jobExperiencesData.length;
-                        updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
+                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     });
                     prevButtonExp.addEventListener('click', () => {
-                        currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
-                        updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     });
                 }
-                // Swipe functionality for Experience Carousel
-                let expTouchstartX = 0;
-                let expTouchendX = 0;
-                experienceCarouselTrack.addEventListener('touchstart', function(event) { expTouchstartX = event.changedTouches[0].screenX; }, {passive: true});
-                experienceCarouselTrack.addEventListener('touchend', function(event) {
-                    expTouchendX = event.changedTouches[0].screenX;
+                
+                experienceCarouselTrack.addEventListener('touchstart', (e) => { expTouchstartX = e.changedTouches[0].screenX; }, {passive: true});
+                experienceCarouselTrack.addEventListener('touchend', (e) => {
+                    expTouchendX = e.changedTouches[0].screenX;
                     const swipeThreshold = 50; 
                     if (jobExperiencesData.length === 0) return; 
                     if (expTouchendX < expTouchstartX && (expTouchstartX - expTouchendX > swipeThreshold)) { 
-                        currentExperienceIndex = (currentExperienceIndex + 1) % jobExperiencesData.length;
+                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
                     }
                     if (expTouchendX > expTouchstartX && (expTouchendX - expTouchstartX > swipeThreshold)) { 
-                        currentExperienceIndex = (currentExperienceIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
                     }
-                    updateCarousel('experienceCarouselTrack', currentExperienceIndex, 'experienceCarouselDots');
+                    updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                 }, {passive: true});
             }
 
-            // Initialize Expertise Carousel
-            if (expertiseCarouselTrack) {
-                populateCarousel('expertiseCarouselTrack', expertiseData, createExpertiseSlide, 'expertiseCarouselDots', currentExpertiseIndex);
-                const nextButtonExp = document.getElementById('nextExpertise');
-                const prevButtonExp = document.getElementById('prevExpertise');
-
-                if (nextButtonExp && prevButtonExp && expertiseData.length > 0) {
-                    nextButtonExp.addEventListener('click', () => {
-                        currentExpertiseIndex = (currentExpertiseIndex + 1) % expertiseData.length;
-                        updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
-                    });
-                    prevButtonExp.addEventListener('click', () => {
-                        currentExpertiseIndex = (currentExpertiseIndex - 1 + expertiseData.length) % expertiseData.length;
-                        updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
-                    });
-                }
-                 // Swipe functionality for Expertise Carousel
-                let expertiseTouchstartX = 0;
-                let expertiseTouchendX = 0;
-                expertiseCarouselTrack.addEventListener('touchstart', function(event) { expertiseTouchstartX = event.changedTouches[0].screenX; }, {passive: true});
-                expertiseCarouselTrack.addEventListener('touchend', function(event) {
-                    expertiseTouchendX = event.changedTouches[0].screenX;
-                    const swipeThreshold = 50; 
-                    if (expertiseData.length === 0) return; 
-                    if (expertiseTouchendX < expertiseTouchstartX && (expertiseTouchstartX - expertiseTouchendX > swipeThreshold)) { 
-                        currentExpertiseIndex = (currentExpertiseIndex + 1) % expertiseData.length;
-                    }
-                    if (expertiseTouchendX > expertiseTouchstartX && (expertiseTouchendX - expertiseTouchstartX > swipeThreshold)) { 
-                        currentExpertiseIndex = (currentExpertiseIndex - 1 + expertiseData.length) % expertiseData.length;
-                    }
-                    updateCarousel('expertiseCarouselTrack', currentExpertiseIndex, 'expertiseCarouselDots');
-                }, {passive: true});
-            }
-
-
+            // Populate the new competency section
+            populateCompetencies();
+            setLanguage(currentLang);
+            
             const languageItems = document.querySelectorAll('.language-item');
             languageItems.forEach(item => {
                 const trigger = item.querySelector('.language-trigger');
