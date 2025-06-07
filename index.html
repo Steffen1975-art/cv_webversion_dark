@@ -222,79 +222,177 @@
             transition: color 0.3s ease;
         }
 
-        /* Styles for Combined Competency & Expertise Section */
+        /* Styles for Combined Competency & Expertise Section - FLIP CARDS */
         .competency-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
             gap: 1.5rem;
         }
-        .competency-card {
-            border: 1px solid #e5e7eb; 
-            border-radius: 0.5rem; 
-            padding: 1.25rem; 
-            background-color: #f9fafb; 
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            display: flex; 
-            flex-direction: column; 
+        .section-hint { /* Used by competency hint as well */
+            text-align: center; 
+            color: #6b7280; 
+            font-size: 0.875rem; 
+            font-style: italic; 
+            margin-top: -1rem; /* Adjusted from competency-hint */
+            margin-bottom: 1.5rem; 
         }
-        .competency-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        
+        .flip-card { 
+            background-color: transparent;
+            width: 100%;
+            /* aspect-ratio: 1 / 1; /* Applied specifically to competency cards if needed */
+            perspective: 1200px;
+            cursor: pointer;
+            border-radius: 0.625rem; 
         }
-        .competency-header {
-            display: flex;
-            align-items: flex-start; 
-            margin-bottom: 0.75rem;
+        .competency-grid .flip-card { /* Ensure competency cards are square by default */
+             aspect-ratio: 1 / 1;
+             min-height: 280px; 
         }
-        .competency-icon-material { 
-            font-family: 'Material Icons';
-            font-size: 1.9rem; 
-            margin-right: 0.9rem; 
-            flex-shrink: 0;
-            margin-top: 0.05rem; 
-            color: #001639; /* Icon color matching competency title */
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            transition: color 0.3s ease;
+        @media (max-width: 639px) { /* sm breakpoint in Tailwind */
+            .competency-grid .flip-card {
+                aspect-ratio: auto; /* Remove square aspect ratio on small screens */
+                min-height: 260px; /* Allow height to adjust to content */
+            }
+             .competency-grid .card-description {
+                font-size: 0.75rem; /* Slightly smaller description on very small screens */
+            }
+            .competency-grid .expertise-list {
+                font-size: 0.75rem; /* Slightly smaller expertise text */
+            }
         }
-        .competency-title-text {
-            font-weight: 600; color: #001639; font-size: 1.05rem; margin-bottom: 0.25rem; 
-        }
-        .competency-description-text {
-            font-size: 0.875rem; color: #4b5563; line-height: 1.6; 
-            margin-bottom: 1rem; 
-        }
-        .expertise-subheader {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #005FB8; 
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            border-top: 1px solid #e0f2fe; 
-            padding-top: 0.75rem;
-        }
-        .expertise-list {
-            list-style: none; 
-            padding-left: 0;
-            font-size: 0.85rem;
-            color: #374151;
-        }
-        .expertise-list li {
-            margin-bottom: 0.35rem;
-            padding-left: 1.25em; 
+
+
+        .flip-card-inner {
             position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-style: preserve-3d;
+            border-radius: 0.625rem; 
         }
-        .expertise-list li::before {
-            content: "✓"; 
-            color: #0070D2;
+
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.625rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.25rem; 
+            box-sizing: border-box;
+            overflow: hidden; 
+        }
+
+        /* FRONT OF COMPETENCY CARD */
+        .competency-grid .flip-card-front {
+            background-color: #f9fafb; 
+            border: 1px solid #f3f4f6; 
+            color: #4b5563; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+        }
+        .competency-grid .flip-card:hover .flip-card-front { /* Target only competency cards */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .competency-grid .flip-card-front::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px; 
+            height: 30px;
+            background: linear-gradient(135deg, transparent 50%, #e0f2fe 50.1%); 
+            border-bottom-right-radius: 0.625rem; /* Matches .flip-card border-radius */
+        }
+        
+        .competency-grid .card-header { /* Specific to competency cards */
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            margin-bottom: 0.5rem; 
+        }
+        .competency-grid .card-icon {
+            font-family: 'Material Icons';
+            font-size: 2.25rem; 
+            margin-right: 0; 
+            margin-bottom: 0.5rem; 
+            color: #00205b; 
+        }
+        .competency-grid .card-title {
+            font-weight: 600;
+            color: #00205b; 
+            font-size: 1rem; 
+            margin-bottom: 0.25rem; 
+            line-height: 1.3;
+        }
+        .competency-grid .card-description {
+            font-size: 0.8rem; 
+            color: #4b5563; 
+            line-height: 1.4;
+        }
+
+        /* BACK OF COMPETENCY CARD */
+        .competency-grid .flip-card-back {
+            background-color: #f0f9ff; 
+            border: 1px solid #e0f2fe; 
+            color: #0c4a6e; 
+            transform: rotateY(180deg);
+            justify-content: flex-start; 
+            padding: 1rem; 
+            overflow-y: auto; /* Allow scroll ONLY if content overflows on back */
+        }
+        .competency-grid .expertise-subheader-title {
+            font-weight: 700; 
+            font-size: 1rem;  
+            color: #00205b; 
+            margin-bottom: 0.5rem; 
+            padding-bottom: 0; 
+            border-bottom: none; 
+            width: 100%;
+            text-align:left; 
+            flex-shrink: 0; /* Prevent subheader from shrinking */
+        }
+        .competency-grid .expertise-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.8125rem; /* 13px */
+            margin-top: 0.25rem; 
+            flex-grow: 1; /* Allow list to take available space */
+            overflow-y: auto; /* Scroll within the list if needed */
+        }
+        .competency-grid .expertise-list li {
+            margin-bottom: 0.3rem; 
+            padding-left: 1.4em; 
+            position: relative;
+            color: #003366; 
+            line-height: 1.45; 
+        }
+        .competency-grid .expertise-list li::before {
+            content: "✓";
+            color: #0070D2; 
             font-weight: bold;
             position: absolute;
             left: 0;
-            top: 0.1em; 
+            top: 0.05em; 
+            font-size: 1em; 
         }
-        .expertise-list li strong {
-            font-weight: 500; 
-            color: #1e3a8a; 
+        .competency-grid .expertise-list li strong {
+            font-weight: 600; 
+            color: #003366; 
         }
+        /* END OF COMPETENCY FLIP CARD STYLES */
+
 
         /* Styles for Qualification Section */
         .qualification-card-base {
@@ -332,44 +430,26 @@
         /* End of Styles for Qualification Section */
 
         /* Styles for Flip Cards (Insights Section) */
-        .card-grid {
+        .insights-section .card-grid { /* Target insights card grid specifically */
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem; margin-top: 1.5rem;
         }
-        .flip-card {
-            background-color: transparent; width: 100%; aspect-ratio: 1 / 1;
-            perspective: 1000px; cursor: pointer;
+        .insights-section .flip-card { /* Target insights flip cards specifically */
+             aspect-ratio: 1 / 1; /* Keep insights cards square */
         }
-        .flip-card-inner {
-            position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 0.8s; transform-style: preserve-3d;
-            border-radius: 0.75rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        .insights-section .flip-card-front { background-color: #f8f9fa; color: #333; justify-content: center; align-items: center; } 
+        .insights-section .flip-card-front img { 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; 
         }
-        .flip-card:hover .flip-card-inner { transform: scale(1.02) rotateY(var(--tw-rotate-y, 0deg)); }
-        .flip-card.is-flipped .flip-card-inner { transform: scale(1.02) rotateY(180deg); }
-        .flip-card.is-flipped:hover .flip-card-inner { transform: scale(1.05) rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
-            position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 0.75rem; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; padding: 1.25rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .flip-card-front { background-color: #f8f9fa; color: #333; } 
-        .flip-card-front img { 
-            width: 100%; /* Explicitly set width */
-            height: 100%; /* Explicitly set height */
-            object-fit: cover; /* Ensures the image covers the card, might crop */
-            border-radius: 0.75rem; /* Match card rounding */
-        }
-        .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); } 
-        .flip-card-back h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; } 
-        .flip-card-back p { font-size: 0.9rem; }
-        .insights-hint { /* Class for the hint text in Insights/Energizer section */
-            color: #6b7280; /* Default light mode color (slate-500) */
+        .insights-section .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); justify-content: center; align-items: center;} 
+        .insights-section .flip-card-back h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; } 
+        .insights-section .flip-card-back p { font-size: 0.9rem; }
+        
+        .insights-hint { 
+            color: #6b7280; 
             transition: color 0.3s ease;
         }
-        /* End of Flip Card Styles */
+        /* End of Flip Card Styles for Insights */
 
         /* Generic Carousel Styles (used by Experience) */
         .carousel-container { position: relative; } 
@@ -515,31 +595,28 @@
 
 
         /* -------------------- DARK MODE STYLES -------------------- */
-        body.dark-mode { background-color: #111827; color: #d1d5db; } /* Standardtextfarbe für Dark Mode */
+        body.dark-mode { background-color: #111827; color: #d1d5db; } 
         body.dark-mode .web-resume-container { background-color: #1f2937; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         body.dark-mode h2.section-main-title { color: #93c5fd; border-bottom-color: #3b82f6; }
+        body.dark-mode .section-hint, body.dark-mode .carousel-hint, body.dark-mode .insights-hint { color: #9ca3af; }
         body.dark-mode h3.subsection-title,
         body.dark-mode h4.education-item-title,
         body.dark-mode h4.profile-block-title,
         body.dark-mode .profile-block-title-variant-a { color: #e0e7ff; }
         body.dark-mode .main-icon-svg { color: #93c5fd; } 
         
-        /* Kurzprofil & Berufserfahrung & Expertise: Fett markierte Keywords hervorheben */
         body.dark-mode #short-profile-section .lang-element p strong,
-        body.dark-mode .job-experience-card ul.custom-bullets > li > strong,
-        body.dark-mode .competency-card .expertise-list li strong {
+        body.dark-mode .job-experience-card ul.custom-bullets > li > strong {
             color: #f0f9ff; 
             font-weight: 700; 
         }
 
-        /* Kurzprofil & Berufserfahrung & Qualifizierung & Expertise: Standardtext anpassen für besseren Kontrast */
         body.dark-mode #short-profile-section .lang-element p.text-sm,
         body.dark-mode .job-experience-card ul.custom-bullets > li,
         body.dark-mode .job-experience-card .key-results-style-a .key-results-text-content,
         body.dark-mode .education-details p, 
         body.dark-mode .education-details, 
-        body.dark-mode ul.custom-bullets-qual > li,
-        body.dark-mode .competency-card .expertise-list li {
+        body.dark-mode ul.custom-bullets-qual > li {
             color: #9ca3af; 
         }
          body.dark-mode .education-highlight,
@@ -559,26 +636,28 @@
             color: #93c5fd; 
             font-size: 0.875rem; 
         }
-        body.dark-mode .carousel-hint { /* Dark mode for generic carousel hint */
-            color: #9ca3af; 
-        }
-        body.dark-mode .insights-hint { /* Dark mode for insights hint */
-            color: #9ca3af;
-        }
-
-
+        
         body.dark-mode ul.custom-bullets > li::before { color: #60a5fa; }
         body.dark-mode ul.custom-bullets-qual > li::before { color: #60a5fa; }
 
-        /* Competencies Dark Mode */
-        body.dark-mode .competency-card { background-color: #2d3748; border-color: #374151; }
-        body.dark-mode .competency-card:hover { box-shadow: 0 4px 16px rgba(186, 230, 253, 0.15); }
-        body.dark-mode .competency-icon-material { color: #bae6fd; }
-        body.dark-mode .competency-title-text { color: #e0e7ff; }
-        body.dark-mode .competency-description-text { color: #9ca3af; } 
-        body.dark-mode .expertise-subheader { color: #93c5fd; border-top-color: #374151;}
-        body.dark-mode .expertise-list li { color: #cbd5e1; }
-        body.dark-mode .expertise-list li strong { color: #e0f2fe; }
+        /* DARK MODE for Competency Flip Cards */
+        body.dark-mode .competency-grid .flip-card-front {
+            background-color: #374151; border-color: #4b5563; 
+        }
+        body.dark-mode .competency-grid .flip-card-front .card-icon,
+        body.dark-mode .competency-grid .flip-card-front .card-title { color: #e0f2fe; }
+        body.dark-mode .competency-grid .flip-card-front .card-description { color: #cbd5e1; }
+        body.dark-mode .competency-grid .flip-card-front::after {
+             background: linear-gradient(135deg, transparent 50%, #0c4a6e 50.1%); 
+        }
+        body.dark-mode .competency-grid .flip-card-back {
+            background-color: #0c4a6e; border-color: #073353; 
+        }
+        body.dark-mode .competency-grid .expertise-subheader-title { color: #e0f2fe; }
+        body.dark-mode .competency-grid .expertise-list li { color: #bae6fd; }
+        body.dark-mode .competency-grid .expertise-list li::before { color: #7dd3fc; }
+        body.dark-mode .competency-grid .expertise-list li strong { color: #f0f9ff; }
+        /* END OF COMPETENCY FLIP CARD STYLES */
         
         body.dark-mode .bg-slate-50 { background-color: #334155; } 
         body.dark-mode .text-blue-600 { color: #93c5fd; }
@@ -588,13 +667,13 @@
         body.dark-mode .qualification-card-base:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
         body.dark-mode .education-institution { color: #a0aec0; }
         
-        body.dark-mode .flip-card-front { background-color: #374151; color: #e5e7eb; }
-        body.dark-mode .flip-card-back { background-color: #2563eb; color: white; }
-        body.dark-mode .flip-card-back h4 { color: white; }
+        body.dark-mode .insights-section .flip-card-front { background-color: #374151; color: #e5e7eb; }
+        body.dark-mode .insights-section .flip-card-back { background-color: #1e40af; color: white; }
+        body.dark-mode .insights-section .flip-card-back h4 { color: white; }
 
 
         body.dark-mode .job-experience-card { background-color: #2d3748; }
-        body.dark-mode .job-experience-card .text-slate-500 { color: #94a3b8; } /* Company in Experience */
+        body.dark-mode .job-experience-card .text-slate-500 { color: #94a3b8; } 
         
         body.dark-mode .carousel-button-combined { background-color: rgba(59, 130, 246, 0.7); color: #e0f2fe; }
         body.dark-mode .carousel-button-combined:hover { background-color: #3b82f6; }
@@ -787,10 +866,13 @@
                     <span class="lang-element" lang="de">Kompetenzen & Expertise</span>
                     <span class="lang-element" lang="en" style="display:none;">Competencies & Expertise</span>
                 </h2>
+                <p class="section-hint">
+                    <span class="lang-element" lang="de">Klicke auf eine Kompetenz, um die dahinterliegende Expertise zu entdecken.</span>
+                    <span class="lang-element" lang="en" style="display:none;">Click on a competency to discover the underlying expertise.</span>
+                </p>
                 <div class="competency-grid" id="competencyGrid">
                     <!-- Competency cards will be dynamically inserted here by JavaScript -->
-                </div>
-            </section>
+                </div></section>
             
             <section class="mb-12" id="professional-experience-section">
                 <h2 class="section-main-title">
@@ -878,7 +960,7 @@
                 </div>
             </section>
 
-            <section class="mb-12" id="insights-section">
+            <section class="mb-12 insights-section" id="insights-section">
                 <h2 class="section-main-title">
                     <span class="lang-element" lang="de">INSIGHTS</span>
                     <span class="lang-element" lang="en" style="display:none;">INSIGHTS</span>
@@ -892,7 +974,7 @@
                         <span class="lang-element" lang="de">Meine Werte</span>
                         <span class="lang-element" lang="en" style="display:none;">My Values</span>
                     </h3>
-                    <div class="card-grid">
+                    <div class="insights-section .card-grid"> <!-- Ensure .insights-section is on the parent for specific flip card styles -->
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
@@ -945,7 +1027,7 @@
                         <span class="lang-element" lang="de">Energizer</span>
                         <span class="lang-element" lang="en" style="display:none;">Energizer</span>
                     </h3>
-                    <div class="card-grid">
+                    <div class="insights-section .card-grid">
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
@@ -1099,18 +1181,12 @@
             } else {
                 if (langButtonTextEl) langButtonTextEl.textContent = 'DE';
             }
-            setLanguage(currentLang);
+            // setLanguage(currentLang); // Called at the end of this function
 
             const currentYearSpan = document.getElementById('currentYear');
             if (currentYearSpan) {
                 currentYearSpan.textContent = new Date().getFullYear();
             }
-
-            document.querySelectorAll('.flip-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    card.classList.toggle('is-flipped');
-                });
-            });
 
             const langToggleButton = document.getElementById('toggleLangButton');
             if (langToggleButton) {
@@ -1138,7 +1214,7 @@
                     keyResultsDe: "Etablierung einer zukunftsfähigen, europaweit standardisierten CRM-Plattform für Agilität in Vertriebsmodellen, tiefe POS-Integration und datengetriebene Kundenzentrierung.",
                     keyResultsEn: "Establishment of a future-proof, Europe-wide standardized CRM platform for agility in sales models, deep POS integration, and data-driven customer centricity."
                 },
-                {
+                 {
                     titleDe: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
                     titleEn: "Product Owner OneCRM (Salesforce Sales, Service, Marketing & Experience Cloud)",
                     companyDe: "Mercedes-Benz AG, ITS/DC, Stuttgart | 01/2018 – 02/2023",
@@ -1244,6 +1320,7 @@
                 }
             ];
 
+            // --- COMPETENCY DATA AND FUNCTIONS ---
             const competenciesData = [
                 {
                     icon: "loop",
@@ -1268,8 +1345,8 @@
                     icon: "widgets",
                     titleDe: "Lösungsarchitektur & Solution Management",
                     titleEn: "Solution Architecture & Solution Management",
-                    descriptionDe: "Entwurf und Management von CRM-Lösungen für Agenturmodelle, SAM und POS-Integrationen.",
-                    descriptionEn: "Design and management of CRM solutions for agency models, SAM, and POS integrations.",
+                    descriptionDe: "Entwurf und Management von Lösungen für Agenturmodelle, Sales Activity Management (SAM) und POS-Integrationen.",
+                    descriptionEn: "Design and management of solutions for agency models, Sales Activity Management (SAM), and POS integrations.",
                     expertiseDe: [
                         "<strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events)",
                         "Entwicklung <strong>skalierbarer Multi-Cloud-Architekturen</strong>",
@@ -1323,8 +1400,8 @@
                     icon: "groups",
                     titleDe: "Stakeholder Management & Kommunikation",
                     titleEn: "Stakeholder Management & Communication",
-                    descriptionDe: "Effektive Kommunikation und Management von Stakeholder-Erwartungen.",
-                    descriptionEn: "Effective communication and management of stakeholder expectations.",
+                    descriptionDe: "Effektive Kommunikation und Management von Stakeholder-Erwartungen auf allen Ebenen.",
+                    descriptionEn: "Effective communication and management of stakeholder expectations on all levels.",
                     expertiseDe: [
                         "<strong>Stakeholder Management</strong> & Anforderungsanalyse",
                         "<strong>Führung</strong> interdisziplinärer & internationaler Teams",
@@ -1357,92 +1434,100 @@
             
             const competencyGrid = document.getElementById('competencyGrid');
 
-            function createCompetencyCard(comp) {
-                const card = document.createElement('div');
-                card.classList.add('competency-card');
-
-                const header = document.createElement('div');
-                header.classList.add('competency-header');
+            function createCompetencyCard(comp) { // Renamed to match original, body is new flip logic
+                const cardContainer = document.createElement('div');
+                cardContainer.classList.add('flip-card'); 
                 
-                const icon = document.createElement('span');
-                icon.classList.add('competency-icon-material', 'material-icons');
-                icon.textContent = comp.icon;
+                const cardInner = document.createElement('div');
+                cardInner.classList.add('flip-card-inner');
 
-                const textWrapper = document.createElement('div');
+                // --- Front of the Card ---
+                const front = document.createElement('div');
+                front.classList.add('flip-card-front');
                 
-                const title = document.createElement('h4');
-                title.classList.add('competency-title-text');
-                const titleDe = document.createElement('span');
-                titleDe.classList.add('lang-element');
-                titleDe.lang = 'de';
-                titleDe.textContent = comp.titleDe;
-                const titleEn = document.createElement('span');
-                titleEn.classList.add('lang-element');
-                titleEn.lang = 'en';
-                titleEn.textContent = comp.titleEn;
-                title.append(titleDe, titleEn);
+                const frontHeader = document.createElement('div');
+                frontHeader.classList.add('card-header'); 
+                
+                const frontIcon = document.createElement('span');
+                frontIcon.classList.add('card-icon', 'material-icons'); 
+                frontIcon.textContent = comp.icon;
+                
+                const frontTextWrapper = document.createElement('div');
+                
+                const frontTitle = document.createElement('h4');
+                frontTitle.classList.add('card-title'); 
+                const frontTitleDe = document.createElement('span');
+                frontTitleDe.classList.add('lang-element'); frontTitleDe.lang = 'de';
+                frontTitleDe.innerHTML = comp.titleDe;
+                const frontTitleEn = document.createElement('span');
+                frontTitleEn.classList.add('lang-element'); frontTitleEn.lang = 'en';
+                frontTitleEn.innerHTML = comp.titleEn || comp.titleDe; 
+                frontTitle.append(frontTitleDe, frontTitleEn);
+                
+                const frontDesc = document.createElement('p');
+                frontDesc.classList.add('card-description'); 
+                const frontDescDe = document.createElement('span');
+                frontDescDe.classList.add('lang-element'); frontDescDe.lang = 'de';
+                frontDescDe.textContent = comp.descriptionDe;
+                const frontDescEn = document.createElement('span');
+                frontDescEn.classList.add('lang-element'); frontDescEn.lang = 'en';
+                frontDescEn.textContent = comp.descriptionEn || comp.descriptionDe; 
+                frontDesc.append(frontDescDe, frontDescEn);
 
-                const desc = document.createElement('p');
-                desc.classList.add('competency-description-text');
-                const descDe = document.createElement('span');
-                descDe.classList.add('lang-element');
-                descDe.lang = 'de';
-                descDe.textContent = comp.descriptionDe;
-                const descEn = document.createElement('span');
-                descEn.classList.add('lang-element');
-                descEn.lang = 'en';
-                descEn.textContent = comp.descriptionEn;
-                desc.append(descDe, descEn);
+                frontTextWrapper.append(frontTitle, frontDesc); 
+                frontHeader.append(frontIcon, frontTextWrapper); 
+                front.appendChild(frontHeader);
 
-                textWrapper.append(title, desc);
-                header.append(icon, textWrapper);
-                card.appendChild(header);
-
-                const subheader = document.createElement('h5');
-                subheader.classList.add('expertise-subheader');
-                const subheaderDe = document.createElement('span');
-                subheaderDe.classList.add('lang-element');
-                subheaderDe.lang = 'de';
-                subheaderDe.textContent = 'Expertise:';
-                const subheaderEn = document.createElement('span');
-                subheaderEn.classList.add('lang-element');
-                subheaderEn.lang = 'en';
-                subheaderEn.textContent = 'Expertise:';
-                subheader.append(subheaderDe, subheaderEn);
-                card.appendChild(subheader);
-
+                // --- Back of the Card ---
+                const back = document.createElement('div');
+                back.classList.add('flip-card-back');
+                
+                const backExpertiseTitle = document.createElement('h4'); 
+                backExpertiseTitle.classList.add('expertise-subheader-title'); 
+                const backExpertiseTitleDe = document.createElement('span');
+                backExpertiseTitleDe.classList.add('lang-element'); backExpertiseTitleDe.lang = 'de';
+                backExpertiseTitleDe.textContent = 'Expertise'; 
+                const backExpertiseTitleEn = document.createElement('span');
+                backExpertiseTitleEn.classList.add('lang-element'); backExpertiseTitleEn.lang = 'en';
+                backExpertiseTitleEn.textContent = 'Expertise'; 
+                backExpertiseTitle.append(backExpertiseTitleDe, backExpertiseTitleEn);
+                
                 const expertiseList = document.createElement('ul');
                 expertiseList.classList.add('expertise-list');
-                
-                comp.expertiseDe.forEach((item, i) => {
+                (comp.expertiseDe || []).forEach((itemText, i) => {
                     const li = document.createElement('li');
-                    
                     const itemDe = document.createElement('span');
-                    itemDe.classList.add('lang-element');
-                    itemDe.lang = 'de';
-                    itemDe.innerHTML = item;
-                    
+                    itemDe.classList.add('lang-element'); itemDe.lang = 'de';
+                    itemDe.innerHTML = itemText;
+                    const itemEnText = (comp.expertiseEn && comp.expertiseEn[i]) ? comp.expertiseEn[i] : itemText;
                     const itemEn = document.createElement('span');
-                    itemEn.classList.add('lang-element');
-                    itemEn.lang = 'en';
-                    itemEn.innerHTML = comp.expertiseEn[i] || item; // Fallback to German text if English is missing
-
+                    itemEn.classList.add('lang-element'); itemEn.lang = 'en';
+                    itemEn.innerHTML = itemEnText;
                     li.append(itemDe, itemEn);
                     expertiseList.appendChild(li);
                 });
+                back.append(backExpertiseTitle, expertiseList);
                 
-                card.appendChild(expertiseList);
-
-                return card;
+                cardInner.append(front, back);
+                cardContainer.appendChild(cardInner);
+                
+                // Event listener for flip is now handled globally by initializePage
+                
+                return cardContainer;
             }
 
             function populateCompetencies() {
-                if(!competencyGrid) return;
-                competencyGrid.innerHTML = '';
+                const competencyGridEl = document.getElementById('competencyGrid');
+                if(!competencyGridEl) {
+                    console.error("Competency grid element not found!"); // For debugging
+                    return;
+                }
+                competencyGridEl.innerHTML = ''; 
                 competenciesData.forEach(comp => {
-                    competencyGrid.appendChild(createCompetencyCard(comp));
+                    competencyGridEl.appendChild(createCompetencyCard(comp)); 
                 });
             }
+            // --- END COMPETENCY ---
 
 
             function createJobCard(job) {
@@ -1451,31 +1536,25 @@
 
                 const title = document.createElement('h3');
                 title.classList.add('text-xl', 'font-semibold', 'mb-1', 'job-title'); 
-
                 const titleDe = document.createElement('span');
-                titleDe.classList.add('lang-element');
-                titleDe.lang = 'de';
+                titleDe.classList.add('lang-element'); titleDe.lang = 'de';
                 titleDe.textContent = job.titleDe;
                 const titleEn = document.createElement('span');
-                titleEn.classList.add('lang-element');
-                titleEn.lang = 'en';
+                titleEn.classList.add('lang-element'); titleEn.lang = 'en';
                 titleEn.textContent = job.titleEn;
                 title.append(titleDe, titleEn);
                 
                 const company = document.createElement('p');
                 company.classList.add('text-sm', 'text-slate-500', 'mb-3');
                 const companyDe = document.createElement('span');
-                companyDe.classList.add('lang-element');
-                companyDe.lang = 'de';
+                companyDe.classList.add('lang-element'); companyDe.lang = 'de';
                 companyDe.textContent = job.companyDe;
                 const companyEn = document.createElement('span');
-                companyEn.classList.add('lang-element');
-                companyEn.lang = 'en';
+                companyEn.classList.add('lang-element'); companyEn.lang = 'en';
                 companyEn.textContent = job.companyEn;
                 company.append(companyDe, companyEn);
 
                 const tasksWrapper = document.createElement('div');
-                
                 const ulDe = document.createElement('ul');
                 ulDe.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
                 ulDe.lang = 'de';
@@ -1485,7 +1564,6 @@
                     ulDe.appendChild(li);
                 });
                 tasksWrapper.appendChild(ulDe);
-                
                 const ulEn = document.createElement('ul');
                 ulEn.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
                 ulEn.lang = 'en';
@@ -1496,10 +1574,8 @@
                 });
                 tasksWrapper.appendChild(ulEn);
 
-
                 const keyResultsDiv = document.createElement('div');
                 keyResultsDiv.classList.add('key-results-style-a');
-                
                 const keyResultsLabelDe = document.createElement('strong');
                 keyResultsLabelDe.classList.add('key-results-label', 'lang-element');
                 keyResultsLabelDe.lang = 'de';
@@ -1508,9 +1584,7 @@
                 keyResultsLabelEn.classList.add('key-results-label', 'lang-element');
                 keyResultsLabelEn.lang = 'en';
                 keyResultsLabelEn.textContent = "Key Results: "; 
-                
                 keyResultsDiv.append(keyResultsLabelDe, keyResultsLabelEn);
-
                 const keyResultsTextDe = document.createElement('span');
                 keyResultsTextDe.classList.add('key-results-text-content', 'lang-element');
                 keyResultsTextDe.lang = 'de';
@@ -1519,13 +1593,11 @@
                 keyResultsTextEn.classList.add('key-results-text-content', 'lang-element');
                 keyResultsTextEn.lang = 'en';
                 keyResultsTextEn.textContent = job.keyResultsEn;
-                
                 keyResultsDiv.append(keyResultsTextDe, keyResultsTextEn);
 
                 card.append(title, company, tasksWrapper, keyResultsDiv);
                 return card;
             }
-
 
             function populateCarousel(carouselId, data, cardCreationFunction, dotsContainerId) {
                 const track = document.getElementById(carouselId);
@@ -1558,15 +1630,15 @@
                 const track = document.getElementById(trackId);
                 const dotsContainer = document.getElementById(dotsContainerId);
                 if (!track || !dotsContainer) return;
-
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
                 const dots = Array.from(dotsContainer.children);
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active-dot', index === currentIndex);
                 });
             }
             
+            // Populate Carousels (Experience)
+            const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
             if (experienceCarouselTrack) { 
                 populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
                 const nextButtonExp = document.getElementById('nextExperience');
@@ -1584,7 +1656,6 @@
                         updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     });
                 }
-                
                 experienceCarouselTrack.addEventListener('touchstart', (e) => { expTouchstartX = e.changedTouches[0].screenX; }, {passive: true});
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
                     expTouchendX = e.changedTouches[0].screenX;
@@ -1600,40 +1671,36 @@
                 }, {passive: true});
             }
 
-            // Populate the new competency section
+            // Populate Competencies
             populateCompetencies();
-            setLanguage(currentLang);
             
+            // Attach listeners to ALL flip cards (Competencies AND Insights)
+            document.querySelectorAll('.flip-card').forEach(card => {
+                card.addEventListener('click', (event) => {
+                    if (event.target.closest('a, button')) { // Prevent flip if a link/button inside is clicked
+                        return;
+                    }
+                    card.classList.toggle('is-flipped');
+                });
+            });
+
             const languageItems = document.querySelectorAll('.language-item');
             languageItems.forEach(item => {
                 const trigger = item.querySelector('.language-trigger');
                 const tooltip = item.querySelector('.language-tooltip');
-
                 if (trigger && tooltip) {
-                     item.addEventListener('mouseenter', () => {
-                         tooltip.style.opacity = '1';
-                         tooltip.style.visibility = 'visible';
-                    });
-                    item.addEventListener('mouseleave', () => {
-                         tooltip.style.opacity = '0';
-                         tooltip.style.visibility = 'hidden';
-                    });
-                    trigger.addEventListener('focus', () => {
-                         tooltip.style.opacity = '1';
-                         tooltip.style.visibility = 'visible';
-                    });
-                    trigger.addEventListener('blur', () => {
-                        if (!item.matches(':hover') && !tooltip.matches(':hover')) {
-                             tooltip.style.opacity = '0';
-                             tooltip.style.visibility = 'hidden';
-                        }
-                    });
+                     item.addEventListener('mouseenter', () => { tooltip.style.opacity = '1'; tooltip.style.visibility = 'visible';});
+                    item.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';});
+                    trigger.addEventListener('focus', () => { tooltip.style.opacity = '1'; tooltip.style.visibility = 'visible';});
+                    trigger.addEventListener('blur', () => { if (!item.matches(':hover') && !tooltip.matches(':hover')) { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';}});
                 }
             });
             
             adjustLayoutForNavBar();
             window.addEventListener('resize', adjustLayoutForNavBar);
             window.addEventListener('load', adjustLayoutForNavBar);
+            
+            setLanguage(currentLang); // Ensure language is set after all dynamic content is populated
         }
 
         document.addEventListener('DOMContentLoaded', initializePage);
