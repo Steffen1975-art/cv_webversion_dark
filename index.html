@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -251,15 +250,15 @@
         }
         @media (max-width: 639px) { /* sm breakpoint in Tailwind */
             .competency-grid .flip-card {
-                aspect-ratio: auto; /* Remove square aspect ratio on small screens */
-                min-height: 260px; /* Allow height to adjust to content */
+                 aspect-ratio: auto; /* Remove square aspect ratio on small screens */
+                 min-height: 260px; /* Allow height to adjust to content */
             }
              .competency-grid .card-description {
-                font-size: 0.75rem; /* Slightly smaller description on very small screens */
-            }
-            .competency-grid .expertise-list {
-                font-size: 0.75rem; /* Slightly smaller expertise text */
-            }
+                 font-size: 0.75rem; /* Slightly smaller description on very small screens */
+             }
+             .competency-grid .expertise-list {
+                 font-size: 0.75rem; /* Slightly smaller expertise text */
+             }
         }
 
 
@@ -429,19 +428,30 @@
         }
         /* End of Styles for Qualification Section */
 
-        /* Styles for Flip Cards (Insights Section) */
-        .insights-section .card-grid { /* Target insights card grid specifically */
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem; margin-top: 1.5rem;
+        /* MODIFIED: Styles for Flip Cards (Insights Section) */
+        .insights-card-grid {
+            display: grid;
+            /* Mobile First: 2 columns for a balanced view on smaller screens */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem; /* Apply a consistent gap */
+            margin-top: 1.5rem;
         }
+
+        /* For larger screens like laptops and desktops, switch to 4 columns */
+        @media (min-width: 992px) { /* Using a breakpoint that typically represents laptops */
+            .insights-card-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
         .insights-section .flip-card { /* Target insights flip cards specifically */
              aspect-ratio: 1 / 1; /* Keep insights cards square */
         }
-        .insights-section .flip-card-front { background-color: #f8f9fa; color: #333; justify-content: center; align-items: center; } 
+        .insights-section .flip-card-front { background-color: #f8f9fa; color: #333; justify-content: center; align-items: center; padding: 0; } 
         .insights-section .flip-card-front img { 
-            width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 0.625rem; /* Match card radius */
         }
-        .insights-section .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); justify-content: center; align-items: center;} 
+        .insights-section .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); justify-content: center; align-items: center; text-align: center;} 
         .insights-section .flip-card-back h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; color: white; } 
         .insights-section .flip-card-back p { font-size: 0.9rem; }
         
@@ -974,15 +984,16 @@
                         <span class="lang-element" lang="de">Meine Werte</span>
                         <span class="lang-element" lang="en" style="display:none;">My Values</span>
                     </h3>
-                    <div class="insights-section .card-grid"> <!-- Ensure .insights-section is on the parent for specific flip card styles -->
+                    <!-- MODIFIED: Corrected class name from "insights-section .card-grid" -->
+                    <div class="insights-card-grid"> 
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Trust.jpg" alt="Vertrauen Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Vertrauen konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Vertrauen / Zuverlässigkeit</span><span class="lang-element" lang="en">Trust / Reliability</span></h4>
-                                    <p><span class="lang-element" lang="de">Grundlage jeder erfolgreichen Zusammenarbeit und Partnerschaft.</span><span class="lang-element" lang="en">The foundation of every successful collaboration and partnership.</span></p>
+                                    <h4><span class="lang-element" lang="de">Vertrauen / Zuverlässigkeit</span><span class="lang-element" lang="en" style="display:none;">Trust / Reliability</span></h4>
+                                    <p><span class="lang-element" lang="de">Grundlage jeder erfolgreichen Zusammenarbeit und Partnerschaft.</span><span class="lang-element" lang="en" style="display:none;">The foundation of every successful collaboration and partnership.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -992,8 +1003,8 @@
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Enthusiasm.jpg" alt="Engagement Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Engagement konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Begeisterung / Engagement</span><span class="lang-element" lang="en">Enthusiasm / Commitment</span></h4>
-                                    <p><span class="lang-element" lang="de">Mit Leidenschaft und vollem Einsatz gemeinsame Ziele verfolgen.</span><span class="lang-element" lang="en">Pursuing common goals with passion and full dedication.</span></p>
+                                    <h4><span class="lang-element" lang="de">Begeisterung / Engagement</span><span class="lang-element" lang="en" style="display:none;">Enthusiasm / Commitment</span></h4>
+                                    <p><span class="lang-element" lang="de">Mit Leidenschaft und vollem Einsatz gemeinsame Ziele verfolgen.</span><span class="lang-element" lang="en" style="display:none;">Pursuing common goals with passion and full dedication.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1003,8 +1014,8 @@
                                      <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Personal%20Responsibility.jpg" alt="Verantwortung Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Verantwortung konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Eigenverantwortung / Motivation</span><span class="lang-element" lang="en">Personal Responsibility / Motivation</span></h4>
-                                    <p><span class="lang-element" lang="de">Proaktives Handeln und die Motivation, stets das Beste zu geben.</span><span class="lang-element" lang="en">Proactive action and the motivation to always give one's best.</span></p>
+                                    <h4><span class="lang-element" lang="de">Eigenverantwortung / Motivation</span><span class="lang-element" lang="en" style="display:none;">Personal Responsibility / Motivation</span></h4>
+                                    <p><span class="lang-element" lang="de">Proaktives Handeln und die Motivation, stets das Beste zu geben.</span><span class="lang-element" lang="en" style="display:none;">Proactive action and the motivation to always give one's best.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1014,8 +1025,8 @@
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Openness.jpg" alt="Offenheit Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Offenheit konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Offenheit / Ehrlichkeit / Direktheit</span><span class="lang-element" lang="en">Openness / Honesty / Directness</span></h4>
-                                    <p><span class="lang-element" lang="de">Transparente Kommunikation und ein aufrichtiger Umgang miteinander.</span><span class="lang-element" lang="en">Transparent communication and sincere interaction with one another.</span></p>
+                                    <h4><span class="lang-element" lang="de">Offenheit / Ehrlichkeit / Direktheit</span><span class="lang-element" lang="en" style="display:none;">Openness / Honesty / Directness</span></h4>
+                                    <p><span class="lang-element" lang="de">Transparente Kommunikation und ein aufrichtiger Umgang miteinander.</span><span class="lang-element" lang="en" style="display:none;">Transparent communication and sincere interaction with one another.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1027,15 +1038,16 @@
                         <span class="lang-element" lang="de">Energizer</span>
                         <span class="lang-element" lang="en" style="display:none;">Energizer</span>
                     </h3>
-                    <div class="insights-section .card-grid">
+                    <!-- MODIFIED: Corrected class name from "insights-section .card-grid" -->
+                    <div class="insights-card-grid">
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/PXL_20240830_171822368_exported_1748623285706.jpg" alt="Familie" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Familienbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Familie</span><span class="lang-element" lang="en">Family</span></h4>
-                                    <p><span class="lang-element" lang="de">Der wichtigste Anker und tägliche Inspiration.</span><span class="lang-element" lang="en">The most important anchor and daily inspiration.</span></p>
+                                    <h4><span class="lang-element" lang="de">Familie</span><span class="lang-element" lang="en" style="display:none;">Family</span></h4>
+                                    <p><span class="lang-element" lang="de">Der wichtigste Anker und tägliche Inspiration.</span><span class="lang-element" lang="en" style="display:none;">The most important anchor and daily inspiration.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1045,8 +1057,8 @@
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Ziellauf2.bmp.jpg" alt="Sport - Laufen Marathon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Sportbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Sport</span><span class="lang-element" lang="en">Sports</span></h4>
-                                    <p><span class="lang-element" lang="de">Ausgleich für Körper und Geist – Laufen, Fitness & Skifahren.</span><span class="lang-element" lang="en">Balance for body and mind – running, fitness & skiing.</span></p>
+                                    <h4><span class="lang-element" lang="de">Sport</span><span class="lang-element" lang="en" style="display:none;">Sports</span></h4>
+                                    <p><span class="lang-element" lang="de">Ausgleich für Körper und Geist – Laufen, Fitness & Skifahren.</span><span class="lang-element" lang="en" style="display:none;">Balance for body and mind – running, fitness & skiing.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1056,8 +1068,8 @@
                                      <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Digital_Passion.jpeg" alt="Digitale Passion" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Bild für Digitale Passion konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Digitale Passion</span><span class="lang-element" lang="en">Digital Passion</span></h4>
-                                    <p><span class="lang-element" lang="de">Faszination für KI, IoT, Google-Ökosystem und die digitale Transformation.</span><span class="lang-element" lang="en">Fascination for AI, IoT, the Google ecosystem, and digital transformation.</span></p>
+                                    <h4><span class="lang-element" lang="de">Digitale Passion</span><span class="lang-element" lang="en" style="display:none;">Digital Passion</span></h4>
+                                    <p><span class="lang-element" lang="de">Faszination für KI, IoT, Google-Ökosystem und die digitale Transformation.</span><span class="lang-element" lang="en" style="display:none;">Fascination for AI, IoT, the Google ecosystem, and digital transformation.</span></p>
                                 </div>
                             </div>
                         </div>
@@ -1067,8 +1079,8 @@
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/PXL_20241018_090752263.jpg" alt="Wandern" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Wanderbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4><span class="lang-element" lang="de">Wandern</span><span class="lang-element" lang="en">Hiking</span></h4>
-                                    <p><span class="lang-element" lang="de">Die Natur entdecken und neue Perspektiven gewinnen.</span><span class="lang-element" lang="en">Discovering nature and gaining new perspectives.</span></p>
+                                    <h4><span class="lang-element" lang="de">Wandern</span><span class="lang-element" lang="en" style="display:none;">Hiking</span></h4>
+                                    <p><span class="lang-element" lang="de">Die Natur entdecken und neue Perspektiven gewinnen.</span><span class="lang-element" lang="en" style="display:none;">Discovering nature and gaining new perspectives.</span></p>
                                 </div>
                             </div>
                         </div>
