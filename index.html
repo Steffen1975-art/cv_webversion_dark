@@ -428,7 +428,7 @@
         }
         /* End of Styles for Qualification Section */
 
-        /* MODIFIED: Styles for Flip Cards (Insights Section) */
+        /* Styles for Flip Cards (Insights Section) */
         .insights-card-grid {
             display: grid;
             /* Mobile First: 2 columns for a balanced view on smaller screens */
@@ -474,9 +474,12 @@
             transition: background-color 0.3s ease;
         }
         
+        /* MODIFIED: Key Results Box Style */
         .key-results-style-a {
             border: 1px solid #93c5fd; background-color: #eff6ff; 
-            padding: 0.75rem; border-radius: 0.375rem; margin-top: 1rem;
+            padding: 0.75rem; border-radius: 0.375rem; 
+            margin-top: 0.5rem; /* Space below title/company */
+            margin-bottom: 1rem; /* Space above bullet points */
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .key-results-style-a .key-results-label { 
@@ -984,7 +987,6 @@
                         <span class="lang-element" lang="de">Meine Werte</span>
                         <span class="lang-element" lang="en" style="display:none;">My Values</span>
                     </h3>
-                    <!-- MODIFIED: Corrected class name from "insights-section .card-grid" -->
                     <div class="insights-card-grid"> 
                         <div class="flip-card">
                             <div class="flip-card-inner">
@@ -1038,7 +1040,6 @@
                         <span class="lang-element" lang="de">Energizer</span>
                         <span class="lang-element" lang="en" style="display:none;">Energizer</span>
                     </h3>
-                    <!-- MODIFIED: Corrected class name from "insights-section .card-grid" -->
                     <div class="insights-card-grid">
                         <div class="flip-card">
                             <div class="flip-card-inner">
@@ -1446,7 +1447,7 @@
             
             const competencyGrid = document.getElementById('competencyGrid');
 
-            function createCompetencyCard(comp) { // Renamed to match original, body is new flip logic
+            function createCompetencyCard(comp) { 
                 const cardContainer = document.createElement('div');
                 cardContainer.classList.add('flip-card'); 
                 
@@ -1523,8 +1524,6 @@
                 cardInner.append(front, back);
                 cardContainer.appendChild(cardInner);
                 
-                // Event listener for flip is now handled globally by initializePage
-                
                 return cardContainer;
             }
 
@@ -1542,6 +1541,7 @@
             // --- END COMPETENCY ---
 
 
+            // MODIFIED: createJobCard function to change element order
             function createJobCard(job) {
                 const card = document.createElement('div');
                 card.classList.add('job-experience-card');
@@ -1566,26 +1566,6 @@
                 companyEn.textContent = job.companyEn;
                 company.append(companyDe, companyEn);
 
-                const tasksWrapper = document.createElement('div');
-                const ulDe = document.createElement('ul');
-                ulDe.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
-                ulDe.lang = 'de';
-                job.tasksDe.forEach(task => {
-                    const li = document.createElement('li');
-                    li.innerHTML = task;
-                    ulDe.appendChild(li);
-                });
-                tasksWrapper.appendChild(ulDe);
-                const ulEn = document.createElement('ul');
-                ulEn.classList.add('text-sm', 'custom-bullets', 'mb-3', 'lang-element'); 
-                ulEn.lang = 'en';
-                job.tasksEn.forEach(task => {
-                    const li = document.createElement('li');
-                    li.innerHTML = task;
-                    ulEn.appendChild(li);
-                });
-                tasksWrapper.appendChild(ulEn);
-
                 const keyResultsDiv = document.createElement('div');
                 keyResultsDiv.classList.add('key-results-style-a');
                 const keyResultsLabelDe = document.createElement('strong');
@@ -1607,7 +1587,28 @@
                 keyResultsTextEn.textContent = job.keyResultsEn;
                 keyResultsDiv.append(keyResultsTextDe, keyResultsTextEn);
 
-                card.append(title, company, tasksWrapper, keyResultsDiv);
+                const tasksWrapper = document.createElement('div');
+                const ulDe = document.createElement('ul');
+                ulDe.classList.add('text-sm', 'custom-bullets', 'lang-element'); 
+                ulDe.lang = 'de';
+                job.tasksDe.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+                    ulDe.appendChild(li);
+                });
+                tasksWrapper.appendChild(ulDe);
+                const ulEn = document.createElement('ul');
+                ulEn.classList.add('text-sm', 'custom-bullets', 'lang-element'); 
+                ulEn.lang = 'en';
+                job.tasksEn.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+                    ulEn.appendChild(li);
+                });
+                tasksWrapper.appendChild(ulEn);
+                
+                // Append in the new order
+                card.append(title, company, keyResultsDiv, tasksWrapper);
                 return card;
             }
 
