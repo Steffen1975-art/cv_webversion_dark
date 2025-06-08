@@ -231,12 +231,12 @@
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
             gap: 1.5rem;
         }
-        .section-hint { /* Used by competency hint as well */
+        .section-hint {
             text-align: center; 
             color: #6b7280; 
             font-size: 0.875rem; 
             font-style: italic; 
-            margin-top: -1rem; /* Adjusted from competency-hint */
+            margin-top: -1rem;
             margin-bottom: 1.5rem; 
         }
         
@@ -251,7 +251,7 @@
              aspect-ratio: 1 / 1;
              min-height: 280px; 
         }
-        @media (max-width: 639px) { /* sm breakpoint in Tailwind */
+        @media (max-width: 639px) {
             .competency-grid .flip-card {
                  aspect-ratio: auto; 
                  min-height: 260px;
@@ -382,8 +382,6 @@
             font-weight: 600; 
             color: #003366; 
         }
-        /* END OF COMPETENCY FLIP CARD STYLES */
-
 
         /* Styles for Qualification Section */
         .qualification-card-base {
@@ -418,9 +416,7 @@
             position: absolute; left: 0.5em; top: 0.1em;
             transition: color 0.3s ease;
         }
-        /* End of Styles for Qualification Section */
         
-        /* MODIFIED: Flip icon for all cards */
         .flip-indicator::after {
             font-family: 'Material Icons';
             content: '360';
@@ -472,14 +468,15 @@
             justify-content: center; 
             align-items: center; 
             text-align: center;
-            overflow-y: auto; /* Added for safety */
+            overflow-y: auto;
+            padding: 1.5rem 1rem; /* Added top/bottom padding */
         } 
         .insights-section .flip-card-back h4 { 
             font-size: 1.2rem; 
             font-weight: 600; 
             margin-bottom: 0.75rem; 
             color: white; 
-            word-break: break-word;
+            overflow-wrap: break-word; /* Replaces word-break */
             hyphens: auto;
         } 
         .insights-section .flip-card-back p { font-size: 0.9rem; }
@@ -489,7 +486,7 @@
             transition: color 0.3s ease;
         }
         
-        @media (max-width: 420px) { /* For very narrow screens */
+        @media (max-width: 420px) {
             .insights-section .flip-card-back h4 {
                 font-size: 1rem;
             }
@@ -497,8 +494,7 @@
                 font-size: 0.85rem;
             }
         }
-        /* End of Flip Card Styles for Insights */
-
+        
         /* Generic Carousel Styles (used by Experience) */
         .carousel-container { position: relative; } 
         .carousel-track-container { overflow: hidden; width: 100%; }
@@ -507,9 +503,15 @@
         .job-experience-card {
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #f9fafb; border-radius: 0.75rem; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem;
             position: relative; 
             transition: background-color 0.3s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .job-experience-card {
+                padding: 1.5rem 3.5rem;
+            }
         }
         
         .key-results-style-a {
@@ -530,6 +532,17 @@
              color: #374151; 
              transition: color 0.3s ease;
         }
+        
+        /* Scrollable tasks on mobile */
+        @media (max-width: 767px) {
+            .job-tasks-list {
+                max-height: 35vh;
+                overflow-y: auto;
+                padding-right: 0.5rem; /* Space for scrollbar */
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
         .carousel-button-combined {
             position: absolute; top: 50%; transform: translateY(-50%);
             background-color: rgba(0, 112, 210, 0.6); color: white; 
@@ -552,7 +565,6 @@
         }
         .carousel-dot-combined.active-dot { background-color: #0070D2; transform: scale(1.2); } 
         .carousel-dot-combined:hover { background-color: #94a3b8; } 
-        /* End of Carousel Styles */
 
         .web-footer {
             text-align: center; padding: 2rem 1rem; font-size: 0.875rem;
@@ -560,7 +572,6 @@
             transition: color 0.3s ease, border-top-color 0.3s ease;
         }
 
-        /* Fixed top navigation bar */
         .fixed-top-navigation-bar {
             position: fixed; top: 0; left: 0; width: 100%;
             background-color: #f0f9ff; 
@@ -581,7 +592,7 @@
         .fixed-top-navigation-bar .quick-links-nav::-webkit-scrollbar { display: none; }
         .fixed-top-navigation-bar .quick-links-nav a {
             color: #005FB8; text-decoration: none; 
-            font-size: 0.65rem; /* Mobile font size */
+            font-size: 0.65rem;
             padding: 0.1rem 0.22rem;
             border-radius: 0.2rem;
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -689,7 +700,6 @@
         body.dark-mode ul.custom-bullets > li::before { color: #60a5fa; }
         body.dark-mode ul.custom-bullets-qual > li::before { color: #60a5fa; }
 
-        /* DARK MODE for Competency Flip Cards */
         body.dark-mode .competency-grid .flip-card-front {
             background-color: #374151; border-color: #4b5563; 
         }
@@ -712,7 +722,6 @@
         body.dark-mode .competency-grid .expertise-list li { color: #bae6fd; }
         body.dark-mode .competency-grid .expertise-list li::before { color: #7dd3fc; }
         body.dark-mode .competency-grid .expertise-list li strong { color: #f0f9ff; }
-        /* END OF COMPETENCY FLIP CARD STYLES */
         
         body.dark-mode .bg-slate-50 { background-color: #334155; } 
         body.dark-mode .text-blue-600 { color: #93c5fd; }
@@ -1626,6 +1635,7 @@
                 keyResultsDiv.append(keyResultsTextDe, keyResultsTextEn);
 
                 const tasksWrapper = document.createElement('div');
+                tasksWrapper.classList.add('job-tasks-list'); /* Class for mobile scrolling */
                 const ulDe = document.createElement('ul');
                 ulDe.classList.add('text-sm', 'custom-bullets', 'lang-element'); 
                 ulDe.lang = 'de';
