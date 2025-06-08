@@ -157,13 +157,13 @@
         .language-icon-svg {
             margin-right: 0.4rem;
             flex-shrink: 0;
-            width: 1rem; /* Adjusted size */
-            height: 1rem; /* Adjusted size */
+            width: 1rem;
+            height: 1rem;
             vertical-align: middle;
             fill: #4dabf7;
         }
         .hero-c-v2-var2 .language-icon-svg text { 
-            fill: #000b1a; /* Adjusted color for cutout effect */
+            fill: #000b1a; 
             transition: fill 0.3s ease;
         } 
 
@@ -243,25 +243,24 @@
         .flip-card { 
             background-color: transparent;
             width: 100%;
-            /* aspect-ratio: 1 / 1; /* Applied specifically to competency cards if needed */
             perspective: 1200px;
             cursor: pointer;
             border-radius: 0.625rem; 
         }
-        .competency-grid .flip-card { /* Ensure competency cards are square by default */
+        .competency-grid .flip-card {
              aspect-ratio: 1 / 1;
              min-height: 280px; 
         }
         @media (max-width: 639px) { /* sm breakpoint in Tailwind */
             .competency-grid .flip-card {
-                 aspect-ratio: auto; /* Remove square aspect ratio on small screens */
-                 min-height: 260px; /* Allow height to adjust to content */
+                 aspect-ratio: auto; 
+                 min-height: 260px;
             }
              .competency-grid .card-description {
-                 font-size: 0.75rem; /* Slightly smaller description on very small screens */
+                 font-size: 0.75rem;
              }
              .competency-grid .expertise-list {
-                 font-size: 0.75rem; /* Slightly smaller expertise text */
+                 font-size: 0.75rem;
              }
         }
 
@@ -305,21 +304,10 @@
             text-align: center; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.06);
         }
-        .competency-grid .flip-card:hover .flip-card-front { /* Target only competency cards */
+        .competency-grid .flip-card:hover .flip-card-front {
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .competency-grid .flip-card-front::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 30px; 
-            height: 30px;
-            background: linear-gradient(135deg, transparent 50%, #e0f2fe 50.1%); 
-            border-bottom-right-radius: 0.625rem; /* Matches .flip-card border-radius */
-        }
-        
-        .competency-grid .card-header { /* Specific to competency cards */
+        .competency-grid .card-header {
             display: flex;
             flex-direction: column; 
             align-items: center; 
@@ -353,7 +341,7 @@
             transform: rotateY(180deg);
             justify-content: flex-start; 
             padding: 1rem; 
-            overflow-y: auto; /* Allow scroll ONLY if content overflows on back */
+            overflow-y: auto;
         }
         .competency-grid .expertise-subheader-title {
             font-weight: 700; 
@@ -364,15 +352,15 @@
             border-bottom: none; 
             width: 100%;
             text-align:left; 
-            flex-shrink: 0; /* Prevent subheader from shrinking */
+            flex-shrink: 0;
         }
         .competency-grid .expertise-list {
             list-style: none;
             padding-left: 0;
-            font-size: 0.8125rem; /* 13px */
+            font-size: 0.8125rem;
             margin-top: 0.25rem; 
-            flex-grow: 1; /* Allow list to take available space */
-            overflow-y: auto; /* Scroll within the list if needed */
+            flex-grow: 1;
+            overflow-y: auto;
         }
         .competency-grid .expertise-list li {
             margin-bottom: 0.3rem; 
@@ -431,6 +419,30 @@
             transition: color 0.3s ease;
         }
         /* End of Styles for Qualification Section */
+        
+        /* MODIFIED: Flip icon for all cards */
+        .flip-indicator::after {
+            font-family: 'Material Icons';
+            content: '360';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            color: white;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            z-index: 5;
+        }
+        .flip-card:hover .flip-indicator::after {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.6);
+        }
 
         /* Styles for Flip Cards (Insights Section) */
         .insights-card-grid {
@@ -453,16 +465,22 @@
         .insights-section .flip-card-front img { 
             width: 100%; height: 100%; object-fit: cover; border-radius: 0.625rem;
         }
-        .insights-section .flip-card-back { background-color: #0070D2; color: white; transform: rotateY(180deg); justify-content: center; align-items: center; text-align: center;} 
+        .insights-section .flip-card-back { 
+            background-color: #0070D2; 
+            color: white; 
+            transform: rotateY(180deg); 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            overflow-y: auto; /* Added for safety */
+        } 
         .insights-section .flip-card-back h4 { 
             font-size: 1.2rem; 
             font-weight: 600; 
             margin-bottom: 0.75rem; 
             color: white; 
-            word-break: break-word; /* Force long words to break */
-            -webkit-hyphens: auto; /* For Safari */
-            -ms-hyphens: auto;    /* For IE */
-            hyphens: auto;         /* Standard */
+            word-break: break-word;
+            hyphens: auto;
         } 
         .insights-section .flip-card-back p { font-size: 0.9rem; }
         
@@ -473,10 +491,10 @@
         
         @media (max-width: 420px) { /* For very narrow screens */
             .insights-section .flip-card-back h4 {
-                font-size: 1rem; /* Reduce font size */
+                font-size: 1rem;
             }
             .insights-section .flip-card-back p {
-                font-size: 0.85rem; /* Also reduce paragraph font size */
+                font-size: 0.85rem;
             }
         }
         /* End of Flip Card Styles for Insights */
@@ -486,10 +504,10 @@
         .carousel-track-container { overflow: hidden; width: 100%; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
         
-        .job-experience-card { /* Specific to experience */
+        .job-experience-card {
             flex: 0 0 100%; min-width: 100%; box-sizing: border-box;
             background-color: #f9fafb; border-radius: 0.75rem; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.5rem; /* Increased horizontal padding */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem 3.5rem;
             position: relative; 
             transition: background-color 0.3s ease;
         }
@@ -497,8 +515,8 @@
         .key-results-style-a {
             border: 1px solid #93c5fd; background-color: #eff6ff; 
             padding: 0.75rem; border-radius: 0.375rem; 
-            margin-top: 0.5rem; /* Space below title/company */
-            margin-bottom: 1rem; /* Space above bullet points */
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .key-results-style-a .key-results-label { 
@@ -520,7 +538,7 @@
             opacity: 0.2; display: flex; align-items: center; justify-content: center;
             transition: background-color 0.2s ease, opacity 0.3s ease, color 0.3s ease;
         }
-        .carousel-main-area:hover .carousel-button-combined { opacity: 1; } /* Show buttons on hover of main area */
+        .carousel-main-area:hover .carousel-button-combined { opacity: 1; }
         .carousel-button-combined:hover { background-color: #005FB8; opacity: 1 !important; } 
         .carousel-button-combined.prev { left: 0.5rem; }
         .carousel-button-combined.next { right: 0.5rem; }
@@ -656,7 +674,6 @@
              color: #93c5fd !important; 
         }
 
-        /* MODIFIED: Dark mode color for language icon text */
         body.dark-mode .hero-c-v2-var2 .language-icon-svg text { fill: #e0f2fe; }
         body.dark-mode .language-item .language-tooltip { background-color: #374151; color: #e5e7eb; }
         
@@ -679,9 +696,15 @@
         body.dark-mode .competency-grid .flip-card-front .card-icon,
         body.dark-mode .competency-grid .flip-card-front .card-title { color: #e0f2fe; }
         body.dark-mode .competency-grid .flip-card-front .card-description { color: #cbd5e1; }
-        body.dark-mode .competency-grid .flip-card-front::after {
-             background: linear-gradient(135deg, transparent 50%, #0c4a6e 50.1%); 
+        
+        body.dark-mode .flip-indicator::after {
+            background: rgba(255, 255, 255, 0.2);
+            color: #e5e7eb;
         }
+        body.dark-mode .flip-card:hover .flip-indicator::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         body.dark-mode .competency-grid .flip-card-back {
             background-color: #0c4a6e; border-color: #073353; 
         }
@@ -797,7 +820,6 @@
                         <span>+49 176 105 197 03</span>
                     </p>
                     <div class="contact-item text-sm">
-                        <!-- MODIFIED: SVG icon for language -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" class="language-icon-svg">
                              <path d="M 110,15 C 165,15 209,40 209,75 C 209,110 165,135 110,135 C 105,135 100,134.5 95,133.5 C 77,133 27.5,140 15,140 L 60.5,115 C 62,118 65,124.5 60,126.5 C 50,130 20,110 20,75 C 20,40 55,15 110,15 Z" />
                              <text x="110" y="80" font-family="'Noto Sans SC', Arial, sans-serif" font-size="70" font-weight="300" text-anchor="middle" dominant-baseline="central">文</text>
@@ -827,7 +849,6 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Erfahrener Program Owner & Automotive CRM-Experte</h4>
-                                <!-- MODIFIED TEXT -->
                                 <p class="mt-1 text-sm">Als erfahrener <strong>Program Owner & Solution Manager</strong> und ausgewiesener <strong>Automotive CRM-Experte</strong> mit insgesamt über <strong>22 Jahren Branchenerfahrung</strong> gestalte ich seit über <strong>6 Jahren erfolgreich mit Salesforce</strong> die digitale Transformation von CRM und Sales Prozessen bei Mercedes-Benz.</p>
                             </div>
                         </div>
@@ -840,7 +861,6 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Experienced Program Owner & Automotive CRM Expert</h4>
-                                <!-- MODIFIED TEXT -->
                                 <p class="mt-1 text-sm">As an experienced <strong>Program Owner & Solution Manager</strong> and proven <strong>Automotive CRM Expert</strong> with over <strong>22 years of industry experience</strong>, I have been successfully shaping the digital transformation of CRM and sales processes at Mercedes-Benz with Salesforce for over <strong>6 years</strong>.</p>
                             </div>
                         </div>
@@ -1012,11 +1032,10 @@
                     <div class="insights-card-grid"> 
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Trust.jpg" alt="Vertrauen Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Vertrauen konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <!-- MODIFIED TEXT -->
                                     <h4><span class="lang-element" lang="de">Vertrauen & Zuverlässigkeit</span><span class="lang-element" lang="en" style="display:none;">Trust & Reliability</span></h4>
                                     <p><span class="lang-element" lang="de">Grundlage jeder erfolgreichen Zusammenarbeit und Partnerschaft.</span><span class="lang-element" lang="en" style="display:none;">The foundation of every successful collaboration and partnership.</span></p>
                                 </div>
@@ -1024,11 +1043,10 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Enthusiasm.jpg" alt="Engagement Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Engagement konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <!-- MODIFIED TEXT -->
                                     <h4><span class="lang-element" lang="de">Begeisterung & Engagement</span><span class="lang-element" lang="en" style="display:none;">Enthusiasm & Commitment</span></h4>
                                     <p><span class="lang-element" lang="de">Mit Leidenschaft und vollem Einsatz gemeinsame Ziele verfolgen.</span><span class="lang-element" lang="en" style="display:none;">Pursuing common goals with passion and full dedication.</span></p>
                                 </div>
@@ -1036,11 +1054,10 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                      <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Personal%20Responsibility.jpg" alt="Verantwortung Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Verantwortung konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <!-- MODIFIED TEXT -->
                                     <h4><span class="lang-element" lang="de">Eigenverantwortung</span><span class="lang-element" lang="en" style="display:none;">Personal Responsibility</span></h4>
                                     <p><span class="lang-element" lang="de">Proaktives Handeln und die Motivation, stets das Beste zu geben.</span><span class="lang-element" lang="en" style="display:none;">Proactive action and the motivation to always give one's best.</span></p>
                                 </div>
@@ -1048,11 +1065,10 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Openness.jpg" alt="Offenheit Icon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Bild für Offenheit konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
-                                    <!-- MODIFIED TEXT -->
                                     <h4><span class="lang-element" lang="de">Offenheit & Ehrlichkeit</span><span class="lang-element" lang="en" style="display:none;">Openness & Honesty</span></h4>
                                     <p><span class="lang-element" lang="de">Transparente Kommunikation und ein aufrichtiger Umgang miteinander.</span><span class="lang-element" lang="en" style="display:none;">Transparent communication and sincere interaction with one another.</span></p>
                                 </div>
@@ -1069,7 +1085,7 @@
                     <div class="insights-card-grid">
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/PXL_20240830_171822368_exported_1748623285706.jpg" alt="Familie" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Familienbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
@@ -1080,7 +1096,7 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Ziellauf2.bmp.jpg" alt="Sport - Laufen Marathon" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Sportbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
@@ -1091,7 +1107,7 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                      <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/Digital_Passion.jpeg" alt="Digitale Passion" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Bild+fehlt'; this.alt='Bild für Digitale Passion konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
@@ -1102,7 +1118,7 @@
                         </div>
                         <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                                <div class="flip-card-front flip-indicator">
                                     <img src="https://raw.githubusercontent.com/Steffen1975-art/cv_webversion_dark/main/Images/PXL_20241018_090752263.jpg" alt="Wandern" onerror="this.onerror=null; this.src='https://placehold.co/200x200/E2E8F0/475569?text=Icon+fehlt'; this.alt='Wanderbild konnte nicht geladen werden.';">
                                 </div>
                                 <div class="flip-card-back">
@@ -1313,7 +1329,7 @@
                         "Entwicklung einer Strategie zur Optimierung der zentralen <strong>Customer Contact Center</strong> (CCC) mit dem Ziel, die Kundenzufriedenheit signifikant zu erhöhen (internes Projekt: 'MBC2020' – Best Customer Experience); <strong>globale Anwendbarkeit und Umsetzung der Strategie</strong>."
                     ],
                     tasksEn: [
-                        "Development of a strategy to optimize central <strong>Customer Contact Centers</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience); <strong>global applicability and implementation of the strategy</strong>."
+                        "Development of a strategy to optimize central <strong>Customer Contact Center</strong> (CCC) with the aim of significantly increasing customer satisfaction (internal project: 'MBC2020' – Best Customer Experience); <strong>global applicability and implementation of the strategy</strong>."
                     ],
                     keyResultsDe: "Strategisches Konzept für globale Kundenkontaktprozesse als Pilotierungsbasis.",
                     keyResultsEn: "Strategic concept for global customer contact processes as a basis for piloting."
@@ -1457,7 +1473,6 @@
                     titleEn: "AI in CRM",
                     descriptionDe: "Pilotierung und strategische Implementierung von KI-Lösungen wie Salesforce Agentforce zur Effizienz- und Qualitätssteigerung.",
                     descriptionEn: "Piloting and strategic implementation of AI solutions like Salesforce Agentforce for efficiency and quality improvement.",
-                    // MODIFIED TEXT
                     expertiseDe: [
                         "Salesforce <strong>Agentforce</strong> für KI-gestützte Prozesse",
                         "<strong>Datenqualitäts- management</strong> & Governance für valide Daten (als Grundlage für KI)",
@@ -1482,9 +1497,8 @@
                 const cardInner = document.createElement('div');
                 cardInner.classList.add('flip-card-inner');
 
-                // --- Front of the Card ---
                 const front = document.createElement('div');
-                front.classList.add('flip-card-front');
+                front.classList.add('flip-card-front', 'flip-indicator');
                 
                 const frontHeader = document.createElement('div');
                 frontHeader.classList.add('card-header'); 
@@ -1519,7 +1533,6 @@
                 frontHeader.append(frontIcon, frontTextWrapper); 
                 front.appendChild(frontHeader);
 
-                // --- Back of the Card ---
                 const back = document.createElement('div');
                 back.classList.add('flip-card-back');
                 
@@ -1558,7 +1571,6 @@
             function populateCompetencies() {
                 const competencyGridEl = document.getElementById('competencyGrid');
                 if(!competencyGridEl) {
-                    console.error("Competency grid element not found!"); // For debugging
                     return;
                 }
                 competencyGridEl.innerHTML = ''; 
@@ -1695,13 +1707,15 @@
                         updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     });
                 }
-                experienceCarouselTrack.addEventListener('touchstart', (e) => { expTouchstartX = e.changedTouches[0].screenX; }, {passive: true});
                 
-                // MODIFIED: Corrected swipe logic
+                experienceCarouselTrack.addEventListener('touchstart', (e) => {
+                    expTouchstartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
                     expTouchendX = e.changedTouches[0].screenX;
                     const swipeThreshold = 50; 
-                    if (jobExperiencesData.length === 0) return; 
+                    if (jobExperiencesData.length === 0) return;
 
                     const deltaX = expTouchendX - expTouchstartX;
 
@@ -1712,7 +1726,7 @@
                     }
                     
                     updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
-                }, {passive: true});
+                }, { passive: true });
             }
 
             // Populate Competencies
@@ -1721,7 +1735,7 @@
             // Attach listeners to ALL flip cards (Competencies AND Insights)
             document.querySelectorAll('.flip-card').forEach(card => {
                 card.addEventListener('click', (event) => {
-                    if (event.target.closest('a, button')) { // Prevent flip if a link/button inside is clicked
+                    if (event.target.closest('a, button')) {
                         return;
                     }
                     card.classList.toggle('is-flipped');
@@ -1744,7 +1758,7 @@
             window.addEventListener('resize', adjustLayoutForNavBar);
             window.addEventListener('load', adjustLayoutForNavBar);
             
-            setLanguage(currentLang); // Ensure language is set after all dynamic content is populated
+            setLanguage(currentLang);
         }
 
         document.addEventListener('DOMContentLoaded', initializePage);
