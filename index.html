@@ -147,8 +147,8 @@
         .hero-c-v2-var2 .contact-item { color: #adb5bd; }
         .hero-c-v2-var2 .contact-item svg:not(.language-icon-svg) {
             color: #4dabf7;
-            width: 1rem;
-            height: 1rem;
+            width: 1.1rem; /* Slightly larger */
+            height: 1.1rem; /* Slightly larger */
             margin-right: 0.4rem;
         }
         .hero-c-v2-var2 .language-trigger { color: #adb5bd; }
@@ -157,8 +157,8 @@
         .language-icon-svg {
             margin-right: 0.4rem;
             flex-shrink: 0;
-            width: 1rem;
-            height: 1rem;
+            width: 1.1rem; /* Adjusted size */
+            height: 1.1rem; /* Adjusted size */
             vertical-align: middle;
             fill: #4dabf7;
         }
@@ -167,7 +167,7 @@
             transition: fill 0.3s ease;
         } 
 
-        .language-items-wrapper { display: flex; align-items: center; gap: 0.35rem; }
+        .language-items-wrapper { display: flex; align-items: center; gap: 0.25rem; } /* Reduced gap */
         .language-trigger {
             font-weight: 500;
             cursor: pointer;
@@ -536,7 +536,7 @@
         /* Scrollable tasks on mobile */
         @media (max-width: 767px) {
             .job-tasks-list {
-                max-height: 45vh; /* Increased height */
+                max-height: 52vh; /* Increased height */
                 overflow-y: auto;
                 padding-right: 0.5rem;
                 -webkit-overflow-scrolling: touch;
