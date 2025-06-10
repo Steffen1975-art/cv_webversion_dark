@@ -147,8 +147,8 @@
         .hero-c-v2-var2 .contact-item { color: #adb5bd; }
         .hero-c-v2-var2 .contact-item svg:not(.language-icon-svg) {
             color: #4dabf7;
-            width: 1.1rem;
-            height: 1.1rem;
+            width: 1.1rem; /* Adjusted size */
+            height: 1.1rem; /* Adjusted size */
             margin-right: 0.4rem;
         }
         .hero-c-v2-var2 .language-trigger { color: #adb5bd; }
@@ -157,8 +157,8 @@
         .language-icon-svg {
             margin-right: 0.4rem;
             flex-shrink: 0;
-            width: 1.1rem;
-            height: 1.1rem;
+            width: 1.2rem; /* Adjusted size +10% */
+            height: 1.2rem; /* Adjusted size +10% */
             vertical-align: middle;
             fill: #4dabf7;
         }
@@ -167,7 +167,7 @@
             transition: fill 0.3s ease;
         } 
 
-        .language-items-wrapper { display: flex; align-items: center; gap: 0.25rem; }
+        .language-items-wrapper { display: flex; align-items: center; gap: 0.15rem; } /* Reduced gap */
         .language-trigger {
             font-weight: 500;
             cursor: pointer;
@@ -476,7 +476,7 @@
             font-weight: 600; 
             margin-bottom: 0.5rem; 
             color: white; 
-            overflow-wrap: break-word;
+            overflow-wrap: break-word; /* Better word breaking */
             hyphens: auto;
         } 
         .insights-section .flip-card-back p { font-size: 0.85rem; } /* Slightly smaller text */
@@ -973,12 +973,12 @@
                         </p>
                         <div class="education-details">
                             <p>
-                                <strong class="education-highlight">
-                                    <span class="lang-element" lang="de">Diplom-Betriebswirt</span>
-                                    <span class="lang-element" lang="en" style="display:none;">Diplom-Betriebswirt (German equivalent to MBA)</span>
-                                </strong>
-                                <span class="lang-element" lang="de"> in den Bereichen Wirtschaftsinformatik, Organisation und Projektmanagement, Finanzmanagement und Bankwirtschaftslehre.</span>
-                                <span class="lang-element" lang="en" style="display:none;"> in the fields of Business Informatics, Organization and Project Management, Financial Management and Banking.</span>
+                                <span class="lang-element" lang="de">
+                                    <strong class="education-highlight">Diplom-Betriebswirt</strong> in den Bereichen <strong class="education-highlight">Wirtschaftsinformatik,</strong> Organisation und Projektmanagement, Finanzmanagement und Bankwirtschaftslehre.
+                                </span>
+                                <span class="lang-element" lang="en" style="display:none;">
+                                    <strong class="education-highlight">Diplom-Betriebswirt</strong> (German equivalent to MBA) in the fields of <strong class="education-highlight">Business Informatics,</strong> Organization and Project Management, Financial Management and Banking.
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -994,8 +994,12 @@
                         </p>
                         <div class="education-details">
                             <p>
-                                <span class="lang-element" lang="de">Ausbildung zum <strong class="education-highlight">Finanzassistent</strong> als Basis für umfassendes kaufmännisches, prozessuales und finanzwirtschaftliches Wissen, insbesondere in den Bereichen Bank, Steuer und Versicherung.</span>
-                                <span class="lang-element" lang="en" style="display:none;">Training as <strong class="education-highlight">Financial Assistant</strong> as a basis for comprehensive commercial, procedural, and financial knowledge, particularly in banking, tax, and insurance.</span>
+                                <span class="lang-element" lang="de">
+                                    Ausbildung zum <strong class="education-highlight">Finanzassistent</strong> als Basis für umfassendes kaufmännisches, prozessuales und finanzwirtschaftliches Wissen, insbesondere in den Bereichen <strong class="education-highlight">Bank,</strong> <strong class="education-highlight">Steuer</strong> und <strong class="education-highlight">Versicherung.</strong>
+                                </span>
+                                <span class="lang-element" lang="en" style="display:none;">
+                                    Training as <strong class="education-highlight">Financial Assistant</strong> as a basis for comprehensive commercial, procedural, and financial knowledge, particularly in <strong class="education-highlight">banking,</strong> <strong class="education-highlight">tax,</strong> and <strong class="education-highlight">insurance.</strong>
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -1404,7 +1408,7 @@
                     expertiseDe: [
                         "<strong>Lösungsarchitektur</strong> & komplexe Systemintegrationen (API-basiert, Kafka Event Streaming, Salesforce Platform Events)",
                         "Entwicklung <strong>skalierbarer Multi-Cloud-Architekturen</strong>",
-                        "Harmonisierung von POS-Systemen in <strong>heterogene CRM-Landschaften</strong>",
+                        "Harmonisierung von POS-systemen in <strong>heterogene CRM-Landschaften</strong>",
                         "<strong>Massendatenmigration</strong> aus Legacy-Systemen"
                     ],
                     expertiseEn: [
