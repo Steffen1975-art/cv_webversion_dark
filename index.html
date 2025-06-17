@@ -477,7 +477,7 @@
             border: 1px solid rgba(255,255,255,0.3);
         }
 
-        /* MODIFIED: Click/Tap effect for all devices */
+        /* Click/Tap effect for all devices */
         .slide-up-card.is-active .info-icon {
             opacity: 0;
         }
@@ -489,7 +489,7 @@
             transform: translateY(0);
         }
 
-        /* MODIFIED: Hover effect for desktop/mouse users ONLY */
+        /* Hover effect for desktop/mouse users ONLY */
         @media (hover: hover) and (pointer: fine) {
             .slide-up-card:hover .info-icon {
                 opacity: 0;
@@ -1552,7 +1552,6 @@
                     </div>
                 `;
                 
-                // MODIFIED: Click listener now only toggles the class. Height is managed by JS/CSS.
                 cardContainer.addEventListener('click', function() {
                     this.classList.toggle('is-flipped');
                 });
@@ -1711,6 +1710,9 @@
             if (experienceCarouselTrack) { 
                 let expTouchstartX = 0;
                 let expTouchendX = 0;
+                // MODIFIED: Add Y coordinates to distinguish scroll from swipe
+                let expTouchstartY = 0;
+                let expTouchendY = 0;
                 
                 populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
                 const nextButtonExp = document.getElementById('nextExperience');
@@ -1729,22 +1731,29 @@
                 
                 experienceCarouselTrack.addEventListener('touchstart', (e) => {
                     expTouchstartX = e.changedTouches[0].screenX;
+                    expTouchstartY = e.changedTouches[0].screenY; // Capture Y start
                 }, { passive: true });
 
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
                     expTouchendX = e.changedTouches[0].screenX;
-                    const swipeThreshold = 50; 
-                    if (jobExperiencesData.length === 0) return;
+                    expTouchendY = e.changedTouches[0].screenY; // Capture Y end
 
                     const deltaX = expTouchendX - expTouchstartX;
+                    const deltaY = expTouchendY - expTouchstartY;
 
-                    if (deltaX < -swipeThreshold) { // Swiped left
-                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
-                    } else if (deltaX > swipeThreshold) { // Swiped right
-                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                    // MODIFIED: Only swipe if the horizontal movement is greater than the vertical movement
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                        const swipeThreshold = 50; 
+                        if (jobExperiencesData.length === 0) return;
+
+                        if (deltaX < -swipeThreshold) { // Swiped left
+                            window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
+                            updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
+                        } else if (deltaX > swipeThreshold) { // Swiped right
+                            window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                            updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
+                        }
                     }
-                    
-                    updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                 }, { passive: true });
             }
 
