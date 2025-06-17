@@ -202,7 +202,7 @@
          @media (max-width: 767px) {
             .hero-c-v2-var2 .image-pane { border-bottom-left-radius: 0; }
             .hero-c-v2-var2 .text-pane { border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border-top-right-radius: 0; }
-           }
+            }
         /* --- End of Styles for New Hero Section --- */
 
 
@@ -276,21 +276,27 @@
         /* -- START: Styles for Competencies (Flip-Cards) -- */
         .competency-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-         @media (min-width: 640px) {
-             .competency-grid {
-                 grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-             }
-         }
+        
+        @media (min-width: 640px) {
+            .competency-grid {
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+            }
+        }
         .flip-card {
             background-color: transparent;
             width: 100%;
-            aspect-ratio: 1 / 1;
             perspective: 1200px;
             cursor: pointer;
             border-radius: 0.625rem;
+            /* Height is now managed by JS on mobile, so no transition here */
+        }
+        @media (min-width: 640px) {
+             .flip-card {
+                aspect-ratio: 1 / 1;
+             }
         }
         .flip-card-inner {
             position: relative;
@@ -363,7 +369,12 @@
             transform: rotateY(180deg);
             justify-content: flex-start;
             padding: 1rem;
-            overflow-y: auto;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .flip-card-back {
+                overflow-y: auto;
+            }
         }
         .flip-card-back h4 {
             font-weight: 700;
@@ -1133,6 +1144,47 @@
                 }
             });
         }
+        
+        // --- MODIFIED: Function to set a uniform height for all cards on mobile ---
+        function setUniformCardHeight() {
+            const flipCards = document.querySelectorAll('#competencyGrid .flip-card');
+            if (!flipCards.length) return;
+
+            // First, reset any inline height styles. This is crucial for resizing from mobile to desktop.
+            flipCards.forEach(card => card.style.height = '');
+
+            // If we are on desktop view, let CSS handle the aspect ratio. Exit the function.
+            if (window.innerWidth >= 640) {
+                return; 
+            }
+
+            let maxHeight = 0;
+            
+            // Determine the maximum height needed among all cards (front and back).
+            flipCards.forEach(card => {
+                const frontPanel = card.querySelector('.flip-card-front');
+                const backPanel = card.querySelector('.flip-card-back');
+                
+                // Get the height of the front panel
+                const frontHeight = frontPanel.offsetHeight;
+                if (frontHeight > maxHeight) {
+                    maxHeight = frontHeight;
+                }
+
+                // Get the potential height of the back panel (scrollHeight includes all content)
+                const backHeight = backPanel.scrollHeight;
+                if (backHeight > maxHeight) {
+                    maxHeight = backHeight;
+                }
+            });
+
+            // Apply the calculated maximum height to all cards.
+            if (maxHeight > 0) {
+                flipCards.forEach(card => {
+                    card.style.height = maxHeight + 'px';
+                });
+            }
+        }
 
         function initializePage() {
             initializeTheme(); 
@@ -1483,8 +1535,10 @@
                         </div>
                     </div>
                 `;
-                cardContainer.addEventListener('click', () => {
-                    cardContainer.classList.toggle('is-flipped');
+                
+                // MODIFIED: Click listener now only toggles the class. Height is managed by JS/CSS.
+                cardContainer.addEventListener('click', function() {
+                    this.classList.toggle('is-flipped');
                 });
                 return cardContainer;
             }
@@ -1691,8 +1745,16 @@
             });
             
             adjustLayoutForNavBar();
-            window.addEventListener('resize', adjustLayoutForNavBar);
-            window.addEventListener('load', adjustLayoutForNavBar);
+            window.addEventListener('resize', () => {
+                adjustLayoutForNavBar();
+                const flipCards = document.querySelectorAll('#competencyGrid .flip-card');
+                flipCards.forEach(card => card.classList.remove('is-flipped'));
+                setUniformCardHeight(); // Re-calculate heights on resize
+            });
+            window.addEventListener('load', () => {
+                adjustLayoutForNavBar();
+                setUniformCardHeight(); // Calculate initial heights
+            });
             
             setLanguage(currentLang);
         }
