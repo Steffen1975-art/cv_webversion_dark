@@ -907,7 +907,7 @@
                             </svg>
                             <div class="flex-1">
                                 <h4 class="profile-block-title-variant-a">Strategic Leadership & Implementation of Europe-wide Salesforce CRM Programs</h4>
-                                <p class="mt-1 text-sm">My core competence lies in the <strong>strategic leadership, solution design, and implementation of complex, Europe-wide Salesforce-based CRM programs</strong> (Sales, Service, Marketing, Experience & Data Cloud). These solutions flexibly support <strong>various sales models (agency & retail)</strong>, cover <strong>Sales, After Sales & Finance Use Cases</strong>, and are deeply integrated into POS systems (focus Sales Activities & Point of Sale), targeting <strong>>10.000 users</strong>.</p>
+                                <p class="mt-1 text-sm">My core competence lies in the <strong>strategischen Führung, Lösungsgestaltung und Implementierung komplexer, europaweiter Salesforce-basierter CRM-Programme</strong> (Sales, Service, Marketing, Experience & Data Cloud). These solutions flexibly support <strong>diverse Vertriebsmodelle (Agentur & Retail)</strong>, cover <strong>Sales, After Sales & Finance Use Cases</strong>, and are deeply integrated into POS systems (focus Sales Activities & Point of Sale), targeting <strong>>10.000 users</strong>.</p>
                             </div>
                         </div>
                     </div>
@@ -1709,10 +1709,7 @@
             const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
             if (experienceCarouselTrack) { 
                 let expTouchstartX = 0;
-                let expTouchendX = 0;
-                // Add Y coordinates to distinguish scroll from swipe
                 let expTouchstartY = 0;
-                let expTouchendY = 0;
                 
                 populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
                 const nextButtonExp = document.getElementById('nextExperience');
@@ -1730,22 +1727,36 @@
                 }
                 
                 experienceCarouselTrack.addEventListener('touchstart', (e) => {
-                    expTouchstartX = e.changedTouches[0].screenX;
-                    expTouchstartY = e.changedTouches[0].screenY; // Capture Y start
-                }, { passive: true });
+                    expTouchstartX = e.changedTouches[0].clientX;
+                    expTouchstartY = e.changedTouches[0].clientY;
+                }); // Removed passive: true
+
+                experienceCarouselTrack.addEventListener('touchmove', (e) => {
+                    if (!expTouchstartX || !expTouchstartY) { return; }
+
+                    let moveX = e.changedTouches[0].clientX;
+                    let moveY = e.changedTouches[0].clientY;
+
+                    let deltaX = moveX - expTouchstartX;
+                    let deltaY = moveY - expTouchstartY;
+
+                    // If horizontal movement is dominant, prevent vertical scroll
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                        e.preventDefault();
+                    }
+                }, { passive: false }); // Explicitly non-passive to allow preventDefault
 
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
-                    expTouchendX = e.changedTouches[0].screenX;
-                    expTouchendY = e.changedTouches[0].screenY; // Capture Y end
+                    let expTouchendX = e.changedTouches[0].clientX;
+                    let expTouchendY = e.changedTouches[0].clientY;
 
-                    const deltaX = expTouchendX - expTouchstartX;
-                    const deltaY = expTouchendY - expTouchstartY;
-                    const swipeThreshold = 50;
-
-                    // MODIFIED: Only swipe if horizontal movement is significant AND vertical movement is not.
-                    if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
-                        if (jobExperiencesData.length === 0) return;
-
+                    let deltaX = expTouchendX - expTouchstartX;
+                    let deltaY = expTouchendY - expTouchstartY;
+                    let swipeThreshold = 50;
+                    
+                    // Only trigger a swipe if the movement was primarily horizontal
+                    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+                         if (jobExperiencesData.length === 0) return;
                         if (deltaX < 0) { // Swiped left
                             window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
                         } else { // Swiped right
@@ -1753,7 +1764,11 @@
                         }
                         updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     }
-                }, { passive: true });
+
+                    // Reset for the next touch
+                    expTouchstartX = 0;
+                    expTouchstartY = 0;
+                });
             }
 
             const languageItems = document.querySelectorAll('.language-item');
