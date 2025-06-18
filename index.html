@@ -12,7 +12,7 @@
             --navbar-height: 42px; /* Default, JS will update */
         }
         html {
-            scroll-behavior: smooth;
+            /* FIX 2: Removed 'scroll-behavior: smooth;' to prevent scroll jumping bugs on mobile devices. */
             scroll-padding-top: var(--navbar-height);
         }
         body {
@@ -498,11 +498,10 @@
                 transform: scale(1.05);
                 filter: brightness(0.8);
             }
-            /*
+            /* FIX 1: Re-enabled hover effect for the overlay */
             .slide-up-card:hover .slide-up-overlay {
                 transform: translateY(0);
             }
-            */
         }
         /* -- END: Styles for Insights (Slide-Up Cards) -- */
         
@@ -1169,40 +1168,31 @@
             });
         }
         
-        // --- MODIFIED: Function to set a uniform height for all cards on mobile ---
         function setUniformCardHeight() {
             const flipCards = document.querySelectorAll('#competencyGrid .flip-card');
             if (!flipCards.length) return;
 
-            // First, reset any inline height styles. This is crucial for resizing from mobile to desktop.
             flipCards.forEach(card => card.style.height = '');
 
-            // If we are on desktop view, let CSS handle the aspect ratio. Exit the function.
             if (window.innerWidth >= 640) {
                 return; 
             }
 
             let maxHeight = 0;
             
-            // Determine the maximum height needed among all cards (front and back).
             flipCards.forEach(card => {
                 const frontPanel = card.querySelector('.flip-card-front');
                 const backPanel = card.querySelector('.flip-card-back');
-                
-                // Get the height of the front panel
                 const frontHeight = frontPanel.offsetHeight;
                 if (frontHeight > maxHeight) {
                     maxHeight = frontHeight;
                 }
-
-                // Get the potential height of the back panel (scrollHeight includes all content)
                 const backHeight = backPanel.scrollHeight;
                 if (backHeight > maxHeight) {
                     maxHeight = backHeight;
                 }
             });
 
-            // Apply the calculated maximum height to all cards.
             if (maxHeight > 0) {
                 flipCards.forEach(card => {
                     card.style.height = maxHeight + 'px';
@@ -1357,7 +1347,6 @@
                 }
             ];
 
-            // --- COMPETENCY DATA AND FUNCTIONS ---
             const competenciesData = [
                 {
                     icon: "loop",
@@ -1585,7 +1574,22 @@
                         <span class="material-icons" style="font-size: 20px;">info_outline</span>
                     </div>
                 `;
-                cardContainer.addEventListener('click', () => cardContainer.classList.toggle('is-active'));
+                
+                // FIX 1: JS-Logic to handle click/hover conflict
+                cardContainer.addEventListener('click', () => {
+                    const wasActive = cardContainer.classList.contains('is-active');
+                    cardContainer.classList.toggle('is-active');
+
+                    // If the card was active and is now being deactivated by the click...
+                    if (wasActive) {
+                        // ...temporarily disable pointer events. This forces the browser to remove the :hover state.
+                        cardContainer.style.pointerEvents = 'none';
+                        // Re-enable pointer events immediately after, so the card is interactive again.
+                        setTimeout(() => {
+                            cardContainer.style.pointerEvents = '';
+                        }, 10);
+                    }
+                });
                 return cardContainer;
             }
 
@@ -1713,7 +1717,6 @@
                 });
             }
             
-            // --- FIX START: More Robust Carousel Logic ---
             const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
             if (experienceCarouselTrack) { 
                 let touchStartX = 0;
@@ -1741,36 +1744,32 @@
                     prevButtonExp.addEventListener('click', prevSlide);
                 }
                 
-                // Touch event listeners for mobile swipe
                 experienceCarouselTrack.addEventListener('touchstart', (e) => {
                     touchStartX = e.changedTouches[0].clientX;
                     touchStartY = e.changedTouches[0].clientY;
                 }, { passive: true });
 
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
-                    if (touchStartX === 0) return; // Avoid firing on non-touch events
+                    if (touchStartX === 0) return;
 
                     let touchEndX = e.changedTouches[0].clientX;
                     let touchEndY = e.changedTouches[0].clientY;
                     let deltaX = touchEndX - touchStartX;
                     let deltaY = touchEndY - touchStartY;
-                    let swipeThreshold = 50; // Minimum distance for a swipe
+                    let swipeThreshold = 50;
 
-                    // Only trigger a swipe if the movement was primarily horizontal and long enough
                     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
-                        if (deltaX < 0) { // Swiped left
+                        if (deltaX < 0) {
                             nextSlide();
-                        } else { // Swiped right
+                        } else {
                             prevSlide();
                         }
                     }
 
-                    // Reset for the next touch
                     touchStartX = 0;
                     touchStartY = 0;
                 });
             }
-            // --- FIX END ---
 
             const languageItems = document.querySelectorAll('.language-item');
             languageItems.forEach(item => {
@@ -1789,11 +1788,11 @@
                 adjustLayoutForNavBar();
                 const flipCards = document.querySelectorAll('#competencyGrid .flip-card');
                 flipCards.forEach(card => card.classList.remove('is-flipped'));
-                setUniformCardHeight(); // Re-calculate heights on resize
+                setUniformCardHeight();
             });
             window.addEventListener('load', () => {
                 adjustLayoutForNavBar();
-                setUniformCardHeight(); // Calculate initial heights
+                setUniformCardHeight();
             });
             
             setLanguage(currentLang);
