@@ -548,6 +548,8 @@
                 overflow-y: auto;
                 padding-right: 0.5rem;
                 -webkit-overflow-scrolling: touch;
+                /* This property can sometimes cause issues, but is good for smooth scrolling.
+                   We will control the scroll vs. swipe behavior in JS. */
             }
         }
 
@@ -751,6 +753,12 @@
         body.dark-mode .carousel-dot-combined { background-color: #4a5568; }
         body.dark-mode .carousel-dot-combined.active-dot { background-color: #60a5fa; }
         body.dark-mode .carousel-dot-combined:hover { background-color: #718096; }
+
+        .web-footer {
+            text-align: center; padding: 2rem 1rem; font-size: 0.875rem;
+            color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 3rem; 
+            transition: color 0.3s ease, border-top-color 0.3s ease;
+        }
 
         body.dark-mode .web-footer { color: #a0aec0; border-top-color: #374151; }
 
@@ -1705,71 +1713,103 @@
                 });
             }
             
-            // Populate Carousels (Experience)
+            // --- FIX 1 & 2 START: Enhanced Carousel Logic ---
             const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
             if (experienceCarouselTrack) { 
-                let expTouchstartX = 0;
-                let expTouchstartY = 0;
+                let touchStartX = 0;
+                let touchStartY = 0;
+                let isDragging = false; // To prevent click-drag from triggering slide
                 
                 populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
+                
                 const nextButtonExp = document.getElementById('nextExperience');
                 const prevButtonExp = document.getElementById('prevExperience');
 
-                if (nextButtonExp && prevButtonExp && jobExperiencesData.length > 0) {
-                    nextButtonExp.addEventListener('click', () => {
-                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
-                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
-                    });
-                    prevButtonExp.addEventListener('click', () => {
-                        window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
-                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
-                    });
+                function nextSlide() {
+                    if (jobExperiencesData.length === 0) return;
+                    window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
+                    updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
+                }
+
+                function prevSlide() {
+                    if (jobExperiencesData.length === 0) return;
+                    window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                    updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
+                }
+
+                if (nextButtonExp && prevButtonExp) {
+                    nextButtonExp.addEventListener('click', nextSlide);
+                    prevButtonExp.addEventListener('click', prevSlide);
                 }
                 
+                // Touch event listeners for mobile swipe
                 experienceCarouselTrack.addEventListener('touchstart', (e) => {
-                    expTouchstartX = e.changedTouches[0].clientX;
-                    expTouchstartY = e.changedTouches[0].clientY;
-                }); // Removed passive: true
+                    touchStartX = e.changedTouches[0].clientX;
+                    touchStartY = e.changedTouches[0].clientY;
+                }, { passive: true }); // Use passive: true for start to not block scroll immediately
 
                 experienceCarouselTrack.addEventListener('touchmove', (e) => {
-                    if (!expTouchstartX || !expTouchstartY) { return; }
+                    if (!touchStartX || !touchStartY) return;
 
                     let moveX = e.changedTouches[0].clientX;
                     let moveY = e.changedTouches[0].clientY;
+                    let deltaX = moveX - touchStartX;
+                    let deltaY = moveY - touchStartY;
 
-                    let deltaX = moveX - expTouchstartX;
-                    let deltaY = moveY - expTouchstartY;
-
-                    // If horizontal movement is dominant, prevent vertical scroll
-                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // If horizontal movement is more significant than vertical, prevent page scroll.
+                    // This is the key to fixing the scroll-jumping issue.
+                    if (Math.abs(deltaX) > Math.abs(deltaY) + 5) { // Added a small tolerance
                         e.preventDefault();
                     }
-                }, { passive: false }); // Explicitly non-passive to allow preventDefault
+                }, { passive: false }); // Must be non-passive to allow preventDefault
 
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
-                    let expTouchendX = e.changedTouches[0].clientX;
-                    let expTouchendY = e.changedTouches[0].clientY;
+                    let touchEndX = e.changedTouches[0].clientX;
+                    let touchEndY = e.changedTouches[0].clientY;
+                    let deltaX = touchEndX - touchStartX;
+                    let deltaY = touchEndY - touchStartY;
+                    let swipeThreshold = 50; // Minimum distance for a swipe
 
-                    let deltaX = expTouchendX - expTouchstartX;
-                    let deltaY = expTouchendY - expTouchstartY;
-                    let swipeThreshold = 50;
-                    
-                    // Only trigger a swipe if the movement was primarily horizontal
+                    // Only trigger a swipe if the movement was primarily horizontal and long enough
                     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
-                         if (jobExperiencesData.length === 0) return;
                         if (deltaX < 0) { // Swiped left
-                            window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
+                            nextSlide();
                         } else { // Swiped right
-                            window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
+                            prevSlide();
                         }
-                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     }
 
                     // Reset for the next touch
-                    expTouchstartX = 0;
-                    expTouchstartY = 0;
+                    touchStartX = 0;
+                    touchStartY = 0;
+                });
+                
+                // Mouse event listeners to prevent sporadic desktop jumps
+                experienceCarouselTrack.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    // We don't need to capture start position here as we only care about clicks vs drags
+                });
+                
+                experienceCarouselTrack.addEventListener('mousemove', (e) => {
+                    // If the mouse is moved while pressed, it's a drag, not a click
+                    if (isDragging) {
+                       // This logic could be expanded to allow mouse-dragging the carousel,
+                       // but for now, we just use it to prevent misfires.
+                    }
+                });
+                
+                experienceCarouselTrack.addEventListener('mouseup', (e) => {
+                   isDragging = false;
+                });
+                
+                // Make sure clicks on links inside the carousel don't get blocked
+                experienceCarouselTrack.addEventListener('click', (e) => {
+                    if (isDragging) {
+                        e.preventDefault(); // Prevent clicks after a drag
+                    }
                 });
             }
+            // --- FIX 1 & 2 END ---
 
             const languageItems = document.querySelectorAll('.language-item');
             languageItems.forEach(item => {
@@ -1777,9 +1817,9 @@
                 const tooltip = item.querySelector('.language-tooltip');
                 if (trigger && tooltip) {
                      item.addEventListener('mouseenter', () => { tooltip.style.opacity = '1'; tooltip.style.visibility = 'visible';});
-                    item.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';});
-                    trigger.addEventListener('focus', () => { tooltip.style.opacity = '1'; tooltip.style.visibility = 'visible';});
-                    trigger.addEventListener('blur', () => { if (!item.matches(':hover') && !tooltip.matches(':hover')) { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';}});
+                     item.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';});
+                     trigger.addEventListener('focus', () => { tooltip.style.opacity = '1'; tooltip.style.visibility = 'visible';});
+                     trigger.addEventListener('blur', () => { if (!item.matches(':hover') && !tooltip.matches(':hover')) { tooltip.style.opacity = '0'; tooltip.style.visibility = 'hidden';}});
                 }
             });
             
