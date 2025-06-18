@@ -1710,7 +1710,7 @@
             if (experienceCarouselTrack) { 
                 let expTouchstartX = 0;
                 let expTouchendX = 0;
-                // MODIFIED: Add Y coordinates to distinguish scroll from swipe
+                // Add Y coordinates to distinguish scroll from swipe
                 let expTouchstartY = 0;
                 let expTouchendY = 0;
                 
@@ -1740,19 +1740,18 @@
 
                     const deltaX = expTouchendX - expTouchstartX;
                     const deltaY = expTouchendY - expTouchstartY;
+                    const swipeThreshold = 50;
 
-                    // MODIFIED: Only swipe if the horizontal movement is greater than the vertical movement
-                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                        const swipeThreshold = 50; 
+                    // MODIFIED: Only swipe if horizontal movement is significant AND vertical movement is not.
+                    if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
                         if (jobExperiencesData.length === 0) return;
 
-                        if (deltaX < -swipeThreshold) { // Swiped left
+                        if (deltaX < 0) { // Swiped left
                             window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex + 1) % jobExperiencesData.length;
-                            updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
-                        } else if (deltaX > swipeThreshold) { // Swiped right
+                        } else { // Swiped right
                             window.experienceCarouselTrackIndex = (window.experienceCarouselTrackIndex - 1 + jobExperiencesData.length) % jobExperiencesData.length;
-                            updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                         }
+                        updateCarousel('experienceCarouselTrack', window.experienceCarouselTrackIndex, 'experienceCarouselDots');
                     }
                 }, { passive: true });
             }
