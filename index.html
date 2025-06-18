@@ -12,7 +12,8 @@
             --navbar-height: 42px; /* Default, JS will update */
         }
         html {
-            /* FIX 2: Removed 'scroll-behavior: smooth;' to prevent scroll jumping bugs on mobile devices. */
+            /* FIX 2: Re-added 'scroll-behavior: smooth;' as requested. The root cause was in the JS. */
+            scroll-behavior: smooth;
             scroll-padding-top: var(--navbar-height);
         }
         body {
@@ -498,7 +499,6 @@
                 transform: scale(1.05);
                 filter: brightness(0.8);
             }
-            /* FIX 1: Re-enabled hover effect for the overlay */
             .slide-up-card:hover .slide-up-overlay {
                 transform: translateY(0);
             }
