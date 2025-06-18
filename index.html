@@ -548,8 +548,6 @@
                 overflow-y: auto;
                 padding-right: 0.5rem;
                 -webkit-overflow-scrolling: touch;
-                /* This property can sometimes cause issues, but is good for smooth scrolling.
-                   We will control the scroll vs. swipe behavior in JS. */
             }
         }
 
@@ -1713,12 +1711,11 @@
                 });
             }
             
-            // --- FIX 1 & 2 START: Enhanced Carousel Logic ---
+            // --- FIX START: More Robust Carousel Logic ---
             const experienceCarouselTrack = document.getElementById('experienceCarouselTrack');
             if (experienceCarouselTrack) { 
                 let touchStartX = 0;
                 let touchStartY = 0;
-                let isDragging = false; // To prevent click-drag from triggering slide
                 
                 populateCarousel('experienceCarouselTrack', jobExperiencesData, createJobCard, 'experienceCarouselDots');
                 
@@ -1746,24 +1743,11 @@
                 experienceCarouselTrack.addEventListener('touchstart', (e) => {
                     touchStartX = e.changedTouches[0].clientX;
                     touchStartY = e.changedTouches[0].clientY;
-                }, { passive: true }); // Use passive: true for start to not block scroll immediately
-
-                experienceCarouselTrack.addEventListener('touchmove', (e) => {
-                    if (!touchStartX || !touchStartY) return;
-
-                    let moveX = e.changedTouches[0].clientX;
-                    let moveY = e.changedTouches[0].clientY;
-                    let deltaX = moveX - touchStartX;
-                    let deltaY = moveY - touchStartY;
-
-                    // If horizontal movement is more significant than vertical, prevent page scroll.
-                    // This is the key to fixing the scroll-jumping issue.
-                    if (Math.abs(deltaX) > Math.abs(deltaY) + 5) { // Added a small tolerance
-                        e.preventDefault();
-                    }
-                }, { passive: false }); // Must be non-passive to allow preventDefault
+                }, { passive: true });
 
                 experienceCarouselTrack.addEventListener('touchend', (e) => {
+                    if (touchStartX === 0) return; // Avoid firing on non-touch events
+
                     let touchEndX = e.changedTouches[0].clientX;
                     let touchEndY = e.changedTouches[0].clientY;
                     let deltaX = touchEndX - touchStartX;
@@ -1783,33 +1767,8 @@
                     touchStartX = 0;
                     touchStartY = 0;
                 });
-                
-                // Mouse event listeners to prevent sporadic desktop jumps
-                experienceCarouselTrack.addEventListener('mousedown', (e) => {
-                    isDragging = true;
-                    // We don't need to capture start position here as we only care about clicks vs drags
-                });
-                
-                experienceCarouselTrack.addEventListener('mousemove', (e) => {
-                    // If the mouse is moved while pressed, it's a drag, not a click
-                    if (isDragging) {
-                       // This logic could be expanded to allow mouse-dragging the carousel,
-                       // but for now, we just use it to prevent misfires.
-                    }
-                });
-                
-                experienceCarouselTrack.addEventListener('mouseup', (e) => {
-                   isDragging = false;
-                });
-                
-                // Make sure clicks on links inside the carousel don't get blocked
-                experienceCarouselTrack.addEventListener('click', (e) => {
-                    if (isDragging) {
-                        e.preventDefault(); // Prevent clicks after a drag
-                    }
-                });
             }
-            // --- FIX 1 & 2 END ---
+            // --- FIX END ---
 
             const languageItems = document.querySelectorAll('.language-item');
             languageItems.forEach(item => {
